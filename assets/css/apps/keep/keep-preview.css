@@ -1,0 +1,20 @@
+.keep-preview {
+    border: 1px solid black;
+    width: 240px;
+    height: 220px;
+    border-radius: 0.5em;
+}
+
+.keep-preview .keep-type {
+    height: 40px;
+}
+
+
+.keep-preview .keep-body {
+    flex-grow: 1;
+}
+
+.keep-preview .keep-tools {
+    height: 40px;
+
+}

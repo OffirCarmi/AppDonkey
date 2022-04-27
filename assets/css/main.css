@@ -9,5 +9,10 @@
 @import '../css/apps/mail/mail.css';
 
 
+@import '../css/apps/keep/keep-app.css';
+@import '../css/apps/keep/keep-list.css';
+@import '../css/apps/keep/keep-preview.css';
+
+
 @import '../css/cmps/footer.css';
 @import '../css/cmps/header.css';
