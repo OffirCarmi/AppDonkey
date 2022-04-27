@@ -27,21 +27,23 @@ function getById(keepId) {
     return Promise.resolve(keep)
 }
 
-function addKeep(txt, type) {
+function addKeep(input, type) {
     const id = utilService.makeId()
     let keep = {}
     switch (type) {
-        case 'txt':
-            keep = { id, type: 'keep-txt', isPinned: false, info: { txt } }
+        case 'keep-txt':
+            keep = { id, type: 'keep-txt', info: { txt: input } }
             break
-        case 'img':
-            keep = { id, type: 'keep-img', isPinned: false, info: { url: '', title: txt } }
-        case 'list':
-            keep = { id, type: 'keep-todos', isPinned: false, info: [] }
+        case 'keep-img':
+            keep = { id, type: 'keep-img', info: { url: input } }
+            break
+        case 'keep-todos':
+            keep = { id, type: 'keep-todos', info: [input.split(',')] }
+            break
     }
 
     let keeps = _loadFromStorage()
-    keeps.push(keep)
+    keeps.unshift(keep)
     _saveToStorage(keeps)
     return Promise.resolve(keeps)
 
@@ -69,9 +71,8 @@ function _createData() {
         {
             id: utilService.makeId(),
             type: "keep-txt",
-            isPinned: true,
             info: {
-                txt: "Fullstack Me Baby!"
+                txt: "Keep no. 1"
             }
         },
         {
@@ -79,22 +80,50 @@ function _createData() {
             type: "keep-img",
             info: {
                 url: "https://lirp.cdn-website.com/7ece8951/dms3rep/multi/opt/GettyImages-544673512-960w.jpg",
-                title: "Bobi and Me"
-            },
-            style: {
-                backgroundColor: "#00d"
+                title: ""
             }
         },
         {
             id: utilService.makeId(),
-            type: "keep-todos",
+            type: "keep-txt",
             info: {
-                label: "Get my stuff together",
-                todos: [
-                    { txt: "Driving liscence", doneAt: null },
-                    { txt: "Coding power", doneAt: 187111111 }
-                ]
+                txt: "Keep no. 3"
             }
         }
     ]
 }
+
+// function _createData() {
+//     return [
+//         {
+//             id: utilService.makeId(),
+//             type: "keep-txt",
+//             isPinned: true,
+//             info: {
+//                 txt: "Fullstack Me Baby!"
+//             }
+//         },
+//         {
+//             id: utilService.makeId(),
+//             type: "keep-img",
+//             info: {
+//                 url: "https://lirp.cdn-website.com/7ece8951/dms3rep/multi/opt/GettyImages-544673512-960w.jpg",
+//                 title: "Bobi and Me"
+//             },
+//             style: {
+//                 backgroundColor: "#00d"
+//             }
+//         },
+//         {
+//             id: utilService.makeId(),
+//             type: "keep-todos",
+//             info: {
+//                 label: "Get my stuff together",
+//                 todos: [
+//                     { txt: "Driving liscence", doneAt: null },
+//                     { txt: "Coding power", doneAt: 187111111 }
+//                 ]
+//             }
+//         }
+//     ]
+// }

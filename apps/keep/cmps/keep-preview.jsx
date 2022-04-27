@@ -1,4 +1,6 @@
-import { keepService } from '../services/keep.service.js'
+import { Txt } from './keep-types/txt.jsx'
+import { Img } from './keep-types/img.jsx'
+// import {Todos} from './keep-types/todos.jsx'
 const { Link } = ReactRouterDOM
 export class KeepPreview extends React.Component {
 
@@ -6,14 +8,10 @@ export class KeepPreview extends React.Component {
         const { keep, onRemoveKeep } = this.props
         const { type, id } = keep
 
-        return <article className="keep-preview flex col space-between">
-
-            <main className="keep-body">
-                {/* <section className="keep-type">{type}</section> */}
-                {/* {type === 'keep-txt' && <Type />}
-                {type === 'keep-img' && <Type />}
-                {type === 'keep-txt' && <Type />} */}
-            </main>
+        return <article key={id} className="keep-preview flex col space-between">
+            <section className="keep-body">
+                <_DynamicCmp keep={keep} />
+            </section>
             <aside className="keep-tools flex space-between">
                 <button>color</button>
                 <button>pin</button>
@@ -21,5 +19,18 @@ export class KeepPreview extends React.Component {
                 <button>mail</button>
             </aside>
         </article>
+    }
+}
+
+function _DynamicCmp({ keep }) {
+    // console.log(type);
+    switch (keep.type) {
+        case 'keep-txt':
+            return <Txt keep={keep} />
+        case 'keep-img':
+            return <Img keep={keep} />
+        // case 'keep-todos':
+        //     return <Todos />
+        default: <React.Fragment></React.Fragment>
     }
 }
