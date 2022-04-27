@@ -1,11 +1,14 @@
 :root {
-    --header: #5c746a;
-    --btn: #a9c0b8;
-    --bg: #f8ede5;
-    --mustard: #e09d2b;
-    --orange: #f1730c;
-    
+    --b: #87cefa;
+    --b2: #b6def6;
+    --bg: #FFFFFF;
+    --g1: #9a9a9a;
+    --g2: #bbbbbb;
+    --g3: #cccccc;
+    --g4: #dddddd;
+    --g5: #eeeeee;
+
+
     --black: #000;
     --white: #fff;
-    
-    }
+}
