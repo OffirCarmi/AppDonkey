@@ -1,26 +1,25 @@
+import { keepService } from '../services/keep.service.js'
 const { Link } = ReactRouterDOM
-
 export class KeepPreview extends React.Component {
 
     render() {
-        const { keep } = this.props
-        const { type } = keep
-        switch (type) {
-            case 'keep-txt':
+        const { keep, onRemoveKeep } = this.props
+        const { type, id } = keep
 
-                break;
-            case 'keep-img':
-
-                break;
-            case 'keep-todos':
-
-                break;
-
-        }
         return <article className="keep-preview flex col space-between">
-            <section className="keep-type">{type}</section>
-            <main className="keep-body">body</main>
-            <aside className="keep-tools">tools</aside>
+
+            <main className="keep-body">
+                {/* <section className="keep-type">{type}</section> */}
+                {/* {type === 'keep-txt' && <Type />}
+                {type === 'keep-img' && <Type />}
+                {type === 'keep-txt' && <Type />} */}
+            </main>
+            <aside className="keep-tools flex space-between">
+                <button>color</button>
+                <button>pin</button>
+                <button onClick={() => onRemoveKeep(id)}>delete</button>
+                <button>mail</button>
+            </aside>
         </article>
     }
 }

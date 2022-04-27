@@ -1,5 +1,5 @@
 .keep-preview {
-    border: 1px solid black;
+    border: 1px solid var(--g4);
     width: 240px;
     height: 220px;
     border-radius: 0.5em;
