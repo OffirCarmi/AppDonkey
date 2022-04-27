@@ -4,9 +4,10 @@ import { utilService } from '../../../services/util.service.js'
 export const keepService = {
     query,
     getById,
+    addKeep,
+    removeKeep,
 
 }
-
 
 const KEY = 'keepDB'
 
@@ -20,14 +21,39 @@ function query() {
     return Promise.resolve(keeps)
 }
 
-// function addKeep (keep){
-
-// }
-
 function getById(keepId) {
     const keeps = _loadFromStorage()
     const keep = keeps.find(keep => keepId === keep.id)
     return Promise.resolve(keep)
+}
+
+function addKeep(txt, type) {
+    const id = utilService.makeId()
+    let keep = {}
+    switch (type) {
+        case 'txt':
+            keep = { id, type: 'keep-txt', isPinned: false, info: { txt } }
+            break
+        case 'img':
+            keep = { id, type: 'keep-img', isPinned: false, info: { url: '', title: txt } }
+        case 'list':
+            keep = { id, type: 'keep-todos', isPinned: false, info: [] }
+    }
+
+    let keeps = _loadFromStorage()
+    keeps.push(keep)
+    _saveToStorage(keeps)
+    return Promise.resolve(keeps)
+
+}
+
+function removeKeep(keepId) {
+    let keeps = _loadFromStorage()
+    const idx = keeps.findIndex(keep => keep.id === keepId)
+    keeps.splice(idx, 1)
+    _saveToStorage(keeps)
+    return Promise.resolve(keeps)
+
 }
 
 function _saveToStorage(keeps) {

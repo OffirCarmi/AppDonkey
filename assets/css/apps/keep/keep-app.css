@@ -1,3 +1,27 @@
 .keep-app {
     flex-grow: 1;
 }
+
+.keep-app .new-keep {
+    max-width: 40%;
+    border: 1px solid var(--g4);
+    border-radius: 0.5em;
+    margin: 2em auto;
+    -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.05);
+}
+
+.keep-app .new-keep input {
+    margin-inline-start: 10px;
+    border: none;
+    outline: none;
+    height: 40px;
+
+}
+
+.keep-app .new-keep button {
+    height: 40px;
+    width: 40px;
+    border: none;
+    background: transparent;
+}
