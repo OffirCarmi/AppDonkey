@@ -7,7 +7,7 @@ const { Route, Switch } = ReactRouterDOM
 export function App() {
     return <Router>
         <Switch>
-            <Route path="/appDoneky" component={Home} />
+            <Route path="/appDonkey" component={Home} />
             <Route path="/" component={Welcome} />
         </Switch>
     </Router>
