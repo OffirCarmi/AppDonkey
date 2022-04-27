@@ -1,0 +1,13 @@
+.mail-wrapper {
+    flex-grow: 1;
+    display: flex;
+    padding: 10px;
+}
+
+.side {
+    width: 6.8rem;
+}
+
+.artical {
+    width: 100%;
+}
