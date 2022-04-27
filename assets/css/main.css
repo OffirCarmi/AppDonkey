@@ -1,0 +1,6 @@
+@import './basics/base.css';
+@import './basics/helpers.css';
+
+
+@import '../css/apps/welcome/welcome.css';
+@import '../css/apps/home/home.css';
