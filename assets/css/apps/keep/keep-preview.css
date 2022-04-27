@@ -12,6 +12,14 @@
 
 .keep-preview .keep-body {
     flex-grow: 1;
+    padding: 10px 10px 0 10px;
+}
+
+.keep-preview .keep-body img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.375em 0.375em 0 0;
 }
 
 .keep-preview .keep-tools {

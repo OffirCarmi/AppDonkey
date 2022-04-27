@@ -19,9 +19,17 @@
 
 }
 
-.keep-app .new-keep button {
+.keep-app .new-keep input.input {
+    width: 100%;
+}
+
+.keep-app .new-keep label {
+    align-self: center;
+}
+
+/* .keep-app .new-keep button {
     height: 40px;
     width: 40px;
     border: none;
     background: transparent;
-}
+} */
