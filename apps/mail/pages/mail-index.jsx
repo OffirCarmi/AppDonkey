@@ -1,6 +1,9 @@
 import { eventBusService } from "../../../services/event-bus.service.js";
 import { mailService } from "../services/mail.service.js";
 import { MailList } from "../cmps/mail-list.jsx";
+import { MailDetails } from "../pages/mail-details.jsx";
+
+const { Route, Switch } = ReactRouterDOM
 
 export class Mail extends React.Component {
     state = {
@@ -8,23 +11,30 @@ export class Mail extends React.Component {
     }
 
     componentDidMount() {
-        mailService.query().then((mails) => this.setState({ mails }))
+        mailService.query()
+            .then((mails) => this.setState({ mails }))
     }
 
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         const { mails } = this.state
-        return <section className="mail-wrapper">
+        if (!mails) return <React.Fragment></React.Fragment>
+        return <section className="mail-app">
             <aside className="side">
                 <button>Compose</button>
                 <ul>
                     <li>catagories</li>
                 </ul>
             </aside>
-            <article className="artical">
-                {mails && <MailList mails={mails} />}
-            </article>
+            {/* {this.props.history.location.pathname === '/appDonkey/mail' && <MailList mails={mails} />} */}
+            <Switch>
+                <Route path="/appDonkey/mail/:mailId" component={MailDetails} />
+                <Route path="/appDonkey/mail">
+                    <MailList mails={mails} />
+                </Route>
+            </Switch>
+
         </section>
     }
 }
