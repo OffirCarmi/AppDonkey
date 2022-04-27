@@ -2,7 +2,7 @@ import { Header } from '../cmps/header.jsx'
 import { About } from 'about.jsx'
 import { Book } from '../apps/book/pages/book-index.jsx'
 import { Mail } from '../apps/mail/pages/mail-index.jsx'
-import { Keep } from '../apps/keep/pages/note-index.jsx'
+import { Keep } from '../apps/keep/pages/keep-app.jsx'
 import { Home } from 'home.jsx'
 
 import { Footer } from '../cmps/footer.jsx'
