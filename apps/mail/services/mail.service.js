@@ -4,7 +4,8 @@ import { utilService } from '../../../services/util.service.js';
 export const mailService = {
     query,
     deleteMail,
-    setRead
+    setRead,
+    toggleRead
 }
 
 const KEY = 'mailDB'
@@ -23,7 +24,7 @@ function query(criteria) {
             if (typeof (criteria) === 'string') {
                 return _getById(criteria, newMails)
             }
-            
+
             return newMails
         })
     }
@@ -43,12 +44,21 @@ function deleteMail(id) {
 
 function setRead(id) {
     const mails = _loadFromStorage()
-    mails.forEach((mail)=> mail.id === id ? mail.isRead = true : mail)
+    mails.forEach((mail) => mail.id === id ? mail.isRead = true : mail)
 
     _saveToStorage(mails)
-    console.log('updating');
     return Promise.resolve()
 }
+
+function toggleRead(id) {
+    const mails = _loadFromStorage()
+    mails.forEach((mail) => mail.id === id ? mail.isRead = !mail.isRead : mail)
+    console.log('toggleRead - mail', mails)
+    
+    _saveToStorage(mails)
+    return Promise.resolve()
+}
+
 
 function _getById(mailId, mails) {
     const searchedMail = mails.find(mail => mailId === mail.id)
@@ -56,7 +66,6 @@ function _getById(mailId, mails) {
 
     // return _fetchEmails().then((mails) => {
     //     const searchedMail = mails.find(mail => mailId === mail.id)
-    //     console.log('return_fetchEmails - searchedMail', searchedMail)
     //     return searchedMail
     // })
 }

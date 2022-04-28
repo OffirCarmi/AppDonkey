@@ -48,8 +48,12 @@ export class Mail extends React.Component {
         console.log('Mail - ev', ev.type)
     }
 
+    onToggleRead = (id) => {
+        mailService.toggleRead(id).then(() => this.loadMails())
+    }
+
     render() {
-        console.log('index state', this.props)
+        console.log('index state', this.state)
         const { mails } = this.state
         if (!mails) return <React.Fragment></React.Fragment>
         return <section className="mail-app">
@@ -63,7 +67,13 @@ export class Mail extends React.Component {
             <Switch>
                 <Route path="/appDonkey/mail/:mailId" render={(props) => <MailDetails onDelete={this.onDelete} {...props} />} />
                 <Route path="/appDonkey/mail">
-                    <MailList mails={mails} onDelete={this.onDelete} onMail={this.onMail} handleFilterChange={this.handleFilterChange} />
+                    <MailList
+                        mails={mails}
+                        onDelete={this.onDelete}
+                        onMail={this.onMail}
+                        handleFilterChange={this.handleFilterChange}
+                        onToggleRead={this.onToggleRead}
+                    />
                 </Route>
             </Switch>
 

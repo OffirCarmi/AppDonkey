@@ -1,18 +1,30 @@
 .mail-container .preview-container {
     border-bottom: 1px solid var(--g4);
     padding: 20px;
-    cursor: pointer;
+    font-size: 0.755rem;
+    gap: 50px;
 }
 
 .mail-container .preview-container:hover {
     box-shadow: 0 1px 5px -3px black;
+    z-index: 100;
 }
 
-.mail-container .prev-body {
-    /* overflow:hidden; */
-    /* white-space: nowrap; */
-    /* text-overflow: ellipsis; */
+.preview-container button {
+    background-color: transparent;
+    border: none;
+}
 
+.prev-subject {
+    width: 200px;
+}
+
+.prev-body {
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    width: 0;
 }
 
 .prev-delete {
@@ -22,6 +34,5 @@
 
 .mail-container .read {
     background-color: var(--g5);
-    z-index: 100;
     font-weight: 200;
 }
