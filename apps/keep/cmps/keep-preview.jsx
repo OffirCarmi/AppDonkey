@@ -15,7 +15,7 @@ export class KeepPreview extends React.Component {
             <aside className="keep-tools flex space-between">
                 <button>color</button>
                 <button>pin</button>
-                <button>edit</button>
+                {/* <button>edit</button> */}
                 <button onClick={() => onRemoveKeep(id)}>delete</button>
                 <button>mail</button>
             </aside>

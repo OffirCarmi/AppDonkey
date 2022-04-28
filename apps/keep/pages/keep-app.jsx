@@ -28,6 +28,7 @@ export class Keep extends React.Component {
         // console.log('type', type);
         keepService.addKeep(input, type)
             .then(this.loadKeeps())
+
     }
 
     onRemoveKeep = (keepId) => {
@@ -60,7 +61,7 @@ export class Keep extends React.Component {
     }
 
     render() {
-        const { input, placeholder, keeps } = this.state
+        const { type, input, placeholder, keeps } = this.state
 
         return <section className="keep-app">
             <div className="new-keep">

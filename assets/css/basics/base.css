@@ -6,6 +6,7 @@ body {
     font-family: sans-serif;
     background-color: var(--bg);
     margin: 0;
+    font-size: 0.875rem;
 
 }
 
@@ -24,8 +25,16 @@ a:hover {
 
 button {
     cursor: pointer;
+    border: none;
+    background: transparent;
 }
 
+input {
+    border: none;
+    border-bottom: 1px solid var(--g1);
+    padding-inline-start: 5px;
+    outline: none;
+}
 
 
 .app {

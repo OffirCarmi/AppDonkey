@@ -13,6 +13,12 @@ export class LongTxt extends React.Component {
         this.setState({ isLongTxtShown: !this.state.isLongTxtShown })
     }
 
+    // render() {
+    //     const { txt } = this.props;
+    //     return <div className="keep-txt">
+    //         <textarea name="" id="" cols="25" rows="10">{txt}</textarea>
+    //     </div>
+    // }
     render() {
         // console.log(this.props);
         const { isLongTxtShown } = this.state

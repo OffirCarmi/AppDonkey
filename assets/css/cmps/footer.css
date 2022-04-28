@@ -1,5 +1,11 @@
-
 footer {
+    margin-top: 2em;
     background-color: var(--g4);
-    height: 60px;
+    height: 70px;
+}
+
+footer h2 {
+    font-size: 1.125em;
+    font-weight: 400;
+
 }

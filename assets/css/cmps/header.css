@@ -1,4 +1,16 @@
 header {
     border-bottom: 1px solid var(--g4);
     height: 60px;
+    padding: 0 1em;
+}
+
+header img {
+    height: 80%;
+}
+
+header .apps {
+    height: 40px;
+    width: 40px;
+    background-color: gray;
+    border-radius: 3em;
 }

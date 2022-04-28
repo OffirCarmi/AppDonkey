@@ -5,12 +5,41 @@
     object-fit: contain;
     background-repeat: no-repeat; */
 
+.welcome {
+    background: rgb(222, 222, 222);
+    background: linear-gradient(180deg, rgba(222, 222, 222, 1) 0%, rgba(99, 99, 99, 1) 100%);
+    height: 100vh;
+    color: var(--white);
+    text-align: center;
+
+}
+
+.welcome img {
+    height: 40vh;
+    margin-top: 10vh;
+}
 
 .welcome .welcome-msg h1 {
     font-size: 4rem;
-    margin-top: 100px;
+    margin: 5vh auto 1vh;
 }
 
 .welcome .welcome-msg h3 {
     font-size: 2.5em;
+    margin-bottom: 1.5em;
+    font-weight: 300;
+}
+
+.welcome button {
+    border: 1px solid var(--white);
+    color: var(--white);
+    padding: 0.5em 1.5em;
+    font-size: 1.5em;
+}
+
+.welcome button:hover {
+    background-color: var(--white);
+    color: var(--g1);
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
 }

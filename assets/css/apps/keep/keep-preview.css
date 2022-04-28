@@ -30,9 +30,14 @@
     text-decoration: line-through;
 }
 
+.keep-preview .keep-body textarea {
+    overflow-y: unset;
+    text-overflow: ellipsis;
+}
+
 .keep-preview .keep-body .todos .todo p {
     flex-grow: 1;
-    padding-inline-start: 5px ;
+    padding-inline-start: 5px;
 }
 
 .keep-preview .keep-tools {
