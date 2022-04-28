@@ -6,6 +6,8 @@ export const keepService = {
     getById,
     addKeep,
     removeKeep,
+    removeTodo,
+    toggleTodo,
 
 }
 
@@ -38,8 +40,8 @@ function addKeep(input, type) {
             keep = { id, type: 'keep-img', info: { url: input } }
             break
         case 'keep-todos':
-            keep = { id, type: 'keep-todos', info: [input.split(',')] }
-            break
+            keep = { id, type: 'keep-todos', info: { label: '', todos: _createTodos(input) } }
+
     }
 
     let keeps = _loadFromStorage()
@@ -55,6 +57,36 @@ function removeKeep(keepId) {
     keeps.splice(idx, 1)
     _saveToStorage(keeps)
     return Promise.resolve(keeps)
+
+}
+
+function removeTodo(keepId, todoId) {
+    let keeps = _loadFromStorage()
+    const keep = keeps.find(keep => keepId === keep.id)
+    const keepIdx = keeps.findIndex(keep => keepId === keep.id)
+    const todoIdx = keep.info.todos.findIndex(todo => todoId === todo.id)
+    keep.info.todos.splice(todoIdx, 1)
+    keeps.splice(keepIdx, 1, keep)
+    _saveToStorage(keeps)
+    return Promise.resolve(keep.info.todos)
+
+}
+
+function toggleTodo(keepId, todoId) {
+    let keeps = _loadFromStorage()
+    const keep = keeps.find(keep => keepId === keep.id)
+    const keepIdx = keeps.findIndex(keep => keepId === keep.id)
+    const todoIdx = keep.info.todos.findIndex(todo => todoId === todo.id)
+    keep.info.todos[todoIdx].isDone = !keep.info.todos[todoIdx].isDone
+    keeps.splice(keepIdx, 1, keep)
+    _saveToStorage(keeps)
+    return Promise.resolve(keep.info.todos)
+
+}
+
+function _createTodos(input) {
+    let todos = input.split(',')
+    return todos.map(todo => ({ id: utilService.makeId(), txt: todo, isDone: false }))
 
 }
 

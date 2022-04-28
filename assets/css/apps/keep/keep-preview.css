@@ -1,18 +1,22 @@
 .keep-preview {
     border: 1px solid var(--g4);
     width: 240px;
-    height: 220px;
+    min-height: 220px;
     border-radius: 0.5em;
+    margin-bottom: auto;
 }
 
 .keep-preview .keep-type {
     height: 40px;
 }
 
-
 .keep-preview .keep-body {
     flex-grow: 1;
     padding: 10px 10px 0 10px;
+}
+
+.keep-preview .keep-body .keep-txt .dynamic {
+    color: blue;
 }
 
 .keep-preview .keep-body img {
@@ -22,7 +26,21 @@
     border-radius: 0.375em 0.375em 0 0;
 }
 
+.keep-preview .keep-body .todos .todo p.done {
+    text-decoration: line-through;
+}
+
+.keep-preview .keep-body .todos .todo p {
+    flex-grow: 1;
+    padding-inline-start: 5px ;
+}
+
 .keep-preview .keep-tools {
     height: 40px;
 
+}
+
+.keep-preview .keep-tools button {
+    border: none;
+    background: transparent;
 }

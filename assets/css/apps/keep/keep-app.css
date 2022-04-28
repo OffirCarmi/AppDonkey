@@ -3,12 +3,12 @@
 }
 
 .keep-app .new-keep {
-    max-width: 40%;
+    width: 488px;
     border: 1px solid var(--g4);
     border-radius: 0.5em;
     margin: 2em auto;
-    -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
 }
 
 .keep-app .new-keep input {
@@ -20,7 +20,8 @@
 }
 
 .keep-app .new-keep input.input {
-    width: 100%;
+    width: 65%;
+    font-size: 1em;
 }
 
 .keep-app .new-keep label {
