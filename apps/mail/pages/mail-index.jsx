@@ -2,7 +2,8 @@ import { eventBusService } from "../../../services/event-bus.service.js";
 import { mailService } from "../services/mail.service.js";
 
 import { MailList } from "../cmps/mail-list.jsx";
-import { MailDetails } from "../pages/mail-details.jsx";
+import { MailDetails } from "mail-details.jsx";
+import { Compose } from "mail-compose.jsx";
 
 const { Route, Switch, NavLink } = ReactRouterDOM
 
@@ -11,8 +12,8 @@ export class Mail extends React.Component {
         mails: null,
         criteria: {
             txt: '',
-            isRead: true,
-            isStared: true,
+            isRead: null,
+            isStared: null,
             labels: [],
             mailbox: 'inbox'
         }
@@ -30,7 +31,7 @@ export class Mail extends React.Component {
     }
 
     loadMails = () => {
-        return mailService.query()
+        return mailService.query(this.state.criteria)
             .then((mails) => this.setState({ mails }))
     }
 
@@ -45,12 +46,13 @@ export class Mail extends React.Component {
 
     handleFilterChange = (ev) => {
         ev.preventDefault()
-        // console.log('Mail - ev', ev)
-        if(ev.type === 'change') {
+        console.log('Mail - ev', ev.type)
+        if (ev.type === 'change') {
             const val = ev.currentTarget.value
             const field = ev.currentTarget.name
             this.setState((prevState) => ({ criteria: { ...prevState.criteria, [field]: val } }))
-
+        } else if (ev.type === 'submit') {
+            this.loadMails()
         }
         // debounce(cb, wait)
     }
@@ -62,7 +64,7 @@ export class Mail extends React.Component {
     render() {
         // console.log('index state', this.state)
         const { mails } = this.state
-        // const { txt } = this.state.criteria
+        const { txt } = this.state.criteria
         if (!mails) return <React.Fragment></React.Fragment>
         return <section className="mail-app">
             <aside className="side">
@@ -74,6 +76,7 @@ export class Mail extends React.Component {
             {/* {this.props.history.location.pathname === '/appDonkey/mail' && <MailList mails={mails} />} */}
             <Switch>
                 <Route path="/appDonkey/mail/:mailId" render={(props) => <MailDetails onDelete={this.onDelete} {...props} />} />
+                <Route path="/appDonkey/compose" component={Compose} />
                 <Route path="/appDonkey/mail">
                     <MailList
                         mails={mails}
@@ -81,11 +84,10 @@ export class Mail extends React.Component {
                         onMail={this.onMail}
                         handleFilterChange={this.handleFilterChange}
                         onToggleRead={this.onToggleRead}
-                        inputTxt={this.state.criteria.txt}
+                        inputTxt={txt}
                     />
                 </Route>
             </Switch>
-
         </section>
     }
 }
