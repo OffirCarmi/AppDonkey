@@ -8,6 +8,7 @@ export const keepService = {
     removeKeep,
     removeTodo,
     toggleTodo,
+    addTodo,
 
 }
 
@@ -83,6 +84,22 @@ function toggleTodo(keepId, todoId) {
     return Promise.resolve(keep.info.todos)
 
 }
+
+function addTodo(keepId, input) {
+    let keeps = _loadFromStorage()
+    const keepIdx = keeps.findIndex(keep => keepId === keep.id)
+    const newTodo = {
+        id: utilService.makeId(),
+        txt: input,
+        isDone: false
+    }
+    keeps[keepIdx].info.todos.push(newTodo)
+    _saveToStorage(keeps)
+    return Promise.resolve(keeps[keepIdx].info.todos)
+
+
+}
+
 
 function _createTodos(input) {
     let todos = input.split(',')
