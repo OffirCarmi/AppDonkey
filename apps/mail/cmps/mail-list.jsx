@@ -1,9 +1,11 @@
 import { utilService } from "../services/util.service.js";
 import { MailPreview } from "../cmps/mail-preview.jsx";
+import { MailFilter } from '../cmps/mail-filter.jsx';
 const { Link } = ReactRouterDOM
 
-export function MailList({ mails, onDelete }) {
+export function MailList({ mails, onDelete, onMail, handleFilterChange }) {
     return <section className="mail-container flex col">
-            {mails.map((mail) => <MailPreview key={mail.id} mail={mail} onDelete={onDelete}/>)}
-        </section>
+        <MailFilter handleFilterChange={handleFilterChange}/>
+        {mails.map((mail) => <MailPreview key={mail.id} mail={mail} onDelete={onDelete} onMail={onMail} />)}
+    </section>
 }
