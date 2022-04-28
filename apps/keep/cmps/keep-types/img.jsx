@@ -1,3 +1,5 @@
 export function Img({ keep }) {
-    return <img src={keep.info.url} />
+    return <div className="keep-img">
+        <img src={keep.info.url} />
+    </div>
 }

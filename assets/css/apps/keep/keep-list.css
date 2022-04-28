@@ -1,10 +1,10 @@
 .keep-list {
     margin: 0 auto;
-    width: 990px;
+    width: 760px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     justify-items: center;
-    grid-gap: 10px;
+    grid-gap: 15px;
 }
 
 .keep-list article:hover {

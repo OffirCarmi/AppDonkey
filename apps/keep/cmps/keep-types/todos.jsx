@@ -38,7 +38,7 @@ export class Todos extends React.Component {
     render() {
         const { todos, input } = this.state
         const { keep } = this.props
-        return <section className="todos">
+        return <section className="todos flex col space-between">
             {todos.map(todo => {
                 return <div className="todo flex space-between" key={todo.id}>
                     <input type="checkbox" onChange={() => { this.onToggleTodo(keep.id, todo.id) }} checked={todo.isDone} />
@@ -46,7 +46,7 @@ export class Todos extends React.Component {
                     <button onClick={() => { this.onRemove(keep.id, todo.id) }}>x</button>
                 </div>
             })}
-            <form onSubmit={() => this.onAddTodo(keep.id)}>
+            <form className="new-todo" onSubmit={() => this.onAddTodo(keep.id)}>
                 <input type="text" value={input} placeholder="Add new todo" onChange={this.handleChange} />
             </form>
         </section>

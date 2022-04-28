@@ -42,7 +42,10 @@ function addKeep(input, type) {
             break
         case 'keep-todos':
             keep = { id, type: 'keep-todos', info: { label: '', todos: _createTodos(input) } }
-
+            break
+        case 'keep-video':
+            keep = { id, type: 'keep-video', url: _getYouTubeLink(input) }
+            break
     }
 
     let keeps = _loadFromStorage()
@@ -100,6 +103,9 @@ function addTodo(keepId, input) {
 
 }
 
+function _getYouTubeLink(input) {
+    return input.replace('watch?v=', 'embed/')
+}
 
 function _createTodos(input) {
     let todos = input.split(',')

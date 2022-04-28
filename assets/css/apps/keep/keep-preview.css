@@ -4,6 +4,14 @@
     min-height: 220px;
     border-radius: 0.5em;
     margin-bottom: auto;
+    line-height: 1.25;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.keep-preview aside {
+    display: none;
 }
 
 .keep-preview .keep-type {
@@ -12,18 +20,36 @@
 
 .keep-preview .keep-body {
     flex-grow: 1;
-    padding: 10px 10px 0 10px;
+    word-wrap: break-word;
+
+}
+
+.keep-preview .keep-body .todos, .keep-txt {
+    padding: 15px 15px 0 15px;
+
 }
 
 .keep-preview .keep-body .keep-txt .dynamic {
     color: blue;
+    cursor: pointer;
 }
 
+.keep-preview .keep-body .keep-img {
+    position: relative;
+}
+
+
+/* .keep-preview .keep-img:hover aside {
+    display: block;
+    position: absolute;
+} */
+
 .keep-preview .keep-body img {
+    /* max-height: 100%; */
     height: 100%;
     width: 100%;
     object-fit: cover;
-    border-radius: 0.375em 0.375em 0 0;
+    /* border-radius: 0.375em; */
 }
 
 .keep-preview .keep-body .todos .todo p.done {
@@ -38,10 +64,24 @@
 .keep-preview .keep-body .todos .todo p {
     flex-grow: 1;
     padding-inline-start: 5px;
+    margin-bottom: 5px;
+}
+
+
+.keep-preview .keep-body .keep-video iframe {
+    border: none;
+    width: 100%
 }
 
 .keep-preview .keep-tools {
+    display: none;
     height: 40px;
+}
+
+.keep-list article:hover .keep-tools {
+    display: block;
+    position: absolute;
+    bottom: 0;
 
 }
 

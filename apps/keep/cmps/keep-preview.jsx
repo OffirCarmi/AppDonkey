@@ -1,6 +1,7 @@
 import { Txt } from './keep-types/txt.jsx'
 import { Img } from './keep-types/img.jsx'
 import { Todos } from './keep-types/todos.jsx'
+import { Video } from './keep-types/video.jsx'
 const { Link } = ReactRouterDOM
 export class KeepPreview extends React.Component {
 
@@ -15,7 +16,6 @@ export class KeepPreview extends React.Component {
             <aside className="keep-tools flex space-between">
                 <button>color</button>
                 <button>pin</button>
-                {/* <button>edit</button> */}
                 <button onClick={() => onRemoveKeep(id)}>delete</button>
                 <button>mail</button>
             </aside>
@@ -32,6 +32,8 @@ function _DynamicCmp({ keep }) {
             return <Img keep={keep} />
         case 'keep-todos':
             return <Todos keep={keep} />
+        case 'keep-video':
+            return <Video keep={keep} />
         default: <React.Fragment></React.Fragment>
     }
 }

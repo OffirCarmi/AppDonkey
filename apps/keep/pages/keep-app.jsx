@@ -24,8 +24,6 @@ export class Keep extends React.Component {
         event.preventDefault()
         const input = this.state.input
         const type = this.state.type
-        // console.log('input', input);
-        // console.log('type', type);
         keepService.addKeep(input, type)
             .then(this.loadKeeps())
 
@@ -37,14 +35,12 @@ export class Keep extends React.Component {
     }
 
     handleChange = ({ target }) => {
-        // console.log('input is', target.value);
         const input = target.value
         this.setState((prevState) => ({ ...prevState, input }))
 
     }
 
     changeType = ({ target }) => {
-        // console.log('type is', target.value);
         const type = target.value
         switch (type) {
             case 'keep-txt':
@@ -55,6 +51,9 @@ export class Keep extends React.Component {
                 break
             case 'keep-todos':
                 this.setState((prevState) => ({ ...prevState, type: 'keep-todos', placeholder: 'Enter comma seperated list' }))
+                break
+            case 'keep-video':
+                this.setState((prevState) => ({ ...prevState, type: 'keep-video', placeholder: 'Enter YouTube URL' }))
                 break
         }
 
@@ -74,6 +73,8 @@ export class Keep extends React.Component {
                         <input type="radio" id="keep-img" name="type" value="keep-img" onChange={this.changeType} />
                         <label htmlFor="keep-todos">LST</label>
                         <input type="radio" id="keep-todos" name="type" value="keep-todos" onChange={this.changeType} />
+                        <label htmlFor="keep-video">YT</label>
+                        <input type="radio" id="keep-video" name="type" value="keep-video" onChange={this.changeType} />
                     </div>
                 </form>
             </div>
