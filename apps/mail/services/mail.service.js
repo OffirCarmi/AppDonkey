@@ -16,23 +16,43 @@ const loggedinUser = {
     fullName: 'Spike Spiegel'
 }
 
-function query(criteria) {
+//backup
 
+// function query(criteria) {
+//     let mails = _loadFromStorage()
+//     if (!mails) {
+//         return _fetchEmails().then((newMails) => {
+//             _saveToStorage(newMails)
+//             if (typeof (criteria) === 'string') {
+//                 return _getById(criteria, newMails)
+//             }
+//             return newMails
+//         })
+//     }
+
+//     if (typeof (criteria) === 'string') {
+//         return _getById(criteria, mails)
+//     }
+//     return Promise.resolve(mails)
+// }
+
+function query(criteria) {
     let mails = _loadFromStorage()
     if (!mails) {
-        return _fetchEmails().then((newMails) => {
-            _saveToStorage(newMails)
-            if (typeof (criteria) === 'string') {
-                return _getById(criteria, newMails)
-            }
-
-            return newMails
-        })
+        return _fetchEmails()
+            .then(_saveToStorage)
+            .then((mails) => {
+                //cannot chain another .then after if statement!!!!
+                if (typeof (criteria) === 'string') {
+                    return _getById(criteria, mails)
+                } else return _filterMail(mails, criteria)
+            })
     }
 
     if (typeof (criteria) === 'string') {
         return _getById(criteria, mails)
     }
+    mails = _filterMail(mails, criteria)
     return Promise.resolve(mails)
 }
 
@@ -72,11 +92,20 @@ function getFormattedDate(date) {
 function _getById(mailId, mails) {
     const searchedMail = mails.find(mail => mailId === mail.id)
     return Promise.resolve(searchedMail)
+}
 
-    // return _fetchEmails().then((mails) => {
-    //     const searchedMail = mails.find(mail => mailId === mail.id)
-    //     return searchedMail
-    // })
+function _filterMail(mails, criteria) {
+    //TODO basic text search filter here first, then complex in another func
+    console.log('filtering');
+    if(criteria && criteria.txt.length){
+        mails = mails.filter((mail) => {
+            // ${senderFullname}
+            const fullTxt = `${mail.subject} ${mail.body} ${mail.to} ${mail.from}`.toLowerCase()
+            return fullTxt.includes(criteria.txt.toLowerCase())
+        })
+        return mails
+    }
+    return mails
 }
 
 function _fetchEmails() {
@@ -89,7 +118,9 @@ function _fetchEmails() {
         ASCAP award-winning songwriter and artist`,
         isRead: false,
         sentAt: Date.now(),
-        to: 'mimime@email.com'
+        to: 'user@appdonkey.com',
+        from: 'mimime@email.com',
+        senderFullname: ''
     },
     {
         id: utilService.makeId(),
@@ -102,7 +133,9 @@ function _fetchEmails() {
         I've seen it, felt it`,
         isRead: false,
         sentAt: Date.now(),
-        to: 'mimime@email.com'
+        to: 'user@appdonkey.com',
+        from: 'mimime@email.com',
+        senderFullname: ''
     },
     {
         id: utilService.makeId(),
@@ -110,7 +143,9 @@ function _fetchEmails() {
         body: 'Ow yeah, you cant touch this',
         isRead: false,
         sentAt: Date.now(),
-        to: 'mimime@email.com'
+        to: 'user@appdonkey.com',
+        from: 'mimime@email.com',
+        senderFullname: ''
     }]
     return Promise.resolve(mail)
     // axios.get()
@@ -118,6 +153,7 @@ function _fetchEmails() {
 
 function _saveToStorage(mails) {
     storageService.saveToStorage(KEY, mails)
+    return mails
 }
 function _loadFromStorage() {
     return storageService.loadFromStorage(KEY)

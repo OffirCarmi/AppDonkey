@@ -21,15 +21,17 @@
 }
 
 .prev-subject {
-    width: 200px;
-}
-
-.prev-body {
-    overflow:hidden;
+    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     flex-grow: 1;
     width: 0;
+}
+
+.prev-body {
+    color: var(--g1);
+    width: 200px;
+    font-weight: 200;
 }
 
 .prev-delete {
@@ -37,7 +39,10 @@
     border: none;
 }
 
-.mail-container .read {
+.preview-container.read {
     background-color: var(--g5);
-    font-weight: 200;
+}
+
+.preview-container.read h3 {
+    font-weight: 400;
 }
