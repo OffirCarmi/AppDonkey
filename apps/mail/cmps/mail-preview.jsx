@@ -1,8 +1,11 @@
+import { mailService } from "../services/mail.service.js"
+
 const { Link } = ReactRouterDOM
 
 export function MailPreview({ mail, onDelete, onMail, onToggleRead }) {
-    const { id, subject, body, isRead, to } = mail
+    const { id, subject, body, isRead, to, sentAt } = mail
     const readClass = isRead ? 'read' : ''
+    const formattedDate = mailService.getFormattedDate(sentAt)
     return <Link onClick={() => onMail(id)} to={`/appDonkey/mail/${mail.id}`} className={`preview-container flex space-between  ${readClass}`}>
         <h3 className="prev-subject">
             {/* <button className="clean-btn">⭐</button> */}
@@ -14,7 +17,7 @@ export function MailPreview({ mail, onDelete, onMail, onToggleRead }) {
             ev.stopPropagation()
             onToggleRead(id)
             }}>{isRead ? '📧' : '💌'}</button>
-        <h3>Date</h3>
+        <h3>{formattedDate}</h3>
         {/* <button onClick={(ev) => {
             ev.preventDefault()
             onDelete(id)

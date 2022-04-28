@@ -7,6 +7,7 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
+    getMonthShort,
     getCurrencyIcon,
 }
 
@@ -93,6 +94,13 @@ function getDayName(date, locale) {
 function getMonthName(date) {
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
+    ]
+    return monthNames[date.getMonth()]
+}
+
+function getMonthShort(date) {
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
+        "July", "Aug", "Sept", "Oct", "Nov", "Dec"
     ]
     return monthNames[date.getMonth()]
 }

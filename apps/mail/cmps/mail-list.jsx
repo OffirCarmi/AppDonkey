@@ -3,9 +3,9 @@ import { MailPreview } from "../cmps/mail-preview.jsx";
 import { MailFilter } from '../cmps/mail-filter.jsx';
 const { Link } = ReactRouterDOM
 
-export function MailList({ mails, onDelete, onMail, handleFilterChange, onToggleRead }) {
+export function MailList({ mails, onDelete, onMail, handleFilterChange, onToggleRead, inputTxt }) {
     return <section className="mail-container flex col">
-        <MailFilter handleFilterChange={handleFilterChange} />
+        <MailFilter handleFilterChange={handleFilterChange} inputTxt={inputTxt} />
         {mails.map((mail) => <MailPreview
         key={mail.id}
         mail={mail}

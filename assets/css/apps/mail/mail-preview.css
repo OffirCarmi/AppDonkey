@@ -1,6 +1,6 @@
 .mail-container .preview-container {
     border-bottom: 1px solid var(--g4);
-    padding: 20px;
+    padding: 10px;
     font-size: 0.755rem;
     gap: 50px;
 }
@@ -8,6 +8,11 @@
 .mail-container .preview-container:hover {
     box-shadow: 0 1px 5px -3px black;
     z-index: 100;
+}
+
+.preview-container h3 {
+    padding: 0;
+    margin-block: auto;
 }
 
 .preview-container button {

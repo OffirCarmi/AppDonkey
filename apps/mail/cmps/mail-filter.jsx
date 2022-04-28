@@ -1,6 +1,6 @@
-export function MailFilter({ handleFilterChange }) {
+export function MailFilter({ handleFilterChange, inputTxt }) {
     return <form onSubmit={handleFilterChange}>
-        <input onChange={handleFilterChange} className="search-bar" type="text" />
+        <input type="text" onChange={handleFilterChange} name="txt" value={inputTxt} className="search-bar" autoComplete="off" />
     </form>
 
 }
