@@ -43,7 +43,7 @@ export class Keep extends React.Component {
     }
 
     changeType = ({ target }) => {
-        console.log('type is', target.value);
+        // console.log('type is', target.value);
         const type = target.value
         switch (type) {
             case 'keep-txt':
@@ -65,7 +65,7 @@ export class Keep extends React.Component {
         return <section className="keep-app">
             <div className="new-keep">
                 <form className="flex space-between align-center" onSubmit={() => this.onAddKeep()}>
-                    <input class="input" type="text" value={input} onChange={this.handleChange} placeholder={placeholder} />
+                    <input className="input" type="text" value={input} onChange={this.handleChange} placeholder={placeholder} />
                     <div className="keep-type flex">
                         <label htmlFor="keep-txt">TXT</label>
                         <input type="radio" id="keep-txt" name="type" value="keep-txt" onChange={this.changeType} defaultChecked />
