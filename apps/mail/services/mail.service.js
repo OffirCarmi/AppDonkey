@@ -5,7 +5,8 @@ export const mailService = {
     query,
     deleteMail,
     setRead,
-    toggleRead
+    toggleRead,
+    getFormattedDate
 }
 
 const KEY = 'mailDB'
@@ -53,10 +54,18 @@ function setRead(id) {
 function toggleRead(id) {
     const mails = _loadFromStorage()
     mails.forEach((mail) => mail.id === id ? mail.isRead = !mail.isRead : mail)
-    console.log('toggleRead - mail', mails)
-    
+
     _saveToStorage(mails)
     return Promise.resolve()
+}
+
+
+function getFormattedDate(date) {
+    const dateObj = new Date(date)
+    const month = utilService.getMonthShort(dateObj)
+    const day = dateObj.getDay()
+    return month + ' ' + day
+
 }
 
 

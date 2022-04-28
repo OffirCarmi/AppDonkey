@@ -45,7 +45,14 @@ export class Mail extends React.Component {
 
     handleFilterChange = (ev) => {
         ev.preventDefault()
-        console.log('Mail - ev', ev.type)
+        // console.log('Mail - ev', ev)
+        if(ev.type === 'change') {
+            const val = ev.currentTarget.value
+            const field = ev.currentTarget.name
+            this.setState((prevState) => ({ criteria: { ...prevState.criteria, [field]: val } }))
+
+        }
+        // debounce(cb, wait)
     }
 
     onToggleRead = (id) => {
@@ -53,8 +60,9 @@ export class Mail extends React.Component {
     }
 
     render() {
-        console.log('index state', this.state)
+        // console.log('index state', this.state)
         const { mails } = this.state
+        // const { txt } = this.state.criteria
         if (!mails) return <React.Fragment></React.Fragment>
         return <section className="mail-app">
             <aside className="side">
@@ -73,6 +81,7 @@ export class Mail extends React.Component {
                         onMail={this.onMail}
                         handleFilterChange={this.handleFilterChange}
                         onToggleRead={this.onToggleRead}
+                        inputTxt={this.state.criteria.txt}
                     />
                 </Route>
             </Switch>
