@@ -16,26 +16,6 @@ const loggedinUser = {
     fullName: 'Spike Spiegel'
 }
 
-//backup
-
-// function query(criteria) {
-//     let mails = _loadFromStorage()
-//     if (!mails) {
-//         return _fetchEmails().then((newMails) => {
-//             _saveToStorage(newMails)
-//             if (typeof (criteria) === 'string') {
-//                 return _getById(criteria, newMails)
-//             }
-//             return newMails
-//         })
-//     }
-
-//     if (typeof (criteria) === 'string') {
-//         return _getById(criteria, mails)
-//     }
-//     return Promise.resolve(mails)
-// }
-
 function query(criteria) {
     let mails = _loadFromStorage()
     if (!mails) {
@@ -45,15 +25,20 @@ function query(criteria) {
                 //cannot chain another .then after if statement!!!!
                 if (typeof (criteria) === 'string') {
                     return _getById(criteria, mails)
-                } else return _filterMail(mails, criteria)
+                } else {
+                    const count = mails.filter((mail) => !mail.isRead).length
+                    mails = _filterMail(mails, criteria)
+                    return { mails, count }
+                }
             })
     }
 
     if (typeof (criteria) === 'string') {
         return _getById(criteria, mails)
     }
+    const count = mails.filter((mail) => !mail.isRead).length
     mails = _filterMail(mails, criteria)
-    return Promise.resolve(mails)
+    return Promise.resolve({ mails, count })
 }
 
 function deleteMail(id) {
@@ -95,15 +80,31 @@ function _getById(mailId, mails) {
 }
 
 function _filterMail(mails, criteria) {
-    //TODO basic text search filter here first, then complex in another func
-    console.log('filtering');
-    if(criteria && criteria.txt.length){
+    if (criteria || criteria.txt.length) {
         mails = mails.filter((mail) => {
             // ${senderFullname}
             const fullTxt = `${mail.subject} ${mail.body} ${mail.to} ${mail.from}`.toLowerCase()
             return fullTxt.includes(criteria.txt.toLowerCase())
         })
-        return mails
+        mails = _filterMailbox(mails, criteria)
+    }
+    return mails
+}
+
+function _filterMailbox(mails, criteria) {
+    switch (criteria.mailbox) {
+        case 'read':
+            mails = mails.filter((mail) => mail.isRead)
+            break;
+        case 'unread':
+            mails = mails.filter((mail) => !mail.isRead)
+            break;
+        case 'sentMail':
+            mails = mails.filter((mail) => mail.from === loggedinUser.email)
+            break;
+
+        default:
+            break;
     }
     return mails
 }
