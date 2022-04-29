@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family: sans-serif;
+    font-family: roboto , sans-serif;
     background-color: var(--bg);
     margin: 0;
     font-size: 0.875rem;

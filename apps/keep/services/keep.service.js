@@ -12,6 +12,7 @@ export const keepService = {
     changeColor,
     updateKeep,
     duplicateKeep,
+    pinKeep,
 
 }
 
@@ -38,16 +39,16 @@ function addKeep(input, type) {
     let keep = {}
     switch (type) {
         case 'keep-txt':
-            keep = { id, type: 'keep-txt', info: { txt: input } }
+            keep = { id, type: 'keep-txt', info: { txt: input }, isPinned: false }
             break
         case 'keep-img':
-            keep = { id, type: 'keep-img', info: { url: input } }
+            keep = { id, type: 'keep-img', info: { url: input }, isPinned: false }
             break
         case 'keep-todos':
-            keep = { id, type: 'keep-todos', info: { label: '', todos: _createTodos(input) } }
+            keep = { id, type: 'keep-todos', info: { label: '', todos: _createTodos(input) }, isPinned: false }
             break
         case 'keep-video':
-            keep = { id, type: 'keep-video', url: _getYouTubeLink(input) }
+            keep = { id, type: 'keep-video', url: _getYouTubeLink(input), isPinned: false }
             break
     }
 
@@ -108,7 +109,6 @@ function addTodo(keepId, input) {
 
 function changeColor(keepId, color) {
     let keeps = _loadFromStorage()
-    let keep = keeps.find(keep => keepId === keep.id)
     const keepIdx = keeps.findIndex(keep => keepId === keep.id)
     keeps[keepIdx].color = color
     _saveToStorage(keeps)
@@ -142,6 +142,14 @@ function duplicateKeep(keepId) {
 
 }
 
+function pinKeep(keepId) {
+    let keeps = _loadFromStorage()
+    const keepIdx = keeps.findIndex(keep => keepId === keep.id)
+    keeps[keepIdx].isPinned = !keeps[keepIdx].isPinned
+    _saveToStorage(keeps)
+    return Promise.resolve(keeps)
+}
+
 function _getYouTubeLink(input) {
     return input.replace('watch?v=', 'embed/')
 }
@@ -167,7 +175,8 @@ function _createData() {
             type: "keep-txt",
             info: {
                 txt: "Keep no. 1"
-            }
+            },
+            isPinned: false
         },
         {
             id: utilService.makeId(),
@@ -175,14 +184,16 @@ function _createData() {
             info: {
                 url: "https://lirp.cdn-website.com/7ece8951/dms3rep/multi/opt/GettyImages-544673512-960w.jpg",
                 title: ""
-            }
+            },
+            isPinned: false
         },
         {
             id: utilService.makeId(),
             type: "keep-txt",
             info: {
                 txt: "Keep no. 3"
-            }
+            },
+            isPinned: false
         }
     ]
 }

@@ -12,3 +12,23 @@
     font-family: fa-brands;
     src: url(../../fonts/awesome/fa-brands-400.ttf);
 }
+
+@font-face {
+    font-family: roboto;
+    src: url(../../fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: roboto-light;
+    src: url(../../fonts/Roboto/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: roboto-medium;
+    src: url(../../fonts/Roboto/Roboto-Medium.ttf);
+}
+
+@font-face {
+    font-family: roboto-bold;
+    src: url(../../fonts/Roboto/Roboto-Bold.ttf);
+}
