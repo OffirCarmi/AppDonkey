@@ -9,6 +9,8 @@ export const utilService = {
     getMonthName,
     getMonthShort,
     getCurrencyIcon,
+    getFormattedDate,
+    
 }
 
 function makeId(length = 6) {
@@ -103,4 +105,13 @@ function getMonthShort(date) {
         "July", "Aug", "Sept", "Oct", "Nov", "Dec"
     ]
     return monthNames[date.getMonth()]
+}
+
+
+function getFormattedDate(date) {
+    const dateObj = new Date(date)
+    const month = this.getMonthShort(dateObj)
+    const day = dateObj.getDay()
+    return month + ' ' + day
+
 }

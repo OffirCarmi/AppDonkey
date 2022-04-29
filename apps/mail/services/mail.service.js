@@ -6,7 +6,7 @@ export const mailService = {
     deleteMail,
     setRead,
     toggleRead,
-    getFormattedDate
+    addMail
 }
 
 const KEY = 'mailDB'
@@ -26,7 +26,7 @@ function query(criteria) {
                 if (typeof (criteria) === 'string') {
                     return _getById(criteria, mails)
                 } else {
-                    const count = mails.filter((mail) => !mail.isRead).length
+                    const count = mails.filter((mail) => !mail.isRead && mail.to === loggedinUser.email).length
                     mails = _filterMail(mails, criteria)
                     return { mails, count }
                 }
@@ -36,7 +36,7 @@ function query(criteria) {
     if (typeof (criteria) === 'string') {
         return _getById(criteria, mails)
     }
-    const count = mails.filter((mail) => !mail.isRead).length
+    const count = mails.filter((mail) => !mail.isRead && mail.to === loggedinUser.email).length
     mails = _filterMail(mails, criteria)
     return Promise.resolve({ mails, count })
 }
@@ -46,6 +46,13 @@ function deleteMail(id) {
     mails = mails.filter((mail) => mail.id !== id)
     _saveToStorage(mails)
     return Promise.resolve()
+}
+
+function addMail(felid) {
+    const mails = _loadFromStorage()
+    const newMail = _createMail(felid)
+    mails.push(newMail)
+    _saveToStorage(mails)
 }
 
 function setRead(id) {
@@ -64,16 +71,6 @@ function toggleRead(id) {
     return Promise.resolve()
 }
 
-
-function getFormattedDate(date) {
-    const dateObj = new Date(date)
-    const month = utilService.getMonthShort(dateObj)
-    const day = dateObj.getDay()
-    return month + ' ' + day
-
-}
-
-
 function _getById(mailId, mails) {
     const searchedMail = mails.find(mail => mailId === mail.id)
     return Promise.resolve(searchedMail)
@@ -83,7 +80,7 @@ function _filterMail(mails, criteria) {
     if (criteria || criteria.txt.length) {
         mails = mails.filter((mail) => {
             // ${senderFullname}
-            const fullTxt = `${mail.subject} ${mail.body} ${mail.to} ${mail.from}`.toLowerCase()
+            const fullTxt = `${Object.values(mail).join(' ')}`.toLowerCase()
             return fullTxt.includes(criteria.txt.toLowerCase())
         })
         mails = _filterMailbox(mails, criteria)
@@ -93,20 +90,37 @@ function _filterMail(mails, criteria) {
 
 function _filterMailbox(mails, criteria) {
     switch (criteria.mailbox) {
+        case 'inbox':
+            mails = mails.filter((mail) => mail.to === loggedinUser.email)
+            break
         case 'read':
-            mails = mails.filter((mail) => mail.isRead)
+            mails = mails.filter((mail) => mail.isRead && mail.to === loggedinUser.email)
             break;
         case 'unread':
-            mails = mails.filter((mail) => !mail.isRead)
+            mails = mails.filter((mail) => !mail.isRead && mail.to === loggedinUser.email)
             break;
         case 'sentMail':
-            mails = mails.filter((mail) => mail.from === loggedinUser.email)
+            mails = mails.filter((mail) => mail.to !== loggedinUser.email)
             break;
-
         default:
             break;
     }
     return mails
+}
+
+function _createMail({ subject, body, to, from, senderFullname }) {
+    if (!senderFullname) senderFullname = loggedinUser.fullName
+    if (!from) from = loggedinUser.email
+    return {
+        id: utilService.makeId(),
+        subject,
+        body,
+        isRead: true,
+        sentAt: Date.now(),
+        to,
+        from,
+        senderFullname
+    }
 }
 
 function _fetchEmails() {
@@ -121,7 +135,7 @@ function _fetchEmails() {
         sentAt: Date.now(),
         to: 'user@appdonkey.com',
         from: 'mimime@email.com',
-        senderFullname: ''
+        senderFullname: 'MIMIME'
     },
     {
         id: utilService.makeId(),
@@ -136,7 +150,7 @@ function _fetchEmails() {
         sentAt: Date.now(),
         to: 'user@appdonkey.com',
         from: 'mimime@email.com',
-        senderFullname: ''
+        senderFullname: 'MIMIME'
     },
     {
         id: utilService.makeId(),
@@ -146,7 +160,7 @@ function _fetchEmails() {
         sentAt: Date.now(),
         to: 'user@appdonkey.com',
         from: 'mimime@email.com',
-        senderFullname: ''
+        senderFullname: 'MIMIME'
     }]
     return Promise.resolve(mail)
     // axios.get()

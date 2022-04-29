@@ -16,13 +16,14 @@ export class MailDetails extends React.Component {
         // console.log('props from details', this.props)
         const { mail } = this.state
         if (!mail) return <React.Fragment></React.Fragment>
+        const { id, subject, body, isRead, to, from, senderFullname, sentAt } = mail
         return <section className="detail-container">
-            <h1 >{mail.subject}</h1>
-            <h4>{mail.from}</h4>
-            <p>{mail.body}</p>
+            <h1 >{subject}</h1>
+            <h4>{senderFullname} - <span>{from}</span></h4>
+            <p>{body}</p>
             <button onClick={() => {
                 this.props.history.push('/appDonkey/mail')
-                this.props.onDelete(mail.id)
+                this.props.onDelete(id)
             }}>Delete</button>
             <button onClick={() => this.props.history.push('/appDonkey/mail')}>Back</button>
         </section>

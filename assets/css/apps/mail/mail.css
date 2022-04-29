@@ -2,12 +2,13 @@
 .mail-app {
     flex-grow: 1;
     display: flex;
+    position: relative;
     padding: 10px 15px 0 0;
     max-width: 100%;
 }
 
 .side {
-    padding-right: 5px 0 0;
+    /* padding-right: 5px; */
     width: 200px;
 }
 
@@ -32,16 +33,4 @@
 .mail-container {
     flex-grow: 1;
     justify-content: flex-start;
-}
-
-.search-bar {
-    background-color: var(--g5);
-    border-radius: 5px;
-    border: none;
-    font-size: 1.5em;
-    padding: 5px;
-}
-
-.prev-delete {
-    
 }

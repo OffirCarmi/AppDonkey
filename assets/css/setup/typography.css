@@ -1,0 +1,14 @@
+@font-face {
+    font-family: fa-reg;
+    src: url(../../fonts/awesome/fa-regular-400.ttf);
+}
+
+@font-face {
+    font-family: fa-solid;
+    src: url(../../fonts/awesome/fa-solid-900.ttf);
+}
+
+@font-face {
+    font-family: fa-brands;
+    src: url(../../fonts/awesome/fa-brands-400.ttf);
+}

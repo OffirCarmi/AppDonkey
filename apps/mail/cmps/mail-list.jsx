@@ -6,12 +6,12 @@ const { Link } = ReactRouterDOM
 export function MailList({ mails, onDelete, onMail, handleFilterChange, onToggleRead, inputTxt }) {
     return <section className="mail-container flex col">
         <MailFilter handleFilterChange={handleFilterChange} inputTxt={inputTxt} />
-        {mails.map((mail) => <MailPreview
-        key={mail.id}
-        mail={mail}
-        onDelete={onDelete}
-        onMail={onMail}
-        onToggleRead={onToggleRead}
-        />)}
+        {mails.length && mails.map((mail) => <MailPreview
+            key={mail.id}
+            mail={mail}
+            onDelete={onDelete}
+            onMail={onMail}
+            onToggleRead={onToggleRead}
+        />) || <section><h1>No mails in this category</h1></section>}
     </section>
 }
