@@ -53,6 +53,11 @@ export class Keep extends React.Component {
             .then(() => this.loadKeeps())
     }
 
+    onPinKeep = (keepId) => {
+        keepService.pinKeep(keepId)
+            .then(() => this.loadKeeps())
+
+    }
 
     handleChange = ({ target }) => {
         const input = target.value
@@ -79,6 +84,15 @@ export class Keep extends React.Component {
 
     }
 
+    // get pinnedKeeps() {
+    //     const { keeps } = this.state
+    //     const pinnedKeeps = keeps.filter(keep => keep.isPinned)
+    //     if (!pinnedKeeps) return
+
+
+    // }
+
+
     render() {
         const { type, input, placeholder, keeps } = this.state
 
@@ -99,7 +113,8 @@ export class Keep extends React.Component {
                 onRemoveKeep={this.onRemoveKeep}
                 onChangeColor={this.onChangeColor}
                 onUpdateKeep={this.onUpdateKeep}
-                onDuplicateKeep={this.onDuplicateKeep} />
+                onDuplicateKeep={this.onDuplicateKeep}
+                onPinKeep={this.onPinKeep} />
 
             {/* <Modal /> */}
         </section>
