@@ -16,7 +16,8 @@ export class Mail extends React.Component {
             isRead: null,
             isStared: null,
             labels: [],
-            mailbox: 'inbox'
+            mailbox: 'inbox',
+            isReversed: false
         },
         unreadCount: 0
     }
@@ -68,12 +69,20 @@ export class Mail extends React.Component {
         // debounce(cb, wait)
     }
 
+    onSort = (ev) => {
+        const { mails, criteria: { isReversed: isReversed } } = this.state
+        const field = ev.currentTarget.name
+        const sortedMails = [].concat(mails).sort((a, b) => a[field] > b[field] ? 1 : -1)
+        isReversed ? sortedMails.reverse() : sortedMails
+        this.setState((prevState) => ({ mails: sortedMails, criteria: { ...prevState.criteria, isReversed: !prevState.criteria.isReversed } }))
+    }
+
     onToggleRead = (id) => {
         mailService.toggleRead(id).then(() => this.loadMails())
     }
 
     render() {
-        // console.log('index state', this.props)
+        // console.log('index state', this.state.mails)
         const { mails, unreadCount } = this.state
         const { txt } = this.state.criteria
         if (!mails) return <React.Fragment></React.Fragment>
@@ -95,6 +104,7 @@ export class Mail extends React.Component {
                         handleFilterChange={this.handleFilterChange}
                         onToggleRead={this.onToggleRead}
                         inputTxt={txt}
+                        onSort={this.onSort}
                     />
                 </Route>
             </Switch>
