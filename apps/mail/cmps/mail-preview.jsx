@@ -13,11 +13,12 @@ export function MailPreview({ mail, onDelete, onMail, onToggleRead }) {
             {senderFullname}
         </h3>
         <h3 className="prev-subject ">{subject}<span className="prev-body"> - {body}</span></h3>
-        <button title={isRead ? 'Mark as unread' : 'Mark as read'} onClick={(ev) => {
-            ev.preventDefault()
-            ev.stopPropagation()
-            onToggleRead(id)
-        }}>{isRead ? '📧' : '💌'}</button>
+        <button className="prev-mark" title={isRead ? 'Mark as unread' : 'Mark as read'} data-symbol={isRead ? `` : ``}
+            onClick={(ev) => {
+                ev.preventDefault()
+                ev.stopPropagation()
+                onToggleRead(id)
+            }}></button>
         <h3 className="mail-date">{formattedDate}</h3>
         {/* <button onClick={(ev) => {
             ev.preventDefault()

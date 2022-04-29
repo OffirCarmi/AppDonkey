@@ -46,9 +46,14 @@
     font-weight: 200;
 }
 
-.prev-delete {
+/* .prev-delete {
     background-color: transparent;
     border: none;
+} */
+
+.prev-mark::before {
+    font-family: fa-reg;
+    content: attr(data-symbol);
 }
 
 .preview-container.read {

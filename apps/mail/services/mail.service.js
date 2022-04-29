@@ -132,7 +132,7 @@ function _fetchEmails() {
         Join our live stream with hosts Gaurav Harrish from Avid and audio engineer Wavy Wayne—alongside 
         ASCAP award-winning songwriter and artist`,
         isRead: false,
-        sentAt: Date.now(),
+        sentAt: new Date('1/1/1999'),
         to: 'user@appdonkey.com',
         from: 'mimime@email.com',
         senderFullname: 'MIMIME'
@@ -147,7 +147,7 @@ function _fetchEmails() {
         Orion... I’ve felt wind in my hair, riding test boats off the black galaxies and seen an attack fleet burn like a match and disappear. 
         I've seen it, felt it`,
         isRead: false,
-        sentAt: Date.now(),
+        sentAt: new Date('1/1/2020'),
         to: 'user@appdonkey.com',
         from: 'mimime@email.com',
         senderFullname: 'MIMIME'
@@ -157,7 +157,7 @@ function _fetchEmails() {
         subject: 'Cant touch this',
         body: 'Ow yeah, you cant touch this',
         isRead: false,
-        sentAt: Date.now(),
+        sentAt: new Date('1/1/2016'),
         to: 'user@appdonkey.com',
         from: 'mimime@email.com',
         senderFullname: 'MIMIME'
