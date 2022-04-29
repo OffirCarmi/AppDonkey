@@ -62,7 +62,7 @@ export class Mail extends React.Component {
             this.loadMails()
         } else if (ev.type === 'click') {
             this.setState((prevState) => ({ criteria: { ...prevState.criteria, mailbox: val } }), () => {
-                if (location.pathname !== `/appDonkey/mail/${this.state.criteria.mailbox}`) push(`/appDonkey/mail`);
+                if (location.pathname !== `/mail/${this.state.criteria.mailbox}`) push(`/mail`);
                 this.loadMails()
             })
         }
@@ -88,15 +88,15 @@ export class Mail extends React.Component {
         if (!mails) return <React.Fragment></React.Fragment>
         return <section className="mail-app">
             <aside className="side">
-                <NavLink to="/appDonkey/mail/compose">Compose</NavLink>
+                <NavLink to="/mail/compose">Compose</NavLink>
                 <button onClick={this.handleFilterChange} value="inbox">Inbox<span hidden={!unreadCount}> ({unreadCount})</span></button>
                 <button onClick={this.handleFilterChange} value="unread">Unread</button>
                 <button onClick={this.handleFilterChange} value="read">Read</button>
                 <button onClick={this.handleFilterChange} value="sentMail">Sent Mail</button>
             </aside>
             <Switch>
-                <Route path="/appDonkey/mail/:mailId" render={(props) => <MailDetails onDelete={this.onDelete} {...props} />} />
-                <Route path="/appDonkey/mail">
+                <Route path="/mail/:mailId" render={(props) => <MailDetails onDelete={this.onDelete} {...props} />} />
+                <Route path="/mail">
                     <MailList
                         mails={mails}
                         onDelete={this.onDelete}
@@ -108,7 +108,7 @@ export class Mail extends React.Component {
                     />
                 </Route>
             </Switch>
-            <Route path="/appDonkey/mail/compose" component={Compose} />
+            <Route path="/mail/compose" component={Compose} />
         </section>
     }
 }

@@ -22,10 +22,10 @@ export class MailDetails extends React.Component {
             <h4>{senderFullname} - <span>{from}</span></h4>
             <p>{body}</p>
             <button onClick={() => {
-                this.props.history.push('/appDonkey/mail')
+                this.props.history.push('/mail')
                 this.props.onDelete(id)
             }}>Delete</button>
-            <button onClick={() => this.props.history.push('/appDonkey/mail')}>Back</button>
+            <button onClick={() => this.props.history.push('/mail')}>Back</button>
         </section>
     }
 }

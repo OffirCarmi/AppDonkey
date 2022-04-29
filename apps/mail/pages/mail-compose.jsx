@@ -22,7 +22,7 @@ export class Compose extends React.Component {
         ev.preventDefault()
         console.log(this.state)
         mailService.addMail(this.state)
-        this.props.history.push('/appDonkey/mail')
+        this.props.history.push('/mail')
     }
 
     render() {
@@ -30,7 +30,7 @@ export class Compose extends React.Component {
         const { body, subject, to } = this.state
         return <section className="compose-container flex col">
             <div className="compose-head">
-                <button className="compose-exit" onClick={() => this.props.history.push('/appDonkey/mail')}>X</button>
+                <button className="compose-exit" onClick={() => this.props.history.push('/mail')}>X</button>
             </div>
             <input type="email" multiple={true} placeholder="To" value={to} name="to" onChange={this.handleWrite} autoComplete="off" />
             <input type="text" placeholder="Subject" value={subject} name="subject" onChange={this.handleWrite} autoComplete="off" />

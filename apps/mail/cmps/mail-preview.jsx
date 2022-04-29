@@ -7,13 +7,13 @@ export function MailPreview({ mail, onDelete, onMail, onToggleRead }) {
     const { id, subject, body, isRead, to, from, senderFullname, sentAt } = mail
     const readClass = isRead ? 'read' : ''
     const formattedDate = utilService.getFormattedDate(sentAt)
-    return <Link onClick={() => onMail(id)} to={`/appDonkey/mail/${mail.id}`} className={`preview-container flex space-between  ${readClass}`}>
+    return <Link onClick={() => onMail(id)} to={`/mail/${mail.id}`} className={`preview-container flex space-between  ${readClass}`}>
         {/* <button className="clean-btn">⭐</button> */}
         <h3 >
             {senderFullname}
         </h3>
         <h3 className="prev-subject ">{subject}<span className="prev-body"> - {body}</span></h3>
-        <button className="prev-mark" title={isRead ? 'Mark as unread' : 'Mark as read'} data-symbol={isRead ? `` : ``}
+        <button className="prev-mark" title={isRead ? 'Mark as unread' : 'Mark as read'} data-symbol={isRead ? `` : ``}
             onClick={(ev) => {
                 ev.preventDefault()
                 ev.stopPropagation()
