@@ -3,25 +3,36 @@
 }
 
 .keep-app .new-keep {
-    width: 495px;
+    width: 600px;
+    height: 45px;
     border: 1px solid var(--g4);
     border-radius: 0.5em;
-    margin: 90px auto 2em;
+    margin: 90px auto;
     -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    position: relative;
 }
 
 .keep-app .new-keep input {
-    margin-inline-start: 10px;
+    position: absolute;
+    bottom: -15px;
+    margin-inline-start: 15px;
     border: none;
     outline: none;
     height: 40px;
 
 }
 
+.keep-app .new-keep .keep-type {
+    position: absolute;
+    top:2px;
+    right: 10px;
+}
+
 .keep-app .new-keep .keep-type button {
-    height: 40px;
-    width: 40px;
+    height: 45px;
+    width: 45px;
 }
 
 .keep-app .new-keep .keep-type button:hover {
@@ -41,6 +52,7 @@
 .keep-app .new-keep input.input {
     width: 165%;
     font-size: 1em;
+    margin-top: 15px;
 }
 
 .keep-app .new-keep label {

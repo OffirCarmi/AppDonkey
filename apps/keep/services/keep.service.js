@@ -11,6 +11,7 @@ export const keepService = {
     addTodo,
     changeColor,
     updateKeep,
+    duplicateKeep,
 
 }
 
@@ -107,11 +108,9 @@ function addTodo(keepId, input) {
 
 function changeColor(keepId, color) {
     let keeps = _loadFromStorage()
-    const keep = keeps.find(keep => keepId === keep.id)
+    let keep = keeps.find(keep => keepId === keep.id)
     const keepIdx = keeps.findIndex(keep => keepId === keep.id)
-    const bg = color.color
-    // console.log(keeps[keepIdx]);
-    keeps[keepIdx].color = bg
+    keeps[keepIdx].color = color
     _saveToStorage(keeps)
     return Promise.resolve(keeps)
 }
@@ -127,6 +126,20 @@ function updateKeep(val, keepId, todoId) {
     else { keep.info.txt = val }
     keeps.splice(keepIdx, 1, keep)
     _saveToStorage(keeps)
+    return Promise.resolve(keeps)
+
+}
+
+function duplicateKeep(keepId) {
+    let keeps = _loadFromStorage()
+    const keep = keeps.find(keep => keepId === keep.id)
+    const keepIdx = keeps.findIndex(keep => keepId === keep.id)
+
+    const copyKeep = { ...keep, id: utilService.makeId() }
+    keeps.splice(keepIdx, 0, copyKeep)
+    _saveToStorage(keeps)
+    return Promise.resolve(keeps)
+
 }
 
 function _getYouTubeLink(input) {

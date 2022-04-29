@@ -40,8 +40,8 @@ export class Todos extends React.Component {
         const { keep, onUpdateKeep } = this.props
         return <section className="todos flex col space-between">
             {todos.map(todo => {
-                return <div className="todo flex space-between" key={todo.id}>
-                    <input type="checkbox" onChange={() => { this.onToggleTodo(keep.id, todo.id) }} checked={todo.isDone} />
+                return <div className="todo flex space-between align-center" key={todo.id}>
+                    <input className="add-todo" type="checkbox" onChange={() => { this.onToggleTodo(keep.id, todo.id) }} checked={todo.isDone} />
                     <p contentEditable onBlur={() => { onUpdateKeep(event, keep.id, todo.id) }} className={todo.isDone ? 'done' : ''}>{todo.txt}</p>
                     <button onClick={() => { this.onRemove(keep.id, todo.id) }}>x</button>
                 </div>

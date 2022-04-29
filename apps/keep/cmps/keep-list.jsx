@@ -9,7 +9,8 @@ export class KeepList extends React.Component {
                 key={keep.id}
                 onRemoveKeep={onRemoveKeep}
                 onChangeColor={this.props.onChangeColor}
-                onUpdateKeep={this.props.onUpdateKeep} />)}
+                onUpdateKeep={this.props.onUpdateKeep}
+                onDuplicateKeep={this.props.onDuplicateKeep} />)}
         </section>
     }
 }

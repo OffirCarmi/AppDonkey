@@ -12,22 +12,13 @@ export class KeepPreview extends React.Component {
 
     }
 
-    onShowColors = () => {
-        event.stopPropagation()
+    toggleColors = () => {
+        // event.stopPropagation()
         this.setState({ showColors: !this.state.showColors })
     }
-
-
-    onHideColors = () => {
-        event.stopPropagation()
-        this.setState({ showColors: !this.state.showColors })
-    }
-
-    // onUpdateKeep={this.props.onUpdateKeep}
 
     render() {
-        const { color } = this.state
-        const { keep, onRemoveKeep } = this.props
+        const { keep, onRemoveKeep, onDuplicateKeep } = this.props
         const { type, id } = keep
 
         return <article style={{ backgroundColor: (!keep.color) ? 'White' : keep.color }} key={id} className="keep-preview flex col space-between">
@@ -35,13 +26,13 @@ export class KeepPreview extends React.Component {
                 <_DynamicCmp keep={keep} onUpdateKeep={this.props.onUpdateKeep} />
             </section>
             <aside className="keep-tools">
-                <button onClick={this.onShowColors}><img src="../../../assets/img/icons/color.svg" alt="Color" /></button>
+                <button onClick={this.toggleColors}><img src="../../../assets/img/icons/color.svg" alt="Color" /></button>
                 <button><img src="../../../assets/img/icons/pin.svg" alt="Pin" /></button>
                 <button onClick={() => onRemoveKeep(id)}><img src="../../../assets/img/icons/delete.svg" alt="Delete" /></button>
+                <button onClick={() => onDuplicateKeep(id)} ><img src="../../../assets/img/icons/duplicate-keep.svg" alt="Mail" /></button>
                 <button><img src="../../../assets/img/icons/send-mail.svg" alt="Mail" /></button>
             </aside>
-            {this.state.showColors && <BgColor onChangeColor={this.props.onChangeColor} keepId={keep.id} />}
-            {/* {this.state.showColors && <BgColor />} */}
+            {this.state.showColors && <BgColor onChangeColor={this.props.onChangeColor} keepId={keep.id} toggleColors={this.toggleColors} />}
         </article>
     }
 }
@@ -69,7 +60,7 @@ export class KeepPreview extends React.Component {
 // }
 
 function _DynamicCmp({ keep, onUpdateKeep }) {
-    // console.log(type);
+    // console.log(keep.type);
     switch (keep.type) {
         case 'keep-txt':
             return <Txt keep={keep} onUpdateKeep={onUpdateKeep} />

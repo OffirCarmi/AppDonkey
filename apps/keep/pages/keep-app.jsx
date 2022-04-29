@@ -37,6 +37,7 @@ export class Keep extends React.Component {
     }
 
     onChangeColor = (keepId, color) => {
+        console.log('test');
         event.stopPropagation()
         keepService.changeColor(keepId, color)
             .then(() => this.loadKeeps())
@@ -45,6 +46,11 @@ export class Keep extends React.Component {
     onUpdateKeep(ev, keepId, todoId) {
         keepService.updateKeep(ev.target.innerText, keepId, todoId)
 
+    }
+
+    onDuplicateKeep = (keepId) => {
+        keepService.duplicateKeep(keepId)
+            .then(() => this.loadKeeps())
     }
 
 
@@ -92,7 +98,8 @@ export class Keep extends React.Component {
                 keeps={keeps}
                 onRemoveKeep={this.onRemoveKeep}
                 onChangeColor={this.onChangeColor}
-                onUpdateKeep={this.onUpdateKeep} />
+                onUpdateKeep={this.onUpdateKeep}
+                onDuplicateKeep={this.onDuplicateKeep} />
 
             {/* <Modal /> */}
         </section>

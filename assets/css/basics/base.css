@@ -31,12 +31,19 @@ button {
 
 input {
     border: none;
-    border-bottom: 1px solid var(--g1);
+    border-bottom: 1px solid var(--black);
     padding-inline-start: 5px;
     outline: none;
+    background: transparent;
 }
 
 
 .app {
     min-height: 100vh;
 }
+
+/* ::placeholder {
+    Chrome, Firefox, Opera, Safari 10.1+ 
+    color: ;
+    opacity: 1; 
+  } */
