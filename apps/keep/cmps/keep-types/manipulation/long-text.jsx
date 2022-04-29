@@ -15,9 +15,10 @@ export class LongTxt extends React.Component {
 
     render() {
         const { isLongTxtShown } = this.state
+        const { onUpdateKeep, keep } = this.props
         return <div className="keep-txt">
-            <p >{this.textToRender()}</p>
-            <p className="dynamic" onClick={this.toggleMode}> <span>Show {(isLongTxtShown) ? 'less' : 'more...'}</span>  </p>
+            <p contentEditable onBlur={() => { onUpdateKeep(event, keep.id) }} >{this.textToRender()}</p>
+            <p className="dynamic" onClick={this.toggleMode} > <span>Show {(isLongTxtShown) ? 'less' : 'more...'}</span>  </p>
         </div>
     }
 }

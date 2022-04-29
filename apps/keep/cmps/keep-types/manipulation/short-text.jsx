@@ -1,8 +1,8 @@
 export class ShortTxt extends React.Component {
     render() {
-        const { txt } = this.props;
+        const { txt, onUpdateKeep, keep } = this.props;
         return <div className="keep-txt">
-            <p>{txt}</p>
+            <p contentEditable onBlur={() => { onUpdateKeep(event, keep.id) }}>{txt}</p>
         </div>
     }
 }
