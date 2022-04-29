@@ -9,6 +9,7 @@ export const keepService = {
     removeTodo,
     toggleTodo,
     addTodo,
+    changeColor,
 
 }
 
@@ -101,6 +102,17 @@ function addTodo(keepId, input) {
     return Promise.resolve(keeps[keepIdx].info.todos)
 
 
+}
+
+function changeColor(keepId, color) {
+    let keeps = _loadFromStorage()
+    const keep = keeps.find(keep => keepId === keep.id)
+    const keepIdx = keeps.findIndex(keep => keepId === keep.id)
+    const bg = color.color
+    // console.log(keeps[keepIdx]);
+    keeps[keepIdx].color = bg
+    _saveToStorage(keeps)
+    return Promise.resolve(keeps)
 }
 
 function _getYouTubeLink(input) {

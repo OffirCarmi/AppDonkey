@@ -1,5 +1,6 @@
 import { keepService } from '../services/keep.service.js'
 import { KeepList } from '../cmps/keep-list.jsx'
+import { KeepCreate } from '../cmps/keep-create/keep-create.jsx'
 
 export class Keep extends React.Component {
     state = {
@@ -34,6 +35,12 @@ export class Keep extends React.Component {
             .then(() => this.loadKeeps())
     }
 
+    onChangeColor = (keepId, color) => {
+        event.stopPropagation()
+        keepService.changeColor(keepId, color)
+            .then(() => this.loadKeeps())
+    }
+
     handleChange = ({ target }) => {
         const input = target.value
         this.setState((prevState) => ({ ...prevState, input }))
@@ -59,10 +66,21 @@ export class Keep extends React.Component {
 
     }
 
+    // render() {
+    //     const { type, input, placeholder, keeps } = this.state
+
+    //     return <section className="keep-app flex col space-between">
+    //         <KeepCreate />
+    //         <KeepList
+    //             keeps={keeps}
+    //             onRemoveKeep={this.onRemoveKeep}
+    //             onChangeColor={this.onChangeColor} />
+    //     </section>
+    // }
     render() {
         const { type, input, placeholder, keeps } = this.state
 
-        return <section className="keep-app">
+        return <section className="keep-app flex col space-between">
             <div className="new-keep">
                 <form className="flex space-between align-center" onSubmit={() => this.onAddKeep()}>
                     <input className="input" type="text" value={input} onChange={this.handleChange} placeholder={placeholder} />
@@ -80,7 +98,8 @@ export class Keep extends React.Component {
             </div>
             <KeepList
                 keeps={keeps}
-                onRemoveKeep={this.onRemoveKeep} />
+                onRemoveKeep={this.onRemoveKeep}
+                onChangeColor={this.onChangeColor} />
         </section>
     }
 }

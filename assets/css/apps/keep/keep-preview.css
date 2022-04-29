@@ -1,12 +1,14 @@
 .keep-preview {
     border: 1px solid var(--g4);
     width: 240px;
-    min-height: 220px;
+    min-height: 90px;
     border-radius: 0.5em;
-    margin-bottom: auto;
+    margin-bottom: 15px;
     line-height: 1.25;
     position: relative;
     overflow: hidden;
+    display: inline-block;
+
 
 }
 
@@ -21,10 +23,11 @@
 .keep-preview .keep-body {
     flex-grow: 1;
     word-wrap: break-word;
+    margin-bottom: 50px;
 
 }
 
-.keep-preview .keep-body .todos, .keep-txt {
+.keep-preview .keep-body .todos, .keep-txt, .keep-video {
     padding: 15px 15px 0 15px;
 
 }
@@ -36,6 +39,7 @@
 
 .keep-preview .keep-body .keep-img {
     position: relative;
+
 }
 
 
@@ -46,9 +50,9 @@
 
 .keep-preview .keep-body img {
     /* max-height: 100%; */
-    height: 100%;
+    /* height: 100%; */
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     /* border-radius: 0.375em; */
 }
 
@@ -74,16 +78,30 @@
 }
 
 .keep-preview .keep-tools {
+    border-top: 1px solid var(--g4);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    max-height: 40px;
+    position: absolute;
+    bottom: 0px;    height: 40px;
+    width: 100%;
+}
+/* .keep-preview .keep-tools {
     display: none;
     height: 40px;
+    width: 100%;
 }
 
 .keep-list article:hover .keep-tools {
-    display: block;
+    border-top: 1px solid var(--g4);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    max-height: 40px;
     position: absolute;
-    bottom: 0;
-
-}
+    bottom: 0px;
+} */
 
 .keep-preview .keep-tools button {
     border: none;

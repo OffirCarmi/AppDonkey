@@ -1,0 +1,16 @@
+.colors-container {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    background-color: var(--white);
+    padding: 0 5px;
+}
+
+.colors-container .color {
+    height: 20px;
+    width: 20px;
+    border: 1px solid var(--g4);
+    cursor: pointer;
+    border-radius: 5em;
+}
