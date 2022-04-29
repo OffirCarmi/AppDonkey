@@ -1,5 +1,6 @@
 import { keepService } from '../services/keep.service.js'
 import { KeepList } from '../cmps/keep-list.jsx'
+import { Modal } from '../cmps/keep-modal.jsx'
 import { KeepCreate } from '../cmps/keep-create/keep-create.jsx'
 
 export class Keep extends React.Component {
@@ -7,7 +8,7 @@ export class Keep extends React.Component {
         keeps: [],
         type: 'keep-txt',
         input: '',
-        placeholder: 'Write a new KEEP'
+        placeholder: 'Write a new text KEEP'
     }
 
     componentDidMount() {
@@ -17,7 +18,7 @@ export class Keep extends React.Component {
     loadKeeps = () => {
         keepService.query()
             .then(keeps => {
-                this.setState({ keeps, type: 'keep-txt', input: '', placeholder: 'Write a new KEEP' })
+                this.setState({ keeps, type: 'keep-txt', input: '', placeholder: 'Write a text new KEEP' })
             })
     }
 
@@ -41,17 +42,23 @@ export class Keep extends React.Component {
             .then(() => this.loadKeeps())
     }
 
+    onUpdateKeep(ev, keepId, todoId) {
+        keepService.updateKeep(ev.target.innerText, keepId, todoId)
+
+    }
+
+
     handleChange = ({ target }) => {
         const input = target.value
         this.setState((prevState) => ({ ...prevState, input }))
 
     }
 
-    changeType = ({ target }) => {
-        const type = target.value
+    changeType = (type) => {
+        event.stopPropagation()
         switch (type) {
             case 'keep-txt':
-                this.setState((prevState) => ({ ...prevState, type: 'keep-txt', placeholder: 'Write a new KEEP' }))
+                this.setState((prevState) => ({ ...prevState, type: 'keep-txt', placeholder: 'Write a new text KEEP' }))
                 break
             case 'keep-img':
                 this.setState((prevState) => ({ ...prevState, type: 'keep-img', placeholder: 'Enter image URL' }))
@@ -66,40 +73,28 @@ export class Keep extends React.Component {
 
     }
 
-    // render() {
-    //     const { type, input, placeholder, keeps } = this.state
-
-    //     return <section className="keep-app flex col space-between">
-    //         <KeepCreate />
-    //         <KeepList
-    //             keeps={keeps}
-    //             onRemoveKeep={this.onRemoveKeep}
-    //             onChangeColor={this.onChangeColor} />
-    //     </section>
-    // }
     render() {
         const { type, input, placeholder, keeps } = this.state
 
         return <section className="keep-app flex col space-between">
-            <div className="new-keep">
-                <form className="flex space-between align-center" onSubmit={() => this.onAddKeep()}>
+            <div className="new-keep flex space-between align-center">
+                <form onSubmit={() => this.onAddKeep()}>
                     <input className="input" type="text" value={input} onChange={this.handleChange} placeholder={placeholder} />
-                    <div className="keep-type flex">
-                        <label htmlFor="keep-txt">TXT</label>
-                        <input type="radio" id="keep-txt" name="type" value="keep-txt" onChange={this.changeType} defaultChecked />
-                        <label htmlFor="keep-img">IMG</label>
-                        <input type="radio" id="keep-img" name="type" value="keep-img" onChange={this.changeType} />
-                        <label htmlFor="keep-todos">LST</label>
-                        <input type="radio" id="keep-todos" name="type" value="keep-todos" onChange={this.changeType} />
-                        <label htmlFor="keep-video">YT</label>
-                        <input type="radio" id="keep-video" name="type" value="keep-video" onChange={this.changeType} />
-                    </div>
                 </form>
+                <div className="keep-type flex">
+                    <button onClick={() => this.changeType('keep-txt')}><img src="../../../assets/img/icons/type-txt.svg" alt="" /></button>
+                    <button onClick={() => this.changeType('keep-img')}><img src="../../../assets/img/icons/type-img.svg" alt="" /></button>
+                    <button onClick={() => this.changeType('keep-todos')}><img src="../../../assets/img/icons/type-list.svg" alt="" /></button>
+                    <button onClick={() => this.changeType('keep-video')}><img src="../../../assets/img/icons/type-youtube.svg" alt="" /></button>
+                </div>
             </div>
             <KeepList
                 keeps={keeps}
                 onRemoveKeep={this.onRemoveKeep}
-                onChangeColor={this.onChangeColor} />
+                onChangeColor={this.onChangeColor}
+                onUpdateKeep={this.onUpdateKeep} />
+
+            {/* <Modal /> */}
         </section>
     }
 }
