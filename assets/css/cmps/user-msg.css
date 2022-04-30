@@ -1,7 +1,7 @@
 .user-msg {
     position: fixed;
-    top: 90px;
-    right: 25px;
+    top: 7px;
+    left: 15%;
     height: 45px;
     padding: 10px;
     border-radius: 0.5em;
@@ -27,10 +27,26 @@
     border: none;
     background: transparent;
     font-weight: 700;
-    margin-inline-end: 20px;
+    margin-inline-end: 10px;
 
 }
 
 .user-msg button:hover {
     color: whitesmoke;
+}
+
+
+
+@media screen and (min-width:641px) {
+    .user-msg {
+        top: 90px;
+        right: 25px;
+
+    }
+
+    .user-msg button {
+        margin-inline-end: 20px;
+    
+    }
+
 }
