@@ -16,7 +16,7 @@ const { Route, Switch } = ReactRouterDOM
 // className="app flex col space-between"
 
 export function App() {
-    return <section>
+    return <section className="wraper flex col space-between">
         <Router>
             <Route path="/:any" component={Header} />
             <Switch>

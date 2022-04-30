@@ -28,11 +28,12 @@ export class KeepPreview extends React.Component {
                 <_DynamicCmp keep={keep} onUpdateKeep={this.props.onUpdateKeep} />
             </section>
             <aside className="keep-tools">
-                <button onClick={this.toggleColors}><img src="../../../assets/img/icons/color.svg" alt="Color" /></button>
-                <button onClick={() => onPinKeep(id)}><img src="../../../assets/img/icons/pin.svg" alt="Pin" /></button>
-                <button onClick={() => onRemoveKeep(id)}><img src="../../../assets/img/icons/delete.svg" alt="Delete" /></button>
-                <button onClick={() => onDuplicateKeep(id)} ><img src="../../../assets/img/icons/duplicate-keep.svg" alt="Mail" /></button>
-                {/* <button><img src="../../../assets/img/icons/send-mail.svg" alt="Mail" /></button> */}
+                <button className="keep-tool-color" onClick={this.toggleColors}></button>
+                <button className="keep-tool-pin" onClick={() => onPinKeep(id)}></button>
+                <button className="keep-tool-delete" onClick={() => onRemoveKeep(id)}></button>
+                {/* <button onClick={() => onRemoveKeep(id)}><img src="../../../assets/img/icons/delete.svg" alt="Delete" /></button> */}
+                <button className="keep-tool-duplicate" onClick={() => onDuplicateKeep(id)} ></button>
+                <button className="keep-tool-mail"></button>
             </aside>
             {this.state.showColors && <BgColor onChangeColor={this.props.onChangeColor} keepId={keep.id} toggleColors={this.toggleColors} />}
         </article>

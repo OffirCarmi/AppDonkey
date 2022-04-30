@@ -42,6 +42,10 @@ input {
     min-height: 100vh;
 }
 
+.wraper {
+    height: 100vh;
+}
+
 /* ::placeholder {
     Chrome, Firefox, Opera, Safari 10.1+ 
     color: ;

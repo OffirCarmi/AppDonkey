@@ -102,10 +102,10 @@ export class Keep extends React.Component {
                     <input className="input" type="text" value={input} onChange={this.handleChange} placeholder={placeholder} />
                 </form>
                 <div className="keep-type flex">
-                    <button onClick={() => this.changeType('keep-txt')}><img src="../../../assets/img/icons/type-txt.svg" alt="" /></button>
-                    <button onClick={() => this.changeType('keep-img')}><img src="../../../assets/img/icons/type-img.svg" alt="" /></button>
-                    <button onClick={() => this.changeType('keep-todos')}><img src="../../../assets/img/icons/type-list.svg" alt="" /></button>
-                    <button onClick={() => this.changeType('keep-video')}><img src="../../../assets/img/icons/type-youtube.svg" alt="" /></button>
+                    <button className="btn-new-txt" onClick={() => this.changeType('keep-txt')}></button>
+                    <button className="btn-new-img" onClick={() => this.changeType('keep-img')}></button>
+                    <button className="btn-new-todos" onClick={() => this.changeType('keep-todos')}></button>
+                    <button className="btn-new-video" onClick={() => this.changeType('keep-video')}></button>
                 </div>
             </div>
             <KeepList

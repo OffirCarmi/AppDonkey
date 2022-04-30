@@ -25,23 +25,43 @@
 }
 
 .keep-app .new-keep .keep-type {
-    position: absolute;
-    top:2px;
-    right: 10px;
+    position: relative;
+    /* top:2px;
+    right: 10px; */
 }
 
 .keep-app .new-keep .keep-type button {
+    color: var(--g4);
+
     height: 45px;
     width: 45px;
 }
 
 .keep-app .new-keep .keep-type button:hover {
-    background-color: var(--g4);
+    color: var(--g1);
 }
 
-/* .keep-app .new-keep .keep-type:last-child {
-    margin-inline-end: 3px;
-} */
+.btn-new-txt:before {
+    font-size: 1.5em;
+    font-family: fa-solid;
+    content: '';
+}
+.btn-new-img:before {
+    font-size: 1.5em;
+    font-family: fa-solid;
+    content: '';
+}
+.btn-new-todos:before {
+    font-size: 1.5em;
+    font-family: fa-solid;
+    content: '';
+}
+.btn-new-video:before {
+    font-size: 1.5em;
+    font-family: fa-brands;
+    content: '';
+}
+
 
 
 .keep-app .new-keep button img {
