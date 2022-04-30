@@ -6,19 +6,26 @@
 
 .keep-list .pinned-keeps {
     /* min-height: 1   20px; */
-    position: relative;
+    /* position: relative; */
     column-count: 4;
     column-gap: 15px;
-    margin-bottom: 65px;
+    margin-bottom: 25px;
 }
 
 .keep-list .pinned-keeps p {
     font-family: roboto;
     font-size: .6875rem;
-    position: absolute;
-    top: -25px;
+    /* position: absolute;
+    top: 17px;
+    left: 40px; */
+    font-size: 0.875rem;
 }
 
+.keep-list hr {
+    border: none;
+    border-top: 1px solid var(--g4);
+    padding-bottom: 50px;
+}
 
 .keep-list .unpinned-keeps {
     column-count: 4;
