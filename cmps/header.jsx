@@ -24,7 +24,7 @@ export class Header extends React.Component {
         return <header className="flex space-between align-center">
             <img onClick={() => this.props.history.push('/home')} src="../assets/img/logo.png" />
             <h1>{header}</h1>
-            <div className="apps" onClick={() => this.props.history.push('/home')}><img src="./assets/img/icons/category.png"></img></div>
+            <div className="apps" onClick={() => this.props.history.push('/home')}></div>
         </header>
     }
 }

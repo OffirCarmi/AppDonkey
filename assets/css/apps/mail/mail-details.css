@@ -8,14 +8,39 @@
     background-color: transparent;
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
 }
 
 .detail-container button:hover {
     transition: background-color 0.3s;
     background-color: var(--g4);
+}
 
+.detail-container .artical-container {
+    padding: 20px 10px;
+}
+
+.detail-container .artical-container>* {
+}
+
+.detail-container .detail-tools {
+    border-bottom: 1px solid var(--g5);
+}
+
+.detail-container .detail-subj {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.detail-container .detail-sender {
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.detail-container .detail-body {
+    width: 450px;
 }
 
 .detail-container .delete-btn::before {
@@ -24,6 +49,10 @@
     background-size: 100%;
     font-family: fa-reg;
     content: '';
+}
+
+.detail-container .back-btn {
+    margin-right: 10px;
 }
 
 .detail-container .back-btn::before {

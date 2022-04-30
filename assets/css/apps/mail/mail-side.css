@@ -1,5 +1,4 @@
 .side {
-    /* padding-right: 5px; */
     min-width: 250px;
 }
 
@@ -16,6 +15,12 @@
     padding: 8px 12px 8px 26px;
     width: 100%;
     text-align: start;
+    border-radius: 0 20px 20px 0;
+}
+
+.side button.in-box {
+    color: var(--b2);
+    background-color: #ffc9a580;
 }
 
 .side button::before {
@@ -24,7 +29,10 @@
 
 .side button:hover {
     background-color: var(--g5);
-    border-radius: 0 20px 20px 0;
+}
+
+.side button.in-box:hover {
+    background-color: #ffc9a580;
 }
 
 .side .compose-link {
@@ -80,4 +88,24 @@
     font-size: 1.125em;
     font-family: fa-solid;
     content: '\f1d8';
+}
+
+@media screen and (max-width:765px) {
+    .side {
+        position: fixed;
+        width: 250px;
+        height: 81vh;
+        background-color: var(--bg);
+        left: -500%;
+        border: 1px solid var(--g5);
+        padding-top: 15px;
+        z-index: 100;
+    }
+    
+    .side.menu-open {
+        left: 0;
+    }
+    .exit-menu {
+
+    }
 }

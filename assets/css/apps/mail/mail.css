@@ -12,3 +12,16 @@
     flex-grow: 1;
     justify-content: flex-start;
 }
+
+.menu-img {
+    display: block;
+    position: absolute;
+    height: 30px;
+    top: -25px;
+}
+
+@media screen and (min-width:765px) {
+    .menu-img {
+        display: none;
+    }
+}

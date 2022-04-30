@@ -20,7 +20,8 @@ export class Mail extends React.Component {
             mailbox: 'inbox',
             isReversed: false
         },
-        unreadCount: 0
+        unreadCount: 0,
+        isMenuOpen: false,
     }
 
     componentDidMount() {
@@ -57,6 +58,7 @@ export class Mail extends React.Component {
         } else if (ev.type === 'submit') {
             this.loadMails()
         } else if (ev.type === 'click') {
+            this.state.isMenuOpen ? this.closeMenu() : ''
             this.setState((prevState) => ({ criteria: { ...prevState.criteria, mailbox: val } }), () => {
                 if (location.pathname !== `/mail/${this.state.criteria.mailbox}`) push(`/mail`);
                 this.loadMails()
@@ -77,15 +79,33 @@ export class Mail extends React.Component {
         mailService.toggleRead(id).then(() => this.loadMails())
     }
 
+    onMenu = () => {
+        console.log(this.state);
+        const { isMenuOpen } = this.state
+        isMenuOpen ? this.closeMenu() : this.openMenu()
+
+    }
+
+    closeMenu = () => {
+        this.setState((prevState) => ({ isMenuOpen: false }))
+    }
+
+    openMenu = () => {
+        this.setState((prevState) => ({ isMenuOpen: true }))
+    }
+
     render() {
-        // console.log('index state', this.state.mails)
-        const { mails, unreadCount } = this.state
-        const { txt } = this.state.criteria
+        // console.log('index state', this.state.isMenuOpen)
+        const { mails, unreadCount, isMenuOpen } = this.state
+        const { txt, mailbox } = this.state.criteria
         if (!mails) return <Loader />
         return <section className="mail-app">
-            <aside className="side">
-                <NavLink to="/mail/compose" className="compose-link">Compose</NavLink>
-                <button onClick={this.handleFilterChange} className="inbox-btn" value="inbox">
+            <aside className={`side ${isMenuOpen ? 'menu-open' : ''}`}>
+                {isMenuOpen && <button onClick={this.closeMenu} className="exit-menu">X</button>}
+                <NavLink to="/mail/compose" className="compose-link" onClick={
+                    () => this.state.isMenuOpen ? this.closeMenu() : ''
+                }>Compose</NavLink>
+                <button onClick={this.handleFilterChange} className={`inbox-btn ${mailbox === 'inbox' ? 'in-box' : ''}`} value="inbox">
                     <div className="flex space-between">
                         <span>Inbox</span>
                         <span hidden={!unreadCount}>
@@ -93,10 +113,17 @@ export class Mail extends React.Component {
                         </span>
                     </div>
                 </button>
-                <button onClick={this.handleFilterChange} className="unread-btn" value="unread"><span>Unread</span></button>
-                <button onClick={this.handleFilterChange} className="read-btn" value="read"><span>Read</span></button>
-                <button onClick={this.handleFilterChange} className="sent-btn" value="sentMail"><span>Sent Mail</span></button>
+                <button onClick={this.handleFilterChange} className={`unread-btn ${mailbox === 'unread' ? 'in-box' : ''}`}
+                    value="unread"><span>Unread</span></button>
+                <button onClick={this.handleFilterChange} className={`read-btn ${mailbox === 'read' ? 'in-box' : ''}`}
+                    value="read"><span>Read</span></button>
+                <button onClick={this.handleFilterChange} className={`sent-btn ${mailbox === 'sentMail' ? 'in-box' : ''}`}
+                    value="sentMail"><span>Sent Mail</span></button>
             </aside>
+            {!isMenuOpen && <img className="menu-img"
+                src="./assets/img/icons/category.png"
+                onClick={this.onMenu}
+            ></img>}
             <Switch>
                 <Route path="/mail/compose" component={Compose} />
                 <Route path="/mail/:mailId" render={(props) => <MailDetails onDelete={this.onDelete} {...props} />} />

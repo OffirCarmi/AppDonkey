@@ -50,3 +50,10 @@
 .mail-body:focus-visible {
     outline: none;
 }
+
+@media screen and (max-width:765px) {
+    .compose-container {
+        margin: 20px 0 0 10px;
+        width: 100%;
+    }
+}

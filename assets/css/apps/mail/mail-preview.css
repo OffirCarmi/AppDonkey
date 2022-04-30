@@ -66,3 +66,9 @@
     text-align: end;
     width: 70px;
 }
+
+@media screen and (max-width:765px) {
+    .preview-container .prev-name {
+        width: 100px;
+    }
+}
