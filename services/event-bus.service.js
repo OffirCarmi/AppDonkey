@@ -19,9 +19,6 @@ function emit(eventName, data) {
 export const eventBusService = { on, emit };
 
 
-// For development only~
-window.myBus = eventBusService;
-
 
 
 

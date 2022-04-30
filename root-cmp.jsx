@@ -3,6 +3,7 @@ import { Start } from 'pages/start.jsx'
 
 import { Header } from './cmps/header.jsx'
 import { Footer } from './cmps/footer.jsx'
+import { UserMsg } from './cmps/user-msg.jsx'
 
 import { About } from './pages/about.jsx'
 import { Book } from './apps/book/pages/book-index.jsx'
@@ -19,6 +20,7 @@ export function App() {
     return <section className="wraper flex col space-between">
         <Router>
             <Route path="/:any" component={Header} />
+            <UserMsg />
             <Switch>
                 <Route path="/about" component={About} />
                 <Route path="/book" component={Book} />

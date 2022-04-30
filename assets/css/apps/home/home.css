@@ -3,3 +3,17 @@
     width: 100%;
     height: 79.5vh;
 }
+
+.home .apps-container {
+    margin-top: 50vh;
+}
+
+.home a {
+    margin: 0 100px;
+}
+
+.home a button {
+    font-family: roboto-medium, sans-serif;
+    font-size: 2em;
+
+}

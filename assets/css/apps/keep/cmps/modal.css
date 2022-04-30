@@ -7,10 +7,18 @@
 
 .modal {
     margin: 0 auto;
-    margin-top: 18vh;
-    height: 70vh;
-    width: 76vh;
+    margin-top: 13vh;
+    height: 80vh;
+    width: 87vh;
     border-radius: 0.5em;
     background-color: var(--white);
+    position: relative;
 
+}
+
+.modal button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 2em;
 }

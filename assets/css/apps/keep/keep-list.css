@@ -12,7 +12,9 @@
     margin-bottom: 65px;
 }
 
-.keep-list .pinned-keeps h3 {
+.keep-list .pinned-keeps p {
+    font-family: roboto;
+    font-size: .6875rem;
     position: absolute;
     top: -25px;
 }

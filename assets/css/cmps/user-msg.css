@@ -1,0 +1,36 @@
+.user-msg {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 0.5em;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.user-msg.success {
+    background-color: lightgreen;
+}
+
+.user-msg.danger {
+    background-color: rgb(242, 121, 121);
+}
+
+.user-msg .msg {
+    margin-inline-end: 15px;
+    font-size: 1rem;
+}
+
+.user-msg button {
+    border: none;
+    background: transparent;
+    font-weight: 700;
+    margin-inline-end: 20px;
+
+}
+
+.user-msg button:hover {
+    color: whitesmoke;
+}

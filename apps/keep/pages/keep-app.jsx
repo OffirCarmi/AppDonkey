@@ -2,6 +2,8 @@ import { keepService } from '../services/keep.service.js'
 import { KeepList } from '../cmps/keep-list.jsx'
 import { Modal } from '../cmps/keep-modal.jsx'
 import { KeepCreate } from '../cmps/keep-create/keep-create.jsx'
+import { eventBusService } from '../../../services/event-bus.service.jsx'
+
 
 export class Keep extends React.Component {
     state = {
@@ -26,14 +28,23 @@ export class Keep extends React.Component {
         event.preventDefault()
         const input = this.state.input
         const type = this.state.type
+
+
         keepService.addKeep(input, type)
-            .then(this.loadKeeps())
+            .then(() => {
+                this.loadKeeps()
+                eventBusService.emit('user-msg', { txt: 'New Keep was added', type: 'success' })
+
+            })
+
 
     }
 
     onRemoveKeep = (keepId) => {
         keepService.removeKeep(keepId)
             .then(() => this.loadKeeps())
+        eventBusService.emit('user-msg', { txt: 'Keep was removed', type: 'danger' })
+
     }
 
     onChangeColor = (keepId, color) => {

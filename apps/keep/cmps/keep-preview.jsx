@@ -29,7 +29,7 @@ export class KeepPreview extends React.Component {
             </section>
             <aside className="keep-tools">
                 <button className="keep-tool-color" onClick={this.toggleColors}></button>
-                <button className="keep-tool-pin" onClick={() => onPinKeep(id)}></button>
+                <button className="keep-tool-pin" onClick={() => onPinKeep(id)} style={{ color: (keep.isPinned ? 'Red' : '') }}></button>
                 <button className="keep-tool-delete" onClick={() => onRemoveKeep(id)}></button>
                 {/* <button onClick={() => onRemoveKeep(id)}><img src="../../../assets/img/icons/delete.svg" alt="Delete" /></button> */}
                 <button className="keep-tool-duplicate" onClick={() => onDuplicateKeep(id)} ></button>

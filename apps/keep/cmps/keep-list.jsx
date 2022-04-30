@@ -12,7 +12,7 @@ export function KeepList(props) {
 
     return <section className="keep-list" >
         <section className="pinned-keeps">
-            {pinnedKeeps.length > 0 && <h3>PINNED</h3>}
+            {pinnedKeeps.length > 0 && <p>PINNED</p>}
             {pinnedKeeps.map(keep => <KeepPreview
                 keep={keep}
                 key={keep.id}
