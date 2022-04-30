@@ -4,11 +4,11 @@ import { utilService } from "../../../services/util.service.js"
 const { Link } = ReactRouterDOM
 
 export function MailPreview({ mail, onDelete, onMail, onToggleRead }) {
-    const { id, subject, body, isRead, to, from, senderFullname, sentAt } = mail
+    const { id, subject, body, isRead, isStared, to, from, senderFullname, sentAt } = mail
     const readClass = isRead ? 'read' : ''
     const formattedDate = utilService.getFormattedDate(sentAt)
-    return <Link onClick={() => onMail(id)} to={`/mail/${mail.id}`} className={`preview-container flex space-between  ${readClass}`}>
-        {/* <button className="clean-btn">⭐</button> */}
+    return <Link onClick={() => onMail(id)} to={`/mail/${mail.id}`} className={`preview-container flex space-between  ${readClass} `}>
+        <button className={`star-btn  ${isStared ? 'starred' : ''}`}></button>
         <h3 >
             {senderFullname}
         </h3>

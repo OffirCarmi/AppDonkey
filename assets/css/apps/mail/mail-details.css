@@ -4,10 +4,31 @@
 }
 
 .detail-container button {
+    position: relative;
     background-color: transparent;
     border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
 
 .detail-container button:hover {
-    background-color: var(--g5);
+    transition: background-color 0.3s;
+    background-color: var(--g4);
+
+}
+
+.detail-container .delete-btn::before {
+    color: inherit;
+    font-size: 1.125em;
+    background-size: 100%;
+    font-family: fa-reg;
+    content: '';
+}
+
+.detail-container .back-btn::before {
+    color: inherit;
+    font-size: 1.125em;
+    font-family: fa-solid;
+    content: '';
 }

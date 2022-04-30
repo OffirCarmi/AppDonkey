@@ -88,11 +88,11 @@ export class Mail extends React.Component {
         if (!mails) return <React.Fragment></React.Fragment>
         return <section className="mail-app">
             <aside className="side">
-                <NavLink to="/mail/compose">Compose</NavLink>
-                <button onClick={this.handleFilterChange} value="inbox">Inbox<span hidden={!unreadCount}> ({unreadCount})</span></button>
-                <button onClick={this.handleFilterChange} value="unread">Unread</button>
-                <button onClick={this.handleFilterChange} value="read">Read</button>
-                <button onClick={this.handleFilterChange} value="sentMail">Sent Mail</button>
+                <NavLink to="/mail/compose" className="compose-btn">Compose</NavLink>
+                <button onClick={this.handleFilterChange} className="inbox-btn" value="inbox">Inbox<span hidden={!unreadCount}> ({unreadCount})</span></button>
+                <button onClick={this.handleFilterChange} className="unread-btn" value="unread">Unread</button>
+                <button onClick={this.handleFilterChange} className="read-btn" value="read">Read</button>
+                <button onClick={this.handleFilterChange} className="sent-btn" value="sentMail">Sent Mail</button>
             </aside>
             <Switch>
                 <Route path="/mail/:mailId" render={(props) => <MailDetails onDelete={this.onDelete} {...props} />} />

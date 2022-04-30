@@ -17,6 +17,17 @@
     width: 0;
 }
 
+.star-btn::before {
+    font-family: fa-reg;
+    content: '\f005';
+    
+}
+
+.starred.star-btn::before {
+    font-family: fa-solid;
+
+}
+
 .preview-container.read h3 {
     font-weight: 500;
     font-size: larger;
@@ -25,11 +36,6 @@
 .preview-container .mail-date {
     text-align: end;
     flex-grow: 0.3;
-}
-
-.preview-container button {
-    background-color: transparent;
-    border: none;
 }
 
 .prev-subject {
@@ -46,12 +52,14 @@
     font-weight: 200;
 }
 
+
 /* .prev-delete {
     background-color: transparent;
     border: none;
 } */
 
 .prev-mark::before {
+    font-size: 1.125em;
     font-family: fa-reg;
     content: attr(data-symbol);
 }

@@ -18,14 +18,14 @@ export class MailDetails extends React.Component {
         if (!mail) return <React.Fragment></React.Fragment>
         const { id, subject, body, isRead, to, from, senderFullname, sentAt } = mail
         return <section className="detail-container">
+            <button className="back-btn" onClick={() => this.props.history.push('/mail')}></button>
             <h1 >{subject}</h1>
             <h4>{senderFullname} - <span>{from}</span></h4>
             <p>{body}</p>
-            <button onClick={() => {
+            <button className="delete-btn" onClick={() => {
                 this.props.history.push('/mail')
                 this.props.onDelete(id)
-            }}>Delete</button>
-            <button onClick={() => this.props.history.push('/mail')}>Back</button>
+            }}></button>
         </section>
     }
 }
