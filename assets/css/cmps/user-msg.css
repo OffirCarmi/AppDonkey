@@ -1,7 +1,7 @@
 .user-msg {
     position: fixed;
-    bottom: 90px;
-    right: 20px;
+    top: 90px;
+    right: 25px;
     height: 45px;
     padding: 10px;
     border-radius: 0.5em;

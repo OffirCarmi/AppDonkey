@@ -1,9 +1,8 @@
 import { keepService } from '../services/keep.service.js'
 import { KeepList } from '../cmps/keep-list.jsx'
 import { Modal } from '../cmps/keep-modal.jsx'
-import { KeepCreate } from '../cmps/keep-create/keep-create.jsx'
 import { eventBusService } from '../../../services/event-bus.service.jsx'
-
+import { Loader } from "../../../cmps/loader.jsx";
 
 export class Keep extends React.Component {
     state = {
@@ -29,21 +28,20 @@ export class Keep extends React.Component {
         const input = this.state.input
         const type = this.state.type
 
-
         keepService.addKeep(input, type)
             .then(() => {
                 this.loadKeeps()
                 eventBusService.emit('user-msg', { txt: 'New Keep was added', type: 'success' })
-
             })
-
 
     }
 
     onRemoveKeep = (keepId) => {
         keepService.removeKeep(keepId)
-            .then(() => this.loadKeeps())
-        eventBusService.emit('user-msg', { txt: 'Keep was removed', type: 'danger' })
+            .then(() => {
+                this.loadKeeps()
+                eventBusService.emit('user-msg', { txt: 'Keep was deleted', type: 'success' })
+            })
 
     }
 
@@ -51,17 +49,24 @@ export class Keep extends React.Component {
         console.log('test');
         event.stopPropagation()
         keepService.changeColor(keepId, color)
-            .then(() => this.loadKeeps())
+            .then(() => {
+                this.loadKeeps()
+                eventBusService.emit('user-msg', { txt: 'Background color was changed', type: 'success' })
+            })
     }
 
     onUpdateKeep(ev, keepId, todoId) {
+        eventBusService.emit('user-msg', { txt: 'Keep was updated', type: 'success' })
         keepService.updateKeep(ev.target.innerText, keepId, todoId)
-
+            .then(() => this.loadKeeps())
     }
 
     onDuplicateKeep = (keepId) => {
         keepService.duplicateKeep(keepId)
-            .then(() => this.loadKeeps())
+            .then(() => {
+                this.loadKeeps()
+                eventBusService.emit('user-msg', { txt: 'New duplicated Keep was added', type: 'success' })
+            })
     }
 
     onPinKeep = (keepId) => {
@@ -95,18 +100,9 @@ export class Keep extends React.Component {
 
     }
 
-    // get pinnedKeeps() {
-    //     const { keeps } = this.state
-    //     const pinnedKeeps = keeps.filter(keep => keep.isPinned)
-    //     if (!pinnedKeeps) return
-
-
-    // }
-
-
     render() {
         const { type, input, placeholder, keeps } = this.state
-
+        if (!keeps) return <Loader />
         return <section className="keep-app flex col space-between">
             <div className="new-keep flex space-between align-center">
                 <form onSubmit={() => this.onAddKeep()}>
@@ -131,3 +127,10 @@ export class Keep extends React.Component {
         </section>
     }
 }
+
+
+    // get pinnedKeeps() {
+    //     const { keeps } = this.state
+    //     const pinnedKeeps = keeps.filter(keep => keep.isPinned)
+    //     if (!pinnedKeeps) return
+    // }

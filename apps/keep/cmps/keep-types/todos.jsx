@@ -1,4 +1,5 @@
 import { keepService } from '../../services/keep.service.js'
+import { eventBusService } from '../../../../services/event-bus.service.js'
 
 export class Todos extends React.Component {
     state = {
@@ -12,12 +13,13 @@ export class Todos extends React.Component {
     }
 
     onRemove = (keepId, todoId) => {
+        eventBusService.emit('user-msg', { txt: 'Todo was deleted', type: 'success' })
         keepService.removeTodo(keepId, todoId)
             .then((todos) => { this.setState((prevState) => ({ ...prevState, todos })) })
-        // .then((todos) => { this.setState({ todos }) })
     }
 
     onToggleTodo = (keepId, todoId) => {
+        eventBusService.emit('user-msg', { txt: 'Todo was toggled', type: 'success' })
         keepService.toggleTodo(keepId, todoId)
             .then((todos) => { this.setState({ todos }) })
 
@@ -30,6 +32,7 @@ export class Todos extends React.Component {
 
     onAddTodo = (keepId) => {
         event.preventDefault()
+        eventBusService.emit('user-msg', { txt: 'New todo was added', type: 'success' })
         const input = event.target[0].value
         keepService.addTodo(keepId, input)
             .then((todos) => { this.setState({ todos, input: '' }) })
@@ -38,6 +41,7 @@ export class Todos extends React.Component {
     render() {
         const { todos, input } = this.state
         const { keep, onUpdateKeep } = this.props
+        console.log(todos);
         return <section className="todos flex col space-between">
             {todos.map(todo => {
                 return <div className="todo flex space-between align-center" key={todo.id}>
