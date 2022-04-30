@@ -1,3 +1,4 @@
+import { eventBusService } from "../../../services/event-bus.service.js";
 import { utilService } from "../../../services/util.service.js";
 import { mailService } from "../services/mail.service.js";
 
@@ -22,6 +23,7 @@ export class Compose extends React.Component {
         ev.preventDefault()
         console.log(this.state)
         mailService.addMail(this.state)
+        eventBusService.emit('user-msg', { txt: 'Sent', type: 'success' })
         this.props.history.push('/mail')
     }
 

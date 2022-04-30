@@ -37,7 +37,9 @@ export class Mail extends React.Component {
 
     onDelete = (id) => {
         mailService.deleteMail(id)
-            .then(() => this.loadMails())
+            .then(() => this.loadMails()).then(() => {
+                eventBusService.emit('user-msg', { txt: 'Mail deleted', type: 'success' })
+            })
     }
 
     onMail = (id) => {
@@ -82,7 +84,7 @@ export class Mail extends React.Component {
         if (!mails) return <Loader />
         return <section className="mail-app">
             <aside className="side">
-                <NavLink to="/mail/compose" className="compose-btn">Compose</NavLink>
+                <NavLink to="/mail/compose" className="compose-link">Compose</NavLink>
                 <button onClick={this.handleFilterChange} className="inbox-btn" value="inbox">Inbox<span hidden={!unreadCount}> ({unreadCount})</span></button>
                 <button onClick={this.handleFilterChange} className="unread-btn" value="unread">Unread</button>
                 <button onClick={this.handleFilterChange} className="read-btn" value="read">Read</button>

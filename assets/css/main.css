@@ -9,6 +9,7 @@
 @import '../css/apps/welcome/welcome.css';
 @import '../css/apps/home/home.css';
 @import '../css/apps/mail/mail.css';
+@import '../css/apps/mail/mail-side.css';
 @import '../css/apps/mail/mail-preview.css';
 @import '../css/apps/mail/mail-details.css';
 @import '../css/apps/mail/mail-compose.css';
