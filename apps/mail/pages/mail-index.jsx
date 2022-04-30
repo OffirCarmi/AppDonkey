@@ -2,6 +2,7 @@ import { eventBusService } from "../../../services/event-bus.service.js";
 import { utilService } from "../../../services/util.service.js";
 import { mailService } from "../services/mail.service.js";
 
+import { Loader } from "../../../cmps/loader.jsx";
 import { MailList } from "../cmps/mail-list.jsx";
 import { MailDetails } from "mail-details.jsx";
 import { Compose } from "../pages/mail-compose.jsx";
@@ -23,14 +24,7 @@ export class Mail extends React.Component {
     }
 
     componentDidMount() {
-        // console.log('index mounted');
         this.loadMails()
-
-    }
-
-    componentDidUpdate() {
-        // console.log('index updated', this.state);
-        // if(this.props) this.loadMails()
     }
 
     loadMails = () => {
@@ -85,7 +79,7 @@ export class Mail extends React.Component {
         // console.log('index state', this.state.mails)
         const { mails, unreadCount } = this.state
         const { txt } = this.state.criteria
-        if (!mails) return <React.Fragment></React.Fragment>
+        if (!mails) return <Loader />
         return <section className="mail-app">
             <aside className="side">
                 <NavLink to="/mail/compose" className="compose-btn">Compose</NavLink>

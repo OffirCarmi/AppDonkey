@@ -22,7 +22,7 @@ export class Header extends React.Component {
         const { header } = this.state
         if (!header) return <React.Fragment />
         return <header className="flex space-between align-center">
-            <img onClick={() => this.props.history.push('/')} src="../assets/img/logo.png" />
+            <img onClick={() => this.props.history.push('/home')} src="../assets/img/logo.png" />
             <h1>{header}</h1>
             <div className="apps" onClick={() => this.props.history.push('/home')}><img src="./assets/img/category.png"></img></div>
         </header>
