@@ -3,21 +3,50 @@
 }
 
 .search-bar {
-    background-color: var(--g5);
+    display: flex;
+    align-items: center;
     border-radius: 5px;
-    border: none;
     font-size: 1.1em;
+    width: 100%;
+}
+
+.search-bar input:focus {
+    background-color: var(--g5);
+}
+
+.search-bar input {
+    border: none;
+    padding: 0;
+    margin: 0;
     padding: 10px;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.search-bar button {
+    align-self: stretch;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.search-bar button:hover {
+    transition: background-color 0.2s;
+    background-color: var(--g5);
+}
+
+.search-bar button::before {
+    font-family: fa-solid;
+    content: "\f002";
 }
 
 .sorting-tools {
+    border-top: 1px solid var(--g5);
     justify-content: space-between;
     padding: 10px;
 }
 
 .sort-btn {
     position: relative;
-    border-bottom: 1px solid var(--g5);
     padding: 5px 0;
 }
 

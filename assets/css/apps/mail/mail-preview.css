@@ -2,7 +2,7 @@
     border-bottom: 1px solid var(--g4);
     padding: 10px;
     font-size: 0.755rem;
-    gap: 50px;
+    /* gap: 50px; */
 }
 
 .mail-container .preview-container:hover {
@@ -13,19 +13,16 @@
 .preview-container h3 {
     padding: 0;
     margin-block: auto;
-    flex-grow: 1;
     width: 0;
 }
 
 .star-btn::before {
     font-family: fa-reg;
     content: '\f005';
-    
 }
 
 .starred.star-btn::before {
     font-family: fa-solid;
-
 }
 
 .preview-container.read h3 {
@@ -33,9 +30,11 @@
     font-size: larger;
 }
 
-.preview-container .mail-date {
-    text-align: end;
-    flex-grow: 0.3;
+.preview-container .prev-name {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 200px;
+    padding-left: 10px;
 }
 
 .prev-subject {
@@ -52,18 +51,18 @@
     font-weight: 200;
 }
 
-
-/* .prev-delete {
-    background-color: transparent;
-    border: none;
-} */
-
 .prev-mark::before {
     font-size: 1.125em;
     font-family: fa-reg;
     content: attr(data-symbol);
+    padding-left: 10px;
 }
 
 .preview-container.read {
     background-color: var(--g5);
+}
+
+.preview-container .prev-date {
+    text-align: end;
+    width: 70px;
 }

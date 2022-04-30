@@ -1,38 +1,48 @@
 .side {
     /* padding-right: 5px; */
-    width: 200px;
+    min-width: 250px;
 }
 
 .side>* {
     display: block;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
 }
 
 .side button {
+    display: flex;
+    align-items: center;
     background-color: transparent;
     border: none;
-    padding: 0 10px;
+    padding: 8px 12px 8px 26px;
     width: 100%;
     text-align: start;
 }
 
+.side button::before {
+    margin-right: 14.5px;
+}
+
 .side button:hover {
     background-color: var(--g5);
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 20px 20px 0;
 }
 
 .side .compose-link {
     display: flex;
     justify-content: space-between;
-    margin-left: 8px;
-    padding: 10px 10px;
-    width: 55%;
+    /* background-color: inherit; */
+    margin: 0 0 16px 8px;
+    padding: 10px 13px;
+    width: 120px;
     border-radius: 20px;
     align-items: center;
+    box-shadow: 0 1px 4px -2px #000000;
+    transition: box-shadow 0.2s;
 }
 
 .side .compose-link:hover {
-    background-color: var(--g5);
+    background-color: #fcfcfc;
+    box-shadow: 0 3px 14px -8px #000000;
 }
 
 .side .compose-link::before {
@@ -40,8 +50,12 @@
     background-image: url("../../../img/icons/plus.png");
     background-position: center;
     background-size: contain;
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
+}
+
+.side .inbox-btn div {
+    width: 100%;
 }
 
 .side .inbox-btn::before {

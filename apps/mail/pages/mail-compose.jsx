@@ -38,7 +38,7 @@ export class Compose extends React.Component {
             <input type="text" placeholder="Subject" value={subject} name="subject" onChange={this.handleWrite} autoComplete="off" />
             <textarea className="mail-body" value={body} name="body" onChange={this.handleWrite}></textarea>
             <div className="compose-tools">
-                <button onClick={this.onSend}>Send</button>
+                <button className="send-btn" onClick={this.onSend}>Send</button>
             </div>
         </section>
     }

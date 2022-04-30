@@ -85,12 +85,20 @@ export class Mail extends React.Component {
         return <section className="mail-app">
             <aside className="side">
                 <NavLink to="/mail/compose" className="compose-link">Compose</NavLink>
-                <button onClick={this.handleFilterChange} className="inbox-btn" value="inbox">Inbox<span hidden={!unreadCount}> ({unreadCount})</span></button>
-                <button onClick={this.handleFilterChange} className="unread-btn" value="unread">Unread</button>
-                <button onClick={this.handleFilterChange} className="read-btn" value="read">Read</button>
-                <button onClick={this.handleFilterChange} className="sent-btn" value="sentMail">Sent Mail</button>
+                <button onClick={this.handleFilterChange} className="inbox-btn" value="inbox">
+                    <div className="flex space-between">
+                        <span>Inbox</span>
+                        <span hidden={!unreadCount}>
+                            {unreadCount}
+                        </span>
+                    </div>
+                </button>
+                <button onClick={this.handleFilterChange} className="unread-btn" value="unread"><span>Unread</span></button>
+                <button onClick={this.handleFilterChange} className="read-btn" value="read"><span>Read</span></button>
+                <button onClick={this.handleFilterChange} className="sent-btn" value="sentMail"><span>Sent Mail</span></button>
             </aside>
             <Switch>
+                <Route path="/mail/compose" component={Compose} />
                 <Route path="/mail/:mailId" render={(props) => <MailDetails onDelete={this.onDelete} {...props} />} />
                 <Route path="/mail">
                     <MailList
@@ -104,7 +112,6 @@ export class Mail extends React.Component {
                     />
                 </Route>
             </Switch>
-            <Route path="/mail/compose" component={Compose} />
         </section>
     }
 }

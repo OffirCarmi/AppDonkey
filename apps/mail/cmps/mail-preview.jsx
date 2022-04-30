@@ -7,9 +7,9 @@ export function MailPreview({ mail, onDelete, onMail, onToggleRead }) {
     const { id, subject, body, isRead, isStared, to, from, senderFullname, sentAt } = mail
     const readClass = isRead ? 'read' : ''
     const formattedDate = utilService.getFormattedDate(sentAt)
-    return <Link onClick={() => onMail(id)} to={`/mail/${mail.id}`} className={`preview-container flex space-between  ${readClass} `}>
-        <button className={`star-btn  ${isStared ? 'starred' : ''}`}></button>
-        <h3 >
+    return <Link onClick={() => onMail(id)} to={`/mail/${mail.id}`} className={`preview-container flex  ${readClass} `}>
+        {/* <button className={`star-btn  ${isStared ? 'starred' : ''}`}></button> */}
+        <h3 className="prev-name">
             {senderFullname}
         </h3>
         <h3 className="prev-subject ">{subject}<span className="prev-body"> - {body}</span></h3>
@@ -19,10 +19,6 @@ export function MailPreview({ mail, onDelete, onMail, onToggleRead }) {
                 ev.stopPropagation()
                 onToggleRead(id)
             }}></button>
-        <h3 className="mail-date">{formattedDate}</h3>
-        {/* <button onClick={(ev) => {
-            ev.preventDefault()
-            onDelete(id)
-        }} className="prev-delete">X</button> */}
+        <h3 className="prev-date">{formattedDate}</h3>
     </Link>
 };

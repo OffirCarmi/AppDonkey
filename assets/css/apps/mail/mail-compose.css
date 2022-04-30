@@ -1,10 +1,10 @@
 .compose-container {
-    position: absolute;
-    width: 70vw;
-    height: 95%;
+    /* position: absolute; */
     border-radius: 7px;
     right: 20px;
     bottom: 20px;
+    height: 95%;
+    width: 75%;
     box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%);
 }
 
@@ -15,10 +15,31 @@
 .compose-head {
     border-radius: 7px 7px 0 0;
     background-color: var(--g1);
+    padding: 10px 10px 5px 10px;
 }
 
-.compose-exit {
+.compose-container input {
+    padding: 10px 15px;
+    margin: 0;
 }
+
+.compose-container textarea {
+    padding: 10px 15px;
+    margin: 0;
+}
+
+.compose-tools {
+    padding: 10px 15px;
+}
+
+.send-btn {
+    background-color: var(--b2);
+    color: var(--g5);
+    border-radius: 6px;
+    padding: 7px 25px;
+}
+
+.compose-exit {}
 
 .mail-body {
     resize: none;
