@@ -21,7 +21,8 @@ export class KeepPreview extends React.Component {
 
         if (!keep) return
 
-        return <article style={{ backgroundColor: (!keep.color) ? 'White' : keep.color }} key={id} className="keep-preview flex col space-between">
+        return <article style={{ backgroundColor: (!keep.color) ? 'White' : keep.color }} key={id}
+            className="keep-preview flex col space-between tilt-in-fwd-tl">
             <section className="keep-body">
                 <_DynamicCmp keep={keep} onUpdateKeep={this.props.onUpdateKeep} />
             </section>
@@ -30,7 +31,7 @@ export class KeepPreview extends React.Component {
                 <button className="keep-tool-pin" onClick={() => onPinKeep(id)} style={{ color: (keep.isPinned ? 'Red' : '') }}></button>
                 <button className="keep-tool-delete" onClick={() => onRemoveKeep(id)}></button>
                 <button className="keep-tool-duplicate" onClick={() => onDuplicateKeep(id)} ></button>
-                {/* <button className="keep-tool-mail"></button> */}
+                <button className="keep-tool-mail"></button>
             </aside>
             {this.state.showColors && <BgColor onChangeColor={this.props.onChangeColor} keepId={keep.id} toggleColors={this.toggleColors} />}
         </article>

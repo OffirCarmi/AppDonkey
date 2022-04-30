@@ -13,7 +13,9 @@ export class Keep extends React.Component {
     }
 
     componentDidMount() {
-        this.loadKeeps()
+        setTimeout(() => {
+            this.loadKeeps()
+        }, 1500);
     }
 
     loadKeeps = () => {
@@ -102,7 +104,7 @@ export class Keep extends React.Component {
 
     render() {
         const { type, input, placeholder, keeps } = this.state
-        if (!keeps) return <Loader />
+        if (keeps.length === 0) return <Loader />
         return <section className="keep-app flex col space-between">
             <div className="new-keep flex space-between align-center">
                 <form onSubmit={() => this.onAddKeep()}>

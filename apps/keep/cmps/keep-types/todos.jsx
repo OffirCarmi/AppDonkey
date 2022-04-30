@@ -41,7 +41,7 @@ export class Todos extends React.Component {
     render() {
         const { todos, input } = this.state
         const { keep, onUpdateKeep } = this.props
-        console.log(todos);
+        // console.log(todos);
         return <section className="todos flex col space-between">
             {todos.map(todo => {
                 return <div className="todo flex space-between align-center" key={todo.id}>

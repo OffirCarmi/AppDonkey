@@ -1,40 +1,47 @@
+/* Mobile only */
+@media screen and (max-width:640px) {}
+
 .keep-app {
     flex-grow: 1;
 }
 
 .keep-app .new-keep {
-    width: 600px;
+    width: 350px;
     height: 45px;
     border: 1px solid var(--g4);
     border-radius: 0.5em;
-    margin: 90px auto 40px;
+    margin: 90px auto 30px;
     -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
     overflow: hidden;
     position: relative;
+    padding-inline-end: 5px;
 }
 
 .keep-app .new-keep input {
     position: absolute;
     bottom: -15px;
-    margin-inline-start: 15px;
+    margin-inline-start: 10px;
     border: none;
     outline: none;
     height: 40px;
 
 }
 
+.keep-app .new-keep input.input {
+    width: 50%;
+    font-size: 1em;
+    margin-top: 15px;
+}
+
 .keep-app .new-keep .keep-type {
     position: relative;
-    /* top:2px;
-    right: 10px; */
 }
 
 .keep-app .new-keep .keep-type button {
     color: var(--g4);
-
-    height: 45px;
-    width: 45px;
+    height: 35px;
+    width: 35px;
 }
 
 .keep-app .new-keep .keep-type button:hover {
@@ -46,16 +53,19 @@
     font-family: fa-solid;
     content: '';
 }
+
 .btn-new-img:before {
     font-size: 1.5em;
     font-family: fa-solid;
     content: '';
 }
+
 .btn-new-todos:before {
     font-size: 1.5em;
     font-family: fa-solid;
     content: '';
 }
+
 .btn-new-video:before {
     font-size: 1.5em;
     font-family: fa-brands;
@@ -63,25 +73,19 @@
 }
 
 
+@media screen and (min-width:641px) {
+    .keep-app .new-keep {
+        width: 600px;
+        padding-inline-end: 0;
+    }
 
-.keep-app .new-keep button img {
-    height: 50%;
+    .keep-app .new-keep input.input {
+        width: 65%;
+    }
+
+    .keep-app .new-keep .keep-type button {
+        height: 45px;
+        width: 45px;
+    }
+
 }
-
-
-.keep-app .new-keep input.input {
-    width: 165%;
-    font-size: 1em;
-    margin-top: 15px;
-}
-
-.keep-app .new-keep label {
-    align-self: center;
-}
-
-/* .keep-app .new-keep button {
-    height: 40px;
-    width: 40px;
-    border: none;
-    background: transparent;
-} */
