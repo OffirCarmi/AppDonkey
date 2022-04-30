@@ -174,9 +174,39 @@ function _createData() {
             id: utilService.makeId(),
             type: "keep-txt",
             info: {
-                txt: "Keep no. 1"
+                txt: "Hello World! Let's try this awesome app!"
             },
-            isPinned: false
+            isPinned: true,
+            color: "#59adf6"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-todos",
+            info: {
+                label: "Get my stuff together",
+                todos: [
+                    { txt: "Finish coding", isDone: false },
+                    { txt: "Get satisfied with the process", isDone: true },
+                    { txt: "Get exahusted", isDone: true },
+                ]
+            },
+            isPinned: true,
+            color: "#42d6a4"
+
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-video",
+            url: _getYouTubeLink('https://www.youtube.com/watch?v=4IyYugLeDjg'),
+            isPinned: false,
+            color: "#c780e8"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-video",
+            url: _getYouTubeLink('https://www.youtube.com/watch?v=429vxpfe2Ag'),
+            isPinned: false,
+            color: "#ff6961"
         },
         {
             id: utilService.makeId(),
@@ -185,16 +215,103 @@ function _createData() {
                 url: "https://lirp.cdn-website.com/7ece8951/dms3rep/multi/opt/GettyImages-544673512-960w.jpg",
                 title: ""
             },
-            isPinned: false
+            isPinned: false,
+            color: "#08cad1"
         },
         {
             id: utilService.makeId(),
             type: "keep-txt",
             info: {
-                txt: "Keep no. 3"
+                txt: "React is awesome!"
             },
-            isPinned: false
-        }
+            isPinned: false,
+            color: "#f8f38d"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-img",
+            info: {
+                url: "https://images.ctfassets.net/hrltx12pl8hq/qGOnNvgfJIe2MytFdIcTQ/429dd7e2cb176f93bf9b21a8f89edc77/Images.jpg",
+                title: ""
+            },
+            isPinned: true,
+            color: "#ff6961"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-txt",
+            info: {
+                txt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            isPinned: true,
+            color: "#9d94ff"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-img",
+            info: {
+                url: "https://images.theconversation.com/files/304963/original/file-20191203-66982-1rzdvz4.jpg?ixlib=rb-1.1.0&rect=31%2C71%2C5330%2C2665&q=45&auto=format&w=1356&h=668&fit=crop",
+                title: ""
+            },
+            isPinned: false,
+            color: "#42d6a4"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-todos",
+            info: {
+                label: "Get my stuff together",
+                todos: [
+                    { txt: "Tomatoes", isDone: false },
+                    { txt: "Cucumbers", isDone: false },
+                    { txt: "Carrots", isDone: false },
+                    { txt: "Onions", isDone: false },
+                    { txt: "Apples", isDone: false },
+                    { txt: "Grapes", isDone: false },
+                    { txt: "Bananas", isDone: false },
+                    { txt: "Peaches", isDone: false },
+                    { txt: "Strawberries", isDone: false },
+                ]
+            },
+            isPinned: false,
+            color: "#ffb480"
+
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-img",
+            info: {
+                url: "https://bradaronson.com/wp-content/uploads/2013/10/happy.jpg",
+                title: ""
+            },
+            isPinned: false,
+            color: "#08cad1"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-video",
+            url: _getYouTubeLink('https://www.youtube.com/watch?v=_hQxy7KKq3U'),
+            isPinned: true,
+            color: "#f8f38d"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-img",
+            info: {
+                url: "https://i.pinimg.com/736x/11/af/44/11af44d69ce6d325d042f8a83adc50af--bestfriends-bffs.jpg",
+                title: ""
+            },
+            isPinned: false,
+            color: "#9d94ff"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-txt",
+            info: {
+                txt: "This is some random text"
+            },
+            isPinned: false, color: "#c780e8"
+        },
     ]
 }
 
