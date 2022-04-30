@@ -5,10 +5,7 @@ export class Home extends React.Component {
             <section className="apps-container">
                 <Link to="/keep" className="keep-link"><img src="../assets/img/keep-logo.png" alt="" /><button className="home-btn-apps">Keep</button></Link>
                 <Link to="/mail" className="mail-link"><img src="../assets/img/mail-logo.png" alt="" /><button className="home-btn-apps">Mail</button></Link>
-                <Link to="/book" className="book-link"><img src="../assets/img/book-logo.png" alt="" /><button className="home-btn-apps">Book</button></Link>
-                {/* <Link to="/keep">Keep</Link>
-            <Link to="/mail">Mail</Link>
-            <Link to="/book">Book</Link> */}
+                {/* <Link to="/book" className="book-link"><img src="../assets/img/book-logo.png" alt="" /><button className="home-btn-apps">Book</button></Link> */}
             </section>
         </div>
     }

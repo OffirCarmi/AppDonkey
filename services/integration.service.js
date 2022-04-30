@@ -7,9 +7,11 @@ export const Integration = {
 }
 
 function mailToKeep(txt) {
+    console.log(txt);
     keepService.addKeep(txt, 'keep-txt')
 }
 
 function keepToMail(txt) {
-    mailService.createMailFromKeep(txt)
+    const newMail = mailService.createMailFromKeep(txt)
+    console.log(txt);
 }
