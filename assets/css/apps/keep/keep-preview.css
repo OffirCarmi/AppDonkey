@@ -1,9 +1,12 @@
+/* Mobile only */
+@media screen and (max-width:640px) {}
+
 .keep-preview {
     border: 1px solid var(--g4);
-    width: 240px;
+    width: 165px;
     min-height: 80px;
     border-radius: 0.5em;
-    margin: 5px 0 10px 0;
+    margin: 5px 0 0 0;
     line-height: 1.25;
     position: relative;
     overflow: hidden;
@@ -11,19 +14,9 @@
 
 }
 
-/* .keep-preview aside {
-    display: none;
-} */
-
-.keep-preview .keep-type {
-    height: 40px;
-}
-
 .keep-preview .keep-body {
     flex-grow: 1;
     word-wrap: break-word;
-    /* margin-bottom: 50px; */
-
 }
 
 .keep-tools button {
@@ -78,10 +71,10 @@
     cursor: pointer;
 }
 
-.keep-preview .keep-body .keep-img {
+/* .keep-preview .keep-body .keep-img {
     position: relative;
 
-}
+} */
 
 
 /* .keep-preview .keep-img:hover aside {
@@ -90,25 +83,16 @@
 } */
 
 .keep-preview .keep-body img {
-    /* max-height: 100%; */
-    /* height: 100%; */
     width: 100%;
     object-fit: contain;
-    /* border-radius: 0.375em; */
 }
 
 .keep-preview .keep-body .todos .todo p.done {
     text-decoration: line-through;
 }
 
-.keep-preview .keep-body textarea {
-    overflow-y: unset;
-    text-overflow: ellipsis;
-}
-
 .keep-preview .keep-body .todos .todo p {
     flex-grow: 1;
-    /* padding: 0 5px; */
     margin: 5px;
 }
 
@@ -123,10 +107,9 @@
 }
 
 .keep-preview .keep-body .todos .new-todo input {
-    /* position: relative; */
     margin: 5px 15px 10px 20px;
-    width: 160px;
-    font-size: 0.875rem;
+    width: 85px;
+    font-size: 0.75rem;
 }
 
 .keep-preview .keep-body .keep-video iframe {
@@ -135,53 +118,48 @@
 }
 
 .keep-preview .keep-tools {
-    /* border-top: 1px solid var(--g4); */
     display: flex;
     justify-content: right;
     align-items: center;
     max-height: 40px;
-    /* position: absolute;
-    bottom: 0px; */
-    height: 40px;
+    bottom: 0px;
+    height: 30px;
     width: 100%;
     padding: 0 8px;
 }
-
-/* .keep-preview .keep-tools {
-    display: none;
-    height: 40px;
-    width: 100%;
-}
-
-.keep-list article:hover .keep-tools {
-    border-top: 1px solid var(--g4);
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    max-height: 40px;
-    position: absolute;
-    bottom: 0px;
-} */
-
-
-/* .keep-list article:hover .keep-tools button {
-    display: block;
-} */
-
 
 .keep-preview .keep-tools button {
     /* display: none; */
     border: none;
     background: transparent;
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
 }
-
-/* .keep-preview .keep-tools button:hover {
-    background-color: var(--g4);
-} */
-
 
 .keep-preview .keep-tools button img {
     height: 50%;
+}
+
+@media screen and (min-width:641px) {
+    .keep-preview {
+        width: 240px;
+        min-height: 80px;
+        margin: 10px 0 0 0;
+
+    }
+
+    .keep-preview .keep-body .todos .new-todo input {
+        width: 160px;
+        font-size: 0.875rem;
+    }
+
+    .keep-preview .keep-tools {
+        height: 40px;
+    }
+
+    .keep-preview .keep-tools button {
+        height: 35px;
+        width: 35px;
+    }
+
 }

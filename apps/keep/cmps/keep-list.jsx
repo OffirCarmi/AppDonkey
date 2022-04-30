@@ -7,8 +7,8 @@ export function KeepList(props) {
     const unpinnedKeeps = keeps.filter(keep => !keep.isPinned)
 
     return <section className="keep-list" >
+        {pinnedKeeps.length > 0 && <p className="pinned-title">PINNED</p>}
         <section className="pinned-keeps">
-            {pinnedKeeps.length > 0 && <p>PINNED</p>}
             {pinnedKeeps.map(keep => <KeepPreview
                 keep={keep}
                 key={keep.id}
