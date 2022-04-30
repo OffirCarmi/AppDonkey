@@ -1,5 +1,7 @@
 import { mailService } from "../services/mail.service.js";
+import { Integration } from "../../../services/integration.service.js";
 
+const { Link } = ReactRouterDOM
 
 export class MailDetails extends React.Component {
     state = {
@@ -24,6 +26,7 @@ export class MailDetails extends React.Component {
                     this.props.history.push('/mail')
                     this.props.onDelete(id)
                 }}></button>
+                <Link to="/keep" className="to-keep-btn" onClick={() => Integration.mailToKeep(body)}></Link>
             </div>
             <section className="artical-container">
                 <h1 className="detail-subj">{subject}</h1>

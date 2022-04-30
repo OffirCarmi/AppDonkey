@@ -4,6 +4,7 @@ import { Todos } from './keep-types/todos.jsx'
 import { Video } from './keep-types/video.jsx'
 import { BgColor } from './dynamic-colors/bg-color.jsx'
 import { Modal } from '../cmps/keep-modal.jsx'
+import { Integration } from "../../../services/integration.service.js";
 
 const { Link } = ReactRouterDOM
 
@@ -41,7 +42,7 @@ export class KeepPreview extends React.Component {
                 <button className="keep-tool-pin" onClick={() => onPinKeep(id)} style={{ color: (keep.isPinned ? 'Red' : '') }}></button>
                 <button className="keep-tool-delete" onClick={() => onRemoveKeep(id)}></button>
                 <button className="keep-tool-duplicate" onClick={() => onDuplicateKeep(id)} ></button>
-                {/* <button className="keep-tool-mail"></button> */}
+                {/* <button className="keep-tool-mail" onClick={() => Integration.keepToMail(keep.info.txt)}></button> */}
             </aside>
             {this.state.showColors && <BgColor onChangeColor={this.props.onChangeColor} keepId={keep.id} toggleColors={this.toggleColors} />}
         </article>

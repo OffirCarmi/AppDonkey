@@ -1,6 +1,8 @@
 import { storageService } from '../../../services/storage.service.js'
 import { utilService } from '../../../services/util.service.js'
 
+const { Link } = ReactRouterDOM
+
 export const keepService = {
     query,
     getById,

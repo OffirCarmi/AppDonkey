@@ -51,8 +51,21 @@
     content: '';
 }
 
+.detail-container .to-keep-btn::before {
+    color: inherit;
+    font-size: 1.125em;
+    background-size: 100%;
+    font-family: fa-solid;
+    content: "\f0ee";
+
+}
+
 .detail-container .back-btn {
     margin-right: 10px;
+}
+
+.detail-container .delete-btn {
+    margin-right: 15px;
 }
 
 .detail-container .back-btn::before {
