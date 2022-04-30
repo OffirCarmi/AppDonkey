@@ -3,6 +3,7 @@
     height: 100vh;
     width: 100vw;
     background-color: var(--g1o);
+    z-index: 1000;
 }
 
 .modal {
@@ -13,6 +14,8 @@
     border-radius: 0.5em;
     background-color: var(--white);
     position: relative;
+    z-index: 1000;
+
 
 }
 
@@ -21,4 +24,6 @@
     right: 15px;
     top: 15px;
     font-size: 2em;
+    z-index: 1000;
+
 }

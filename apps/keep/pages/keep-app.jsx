@@ -104,7 +104,6 @@ export class Keep extends React.Component {
 
     render() {
         const { type, input, placeholder, keeps } = this.state
-        if (keeps.length === 0) return <Loader />
         return <section className="keep-app flex col space-between">
             <div className="new-keep flex space-between align-center">
                 <form onSubmit={() => this.onAddKeep()}>
@@ -117,6 +116,10 @@ export class Keep extends React.Component {
                     <button className="btn-new-video" onClick={() => this.changeType('keep-video')}></button>
                 </div>
             </div>
+            {(keeps.length === 0) && <Loader keeps={keeps} />}
+            {/* {(keeps.length === 0) && <h6>No Keeps to show <br />
+                <span> Go ahead and create a new Keep</span></h6>} */}
+
             <KeepList
                 keeps={keeps}
                 onRemoveKeep={this.onRemoveKeep}
@@ -129,7 +132,6 @@ export class Keep extends React.Component {
         </section>
     }
 }
-
 
     // get pinnedKeeps() {
     //     const { keeps } = this.state

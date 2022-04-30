@@ -6,7 +6,8 @@ export const mailService = {
     deleteMail,
     setRead,
     toggleRead,
-    addMail
+    addMail,
+    createMailFromKeep
 }
 
 const KEY = 'mailDB'
@@ -106,6 +107,10 @@ function _filterMailbox(mails, criteria) {
             break;
     }
     return mails
+}
+
+function createMailFromKeep(txt) {
+    return _createMail({ subject: 'Made with Keep', body: txt, to, from: loggedinUser.email, senderFullname: loggedinUser.fullName })
 }
 
 function _createMail({ subject, body, to, from, senderFullname }) {

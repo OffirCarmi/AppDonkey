@@ -16,7 +16,7 @@
 
 .keep-preview .keep-body {
     flex-grow: 1;
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
 }
 
 .keep-tools button {
@@ -141,6 +141,14 @@
 }
 
 @media screen and (min-width:641px) {
+    .keep-preview {
+        width: 165px;
+        min-height: 80px;
+  
+    
+    }
+
+
     .keep-preview {
         width: 240px;
         min-height: 80px;
