@@ -38,10 +38,12 @@
 .side .compose-link {
     display: flex;
     justify-content: space-between;
+    position: relative;
     /* background-color: inherit; */
     margin: 0 0 16px 8px;
     padding: 10px 13px;
     width: 120px;
+    top: -5px;
     border-radius: 20px;
     align-items: center;
     box-shadow: 0 1px 4px -2px #000000;

@@ -22,6 +22,7 @@ export class Mail extends React.Component {
         },
         unreadCount: 0,
         isMenuOpen: false,
+        page: 0
     }
 
     componentDidMount() {
@@ -49,7 +50,6 @@ export class Mail extends React.Component {
 
     handleFilterChange = (ev) => {
         ev.preventDefault()
-        // console.log('Mail - ev', ev.type)
         const val = ev.currentTarget.value
         const field = ev.currentTarget.name
         const { location, push } = this.props.history
@@ -58,8 +58,8 @@ export class Mail extends React.Component {
         } else if (ev.type === 'submit') {
             this.loadMails()
         } else if (ev.type === 'click') {
-            this.state.isMenuOpen ? this.closeMenu() : ''
-            this.setState((prevState) => ({ criteria: { ...prevState.criteria, mailbox: val } }), () => {
+            this.closeMenu()
+            this.setState((prevState) => ({ page: 0, criteria: { ...prevState.criteria, mailbox: val } }), () => {
                 if (location.pathname !== `/mail/${this.state.criteria.mailbox}`) push(`/mail`);
                 this.loadMails()
             })
@@ -80,7 +80,6 @@ export class Mail extends React.Component {
     }
 
     onMenu = () => {
-        console.log(this.state);
         const { isMenuOpen } = this.state
         isMenuOpen ? this.closeMenu() : this.openMenu()
 
@@ -94,9 +93,17 @@ export class Mail extends React.Component {
         this.setState((prevState) => ({ isMenuOpen: true }))
     }
 
+    onPageChange = (ev) => {
+        const { mails, page } = this.state
+        const val = +ev.currentTarget.value
+        this.setState((prevState) => {
+            if (mails.length <= (prevState.page + val) * 10 || prevState.page + val < 0) return
+            return { page: prevState.page + val }
+        })
+    }
+
     render() {
-        // console.log('index state', this.state.isMenuOpen)
-        const { mails, unreadCount, isMenuOpen } = this.state
+        const { mails, unreadCount, isMenuOpen, page } = this.state
         const { txt, mailbox } = this.state.criteria
         if (!mails) return <Loader />
         return <section className="mail-app">
@@ -121,7 +128,7 @@ export class Mail extends React.Component {
                     value="sentMail"><span>Sent Mail</span></button>
             </aside>
             {!isMenuOpen && <img className="menu-img"
-                src="./assets/img/icons/category.png"
+                src="./assets/img/icons/category.webp"
                 onClick={this.onMenu}
             ></img>}
             <Switch>
@@ -136,6 +143,8 @@ export class Mail extends React.Component {
                         onToggleRead={this.onToggleRead}
                         inputTxt={txt}
                         onSort={this.onSort}
+                        pageNum={page}
+                        onPageChange={this.onPageChange}
                     />
                 </Route>
             </Switch>

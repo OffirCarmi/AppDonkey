@@ -15,7 +15,6 @@ export class MailDetails extends React.Component {
     }
 
     render() {
-        // console.log('props from details', this.props)
         const { mail } = this.state
         if (!mail) return <React.Fragment></React.Fragment>
         const { id, subject, body, isRead, to, from, senderFullname, sentAt } = mail
