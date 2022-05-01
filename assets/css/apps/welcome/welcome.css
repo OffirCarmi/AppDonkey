@@ -9,55 +9,48 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     background: rgb(222, 222, 222);
     background-image: linear-gradient(180deg, rgba(222, 222, 222, 0.146) 0%);
     background-image: url("../../../img/background/background6.jpg");
     background-position: top;
     color: rgb(99, 99, 99);
-    height: 100%;
-    background-size: cover;
+    /* background-size: contain; */
+    background-repeat: no-repeat;
     text-align: center;
     align-items: center;
-    padding: 20px;
-}
-
-.welcome .img-container {
-    position: relative;
-    border-radius: 50%;
-    height: 40%;
-    /* background-image: linear-gradient(360deg, var(--g1) 10%, transparent); */
-    /* background-color: var(--g5); */
-    padding: 25px;
+    height: 100vh;
+    padding: 0;
 }
 
 .welcome img {
-    height: 100%;
-    transform: translateY(8%);
+    height: 300px;
 }
 
 .welcome .welcome-msg {
     display: flex;
     position: relative;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     margin: 0 20px;
-    height: 100%;
 }
 
 .welcome .welcome-msg h1 {
     font-size: 3rem;
-    margin-bottom: 100px;
+    margin: 50px 0;
 }
 
 .welcome .welcome-msg h3 {
     font-size: 2em;
     font-weight: 300;
+    padding-bottom: 10px;
 }
 
 .welcome .welcome-msg h4 {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 300;
+    margin-bottom: 50px;
 }
 
 .welcome button {
@@ -78,27 +71,29 @@
 @media screen and (min-width: 1025px) {
     .welcome {
         flex-direction: row;
-        height: 100%;
-        padding: 5%;
+        height: 100vh;
+        padding: 40px;
     }
     .welcome .welcome-msg {
-        justify-content: space-between;
+        height: 450px;
     }
-    .welcome .img-container {
-        height: 70%;
-        padding: 40px;
+    .welcome img {
+        height: 350px;
     }
     .welcome .welcome-msg h1 {
         font-size: 4rem;
-        margin-bottom: 250px;
+        justify-content: space-around;
+        margin-bottom: 60px;
     }
     .welcome .welcome-msg h3 {
         font-size: 2.5em;
         font-weight: 300;
+        margin-bottom: 30px;
     }
     .welcome .welcome-msg h4 {
         font-size: 2em;
         font-weight: 300;
+        margin-bottom: 60px;
     }
     .welcome button {
         color: white;

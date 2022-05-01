@@ -3,9 +3,7 @@ const { withRouter } = ReactRouterDOM
 function _Welcome({ history }) {
 
     return < section className="welcome" >
-        <div className="img-container">
             <img src="assets/img/logo.png" alt="" />
-        </div>
         <section className="welcome-msg">
             <span>
                 <h1>AppDonkey!<span className="rtm">®️</span></h1>

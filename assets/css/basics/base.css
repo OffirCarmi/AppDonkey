@@ -43,7 +43,7 @@ input {
 }
 
 .wraper {
-    height: 98vh;
+    height: 100vh;
 }
 
 .editable:focus-visible {
