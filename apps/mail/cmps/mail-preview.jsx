@@ -3,12 +3,16 @@ import { utilService } from "../../../services/util.service.js"
 
 const { Link } = ReactRouterDOM
 
-export function MailPreview({ mail, onDelete, onMail, onToggleRead }) {
+export function MailPreview({ mail, onDelete, onMail, onToggleRead, onStar }) {
     const { id, subject, body, isRead, isStared, to, from, senderFullname, sentAt } = mail
     const readClass = isRead ? 'read' : ''
     const formattedDate = utilService.getFormattedDate(sentAt)
-    return <Link onClick={() => onMail(id)} to={`/mail/${mail.id}`} className={`preview-container flex  ${readClass} `}>
-        {/* <button className={`star-btn  ${isStared ? 'starred' : ''}`}></button> */}
+    return <Link onClick={() => onMail(id)} to={`/mail/${id}`} className={`preview-container flex  ${readClass} `}>
+        <button className={`star-btn  ${isStared ? 'starred' : ''}`} onClick={(ev) => {
+            ev.preventDefault()
+            ev.stopPropagation()
+            onStar(id)
+        }}></button>
         <h3 className="prev-name">
             {senderFullname}
         </h3>

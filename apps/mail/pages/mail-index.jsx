@@ -48,14 +48,19 @@ export class Mail extends React.Component {
         mailService.setRead(id).then(() => this.loadMails())
     }
 
+    onToggleRead = (id) => {
+        mailService.toggleRead(id).then(() => this.loadMails())
+    }
+
+    onStar = (id) => {
+        mailService.toggleStared(id).then(() => this.loadMails())
+    }
+
     handleFilterChange = (ev) => {
         ev.preventDefault()
-        const val = ev.currentTarget.value
-        const field = ev.currentTarget.name
         const { location, push } = this.props.history
-        if (ev.type === 'change') {
-            this.setState((prevState) => ({ criteria: { ...prevState.criteria, [field]: val } }))
-        } else if (ev.type === 'submit') {
+        const val = ev.currentTarget.value
+        if (ev.type === 'submit') {
             this.loadMails()
         } else if (ev.type === 'click') {
             this.closeMenu()
@@ -64,7 +69,16 @@ export class Mail extends React.Component {
                 this.loadMails()
             })
         }
-        // debounce(cb, wait)
+    }
+
+    handleSearch = (ev) => {
+        ev.preventDefault()
+        const val = ev.currentTarget.value
+        const field = ev.currentTarget.name
+        if (ev.type === 'change') {
+            this.setState((prevState) => ({ criteria: { ...prevState.criteria, [field]: val } }), this.loadMails)
+        }
+
     }
 
     onSort = (ev) => {
@@ -73,10 +87,6 @@ export class Mail extends React.Component {
         const sortedMails = [].concat(mails).sort((a, b) => a[field] > b[field] ? 1 : -1)
         isReversed ? sortedMails.reverse() : sortedMails
         this.setState((prevState) => ({ mails: sortedMails, criteria: { ...prevState.criteria, isReversed: !prevState.criteria.isReversed } }))
-    }
-
-    onToggleRead = (id) => {
-        mailService.toggleRead(id).then(() => this.loadMails())
     }
 
     onMenu = () => {
@@ -92,6 +102,7 @@ export class Mail extends React.Component {
     openMenu = () => {
         this.setState((prevState) => ({ isMenuOpen: true }))
     }
+
 
     onPageChange = (ev) => {
         const { mails, page } = this.state
@@ -124,6 +135,8 @@ export class Mail extends React.Component {
                     value="unread"><span>Unread</span></button>
                 <button onClick={this.handleFilterChange} className={`read-btn ${mailbox === 'read' ? 'in-box' : ''}`}
                     value="read"><span>Read</span></button>
+                <button onClick={this.handleFilterChange} className={`stared-btn ${mailbox === 'read' ? 'stared' : ''}`}
+                    value="stared"><span>Stared</span></button>
                 <button onClick={this.handleFilterChange} className={`sent-btn ${mailbox === 'sentMail' ? 'in-box' : ''}`}
                     value="sentMail"><span>Sent Mail</span></button>
             </aside>
@@ -139,12 +152,13 @@ export class Mail extends React.Component {
                         mails={mails}
                         onDelete={this.onDelete}
                         onMail={this.onMail}
-                        handleFilterChange={this.handleFilterChange}
+                        handleSearch={this.handleSearch}
                         onToggleRead={this.onToggleRead}
                         inputTxt={txt}
                         onSort={this.onSort}
                         pageNum={page}
                         onPageChange={this.onPageChange}
+                        onStar={this.onStar}
                     />
                 </Route>
             </Switch>

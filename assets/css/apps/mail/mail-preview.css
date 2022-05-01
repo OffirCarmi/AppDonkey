@@ -16,6 +16,12 @@
     width: 0;
 }
 
+.star-btn {
+    height: 100%;
+    border-radius: 50%;
+    color: var(--c2);
+}
+
 .star-btn::before {
     font-family: fa-reg;
     content: '\f005';

@@ -23,7 +23,15 @@ header .apps {
     height: 40px;
     width: 40px;
     padding: 5px;
+    margin-right: 10px;
     /* background-color: gray; */
     border-radius: 3em;
     cursor: pointer;
+}
+
+
+header .apps::before {
+    font-family: fa-solid;
+    content: "\f015";
+    font-size: 30px;
 }

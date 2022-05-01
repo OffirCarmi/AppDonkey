@@ -1,8 +1,8 @@
-export function MailFilter({ handleFilterChange, inputTxt, onSort }) {
-    return <form className="filter-container " onSubmit={handleFilterChange}>
+export function MailFilter({ handleSearch, inputTxt, onSort }) {
+    return <form className="filter-container " onSubmit={handleSearch}>
         <div className="search-bar">
             <button></button>
-            <input type="text" onChange={handleFilterChange} name="txt" value={inputTxt}
+            <input type="text" onChange={handleSearch} name="txt" value={inputTxt}
                 autoComplete="off" placeholder="Search mail" />
         </div>
         <div className="sorting-tools flex">
@@ -15,5 +15,5 @@ export function MailFilter({ handleFilterChange, inputTxt, onSort }) {
                 onSort(ev)
             }}>Date</button>
         </div>
-    </form>
+    </form >
 }

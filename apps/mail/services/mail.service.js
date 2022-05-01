@@ -6,6 +6,7 @@ export const mailService = {
     deleteMail,
     setRead,
     toggleRead,
+    toggleStared,
     addMail,
     createMailFromKeep
 }
@@ -72,6 +73,14 @@ function toggleRead(id) {
     return Promise.resolve()
 }
 
+function toggleStared(id) {
+    const mails = _loadFromStorage()
+    mails.forEach((mail) => mail.id === id ? mail.isStared = !mail.isStared : mail)
+
+    _saveToStorage(mails)
+    return Promise.resolve(mails)
+}
+
 function _getById(mailId, mails) {
     const searchedMail = mails.find(mail => mailId === mail.id)
     return Promise.resolve(searchedMail)
@@ -92,7 +101,7 @@ function _filterMail(mails, criteria) {
 function _filterMailbox(mails, criteria) {
     switch (criteria.mailbox) {
         case 'inbox':
-            mails = mails.filter((mail) => mail.to === loggedinUser.email)
+            mails = mails.filter((mail) => mail.to === loggedinUser.email || mail.isStared)
             break
         case 'read':
             mails = mails.filter((mail) => mail.isRead && mail.to === loggedinUser.email)
@@ -101,7 +110,10 @@ function _filterMailbox(mails, criteria) {
             mails = mails.filter((mail) => !mail.isRead && mail.to === loggedinUser.email)
             break;
         case 'sentMail':
-            mails = mails.filter((mail) => mail.to !== loggedinUser.email)
+            mails = mails.filter((mail) => mail.to !== loggedinUser.email && mail.isStared)
+            break;
+        case 'stared':
+            mails = mails.filter((mail) => mail.isStared)
             break;
         default:
             break;
@@ -140,6 +152,7 @@ function _fetchEmails() {
         Join our live stream with hosts Gaurav Harrish from Avid and audio engineer Wavy Wayne—alongside 
         ASCAP award-winning songwriter and artist`,
             isRead: false,
+            isStared: false,
             sentAt: new Date('1/1/1999'),
             to: 'user@appdonkey.com',
             from: 'johanna.h@email.com',
@@ -155,6 +168,7 @@ function _fetchEmails() {
         Orion... I’ve felt wind in my hair, riding test boats off the black galaxies and seen an attack fleet burn like a match and disappear. 
         I've seen it, felt it`,
             isRead: false,
+            isStared: false,
             sentAt: new Date('1/1/2020'),
             to: 'user@appdonkey.com',
             from: 'Roy_Batty@email.com',
@@ -166,6 +180,7 @@ function _fetchEmails() {
             body: `et's take a trip together
         Uber makes it easy to tackle your errands or commute to the office. Wherever you're going, we'll take you there.`,
             isRead: false,
+            isStared: false,
             sentAt: new Date(`1/1/2016`),
             to: `user@appdonkey.com`,
             from: `uber@uber.com`,
@@ -182,6 +197,7 @@ function _fetchEmails() {
         
         Included in these creeds are codes for the auditor, the supervisor, the manager and additional codes by which all Scientologists strive to live. Like Scientology, the usefulness of these principles determines their worth. Scientologists follow these precepts in applying Scientology Technology, in dealings with others and in the administration of their groups and the practice of their religion.`,
             isRead: false,
+            isStared: false,
             sentAt: new Date('9/30/2021'),
             to: 'user@appdonkey.com',
             from: 'MediaRelations@ChurchofScientology.net',
@@ -192,6 +208,7 @@ function _fetchEmails() {
             subject: 'What Is QAnon?',
             body: 'Explaining the “big tent conspiracy theory” that falsely claims that former President Trump is facing down a shadowy cabal of Democratic pedophiles.',
             isRead: false,
+            isStared: false,
             sentAt: new Date('1/1/2010'),
             to: 'user@appdonkey.com',
             from: 'nytimes@nytimes.net',
@@ -202,6 +219,7 @@ function _fetchEmails() {
             subject: 'The bat',
             body: `Because we have to chase him. Because he's the hero Gotham deserves, but not the one it needs right now. So we'll hunt him. Because he can take it. Because he's not our hero. He's a silent guardian, a watchful protector. A dark knight.`,
             isRead: false,
+            isStared: false,
             sentAt: new Date('8/9/2008'),
             to: 'user@appdonkey.com',
             from: 'gothem.police@hotmail.com',
@@ -212,6 +230,7 @@ function _fetchEmails() {
             subject: `Ya wanna know how I got these scars?`,
             body: `My father; was a drinker; and a fiend. And one night, he goes off craazier than usual. Mommy grabs the kitchen knife to defend herself. He doesn't like that. Not. One. Bit. So, me watching, he takes the knife to her, laughing while he does it. He turns to me and say, "Why so Serious?". He comes at me with the knife. "Why so serious?". Sticks the blade in my mouth. "Let's put a smile on that face!". Aaaaaand. (Turns to hostage behind victim) "Why so serious?" (cuts victim's mouth)`,
             isRead: false,
+            isStared: false,
             sentAt: new Date(`10/6/2006`),
             to: `user@appdonkey.com`,
             from: `crazy@email.com`,
@@ -222,6 +241,7 @@ function _fetchEmails() {
             subject: `Where's the code?????`,
             body: `You were suppose to upload the Github page two hours ago, Yaron is going to kill you tomorrow!`,
             isRead: false,
+            isStared: false,
             sentAt: new Date(`4/30/2022`),
             to: `user@appdonkey.com`,
             from: `Idan_Gez@email.com`,
@@ -232,6 +252,7 @@ function _fetchEmails() {
             subject: `Sorry I'm taken`,
             body: `I don't know who you are. I don't know what you want. If you are looking for ransom I can tell you I don't have money, but what I do have are a very particular set of skills. Skills I have acquired over a very long career. Skills that make me a nightmare for people like you. If you let my daughter go now that'll be the end of it. I will not look for you, I will not pursue you, but if you don't, I will look for you, I will find you and I will kill you.`,
             isRead: false,
+            isStared: false,
             sentAt: new Date(`4/30/2022`),
             to: `user@appdonkey.com`,
             from: `big.star@hollywood.com`,
@@ -242,6 +263,7 @@ function _fetchEmails() {
             subject: `You've been hacked`,
             body: `You shouldn't have played with fire, now we are after you`,
             isRead: false,
+            isStared: false,
             sentAt: new Date(`4/30/2022`),
             to: `user@appdonkey.com`,
             from: `poki.bo@gmail.com`,
@@ -255,6 +277,7 @@ function _fetchEmails() {
         Join our live stream with hosts Gaurav Harrish from Avid and audio engineer Wavy Wayne—alongside 
         ASCAP award-winning songwriter and artist`,
             isRead: false,
+            isStared: false,
             sentAt: new Date('1/1/1999'),
             to: 'user@appdonkey.com',
             from: 'johanna.h@email.com',
@@ -270,6 +293,7 @@ function _fetchEmails() {
         Orion... I’ve felt wind in my hair, riding test boats off the black galaxies and seen an attack fleet burn like a match and disappear. 
         I've seen it, felt it`,
             isRead: false,
+            isStared: false,
             sentAt: new Date('1/1/2020'),
             to: 'user@appdonkey.com',
             from: 'Roy_Batty@email.com',
@@ -281,6 +305,7 @@ function _fetchEmails() {
             body: `et's take a trip together
         Uber makes it easy to tackle your errands or commute to the office. Wherever you're going, we'll take you there.`,
             isRead: false,
+            isStared: false,
             sentAt: new Date(`1/1/2016`),
             to: `user@appdonkey.com`,
             from: `uber@uber.com`,
@@ -297,6 +322,7 @@ function _fetchEmails() {
         
         Included in these creeds are codes for the auditor, the supervisor, the manager and additional codes by which all Scientologists strive to live. Like Scientology, the usefulness of these principles determines their worth. Scientologists follow these precepts in applying Scientology Technology, in dealings with others and in the administration of their groups and the practice of their religion.`,
             isRead: false,
+            isStared: false,
             sentAt: new Date('9/30/2021'),
             to: 'user@appdonkey.com',
             from: 'MediaRelations@ChurchofScientology.net',
@@ -307,6 +333,7 @@ function _fetchEmails() {
             subject: 'What Is QAnon?',
             body: 'Explaining the “big tent conspiracy theory” that falsely claims that former President Trump is facing down a shadowy cabal of Democratic pedophiles.',
             isRead: false,
+            isStared: false,
             sentAt: new Date('1/1/2010'),
             to: 'user@appdonkey.com',
             from: 'nytimes@nytimes.net',
@@ -317,6 +344,7 @@ function _fetchEmails() {
             subject: 'The bat',
             body: `Because we have to chase him. Because he's the hero Gotham deserves, but not the one it needs right now. So we'll hunt him. Because he can take it. Because he's not our hero. He's a silent guardian, a watchful protector. A dark knight.`,
             isRead: false,
+            isStared: false,
             sentAt: new Date('8/9/2008'),
             to: 'user@appdonkey.com',
             from: 'gothem.police@hotmail.com',
@@ -327,6 +355,7 @@ function _fetchEmails() {
             subject: `Ya wanna know how I got these scars?`,
             body: `My father; was a drinker; and a fiend. And one night, he goes off craazier than usual. Mommy grabs the kitchen knife to defend herself. He doesn't like that. Not. One. Bit. So, me watching, he takes the knife to her, laughing while he does it. He turns to me and say, "Why so Serious?". He comes at me with the knife. "Why so serious?". Sticks the blade in my mouth. "Let's put a smile on that face!". Aaaaaand. (Turns to hostage behind victim) "Why so serious?" (cuts victim's mouth)`,
             isRead: false,
+            isStared: false,
             sentAt: new Date(`10/6/2006`),
             to: `user@appdonkey.com`,
             from: `crazy@email.com`,
@@ -337,6 +366,7 @@ function _fetchEmails() {
             subject: `Where's the code?????`,
             body: `You were suppose to upload the Github page two hours ago, Yaron is going to kill you tomorrow!`,
             isRead: false,
+            isStared: false,
             sentAt: new Date(`4/30/2022`),
             to: `user@appdonkey.com`,
             from: `Idan_Gez@email.com`,
@@ -347,6 +377,7 @@ function _fetchEmails() {
             subject: `Sorry I'm taken`,
             body: `I don't know who you are. I don't know what you want. If you are looking for ransom I can tell you I don't have money, but what I do have are a very particular set of skills. Skills I have acquired over a very long career. Skills that make me a nightmare for people like you. If you let my daughter go now that'll be the end of it. I will not look for you, I will not pursue you, but if you don't, I will look for you, I will find you and I will kill you.`,
             isRead: false,
+            isStared: false,
             sentAt: new Date(`4/30/2022`),
             to: `user@appdonkey.com`,
             from: `big.star@hollywood.com`,
@@ -357,6 +388,7 @@ function _fetchEmails() {
             subject: `You've been hacked`,
             body: `You shouldn't have played with fire, now we are after you`,
             isRead: false,
+            isStared: false,
             sentAt: new Date(`4/30/2022`),
             to: `user@appdonkey.com`,
             from: `poki.bo@gmail.com`,

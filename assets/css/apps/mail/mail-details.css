@@ -21,8 +21,7 @@
     padding: 20px 10px;
 }
 
-.detail-container .artical-container>* {
-}
+.detail-container .artical-container>* {}
 
 .detail-container .detail-tools {
     border-bottom: 1px solid var(--g5);
@@ -32,6 +31,7 @@
     margin-bottom: 15px;
     font-size: 20px;
     font-weight: 500;
+    white-space: pre;
 }
 
 .detail-container .detail-sender {
@@ -57,7 +57,6 @@
     background-size: 100%;
     font-family: fa-solid;
     content: "\f0ee";
-
 }
 
 .detail-container .back-btn {

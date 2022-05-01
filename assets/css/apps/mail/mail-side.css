@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     background-color: transparent;
+    color: var(--g1o);
     border: none;
     padding: 8px 12px 8px 26px;
     width: 100%;
@@ -86,6 +87,12 @@
     content: '';
 }
 
+.side .stared-btn::before {
+    font-size: 1.125em;
+    font-family: fa-solid;
+    content: '\f005';
+}
+
 .side .sent-btn::before {
     font-size: 1.125em;
     font-family: fa-solid;
@@ -96,18 +103,15 @@
     .side {
         position: fixed;
         width: 250px;
-        height: 81vh;
+        height: 75vh;
         background-color: var(--bg);
         left: -500%;
-        border: 1px solid var(--g5);
+        border-right: 1px solid var(--g5);
         padding-top: 15px;
         z-index: 100;
     }
-    
     .side.menu-open {
         left: 0;
     }
-    .exit-menu {
-
-    }
+    .exit-menu {}
 }
