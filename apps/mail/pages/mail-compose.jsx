@@ -13,7 +13,6 @@ export class Compose extends React.Component {
     }
 
     handleWrite = (ev) => {
-        // console.log(ev)
         const val = ev.currentTarget.value
         const field = ev.currentTarget.name
         this.setState((prevState) => ({ ...prevState, [field]: val }))
@@ -21,14 +20,12 @@ export class Compose extends React.Component {
 
     onSend = (ev) => {
         ev.preventDefault()
-        console.log(this.state)
         mailService.addMail(this.state)
         eventBusService.emit('user-msg', { txt: 'Sent', type: 'success' })
         this.props.history.push('/mail')
     }
 
     render() {
-        // console.log(this.props);
         const { body, subject, to } = this.state
         return <section className="compose-container flex col">
             <div className="compose-head">

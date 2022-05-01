@@ -33,6 +33,7 @@
 .preview-container .prev-name {
     overflow: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis;
     width: 200px;
     padding-left: 10px;
 }
@@ -43,6 +44,7 @@
     text-overflow: ellipsis;
     flex-grow: 1;
     width: 0;
+    margin-left: 10px;
 }
 
 .prev-body {
