@@ -5,28 +5,27 @@
     flex-grow: 1;
     background-color: var(--g5);
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: 150px;
+    margin-top: 0;
 }
 
 .team-member {
     max-width: 100px;
-    height: auto;
     flex-direction: column;
+    margin-top: 40%;
 
 }
 
 .app-preview {
     border-radius: 0.5em;
     width: 100px;
-    /* margin-bottom: 75px; */
-    height: 100px;
-    width: 100px;
+    margin-bottom: 75px;
     align-items: center;
 }
 
 .app-preview img {
-    transform: scale(0.5);
+    width: 100%;
 }
 
 /* .team-member img.trans {
@@ -35,6 +34,9 @@
 
 .partner {
     flex-direction: column;
+}
+
+.partner .offir {
 }
 
 .partner img {
@@ -79,16 +81,17 @@
 @media screen and (min-width:641px) {
     .home {
         flex-direction: column;
-        gap: 100px;
         justify-content: center;
+        align-items: center;
+        gap: 100px;
         height: auto;
-
-
     }
 
     .team-member {
         flex-direction: row;
         height: 200px;
+        margin-top: 0;
+        justify-content: center;
 
     }
 

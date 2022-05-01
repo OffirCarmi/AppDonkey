@@ -1,14 +1,14 @@
 const { Route, Switch, Link } = ReactRouterDOM
 export class Home extends React.Component {
     render() {
-        return <div className="home flex align-center justify-center space-evenly">
+        return <div className="home flex">
             <section className="team-member flex ">
                 <section className="app-preview flex justify-center">
                     <Link to="/keep" className="keep-link">
                         <img className="trans" src="assets/img/keep-logo.png" alt="" />
                     </Link>
                 </section>
-                <section className="partner flex align-center">
+                <section className="partner offir flex align-center">
                     <img src="assets/img/team/offir.jpg" alt="profile-photo" />
                     <section className="partner-info flex col">
                         <h1>Offir Carmi</h1>
@@ -22,7 +22,7 @@ export class Home extends React.Component {
                         <img src="assets/img/mail-logo.png" alt="" />
                     </Link>
                 </section>
-                <section className="partner flex align-center">
+                <section className="partner itay flex align-center">
                     <img src="assets/img/team/itay.jpg" alt="profile-photo" />
                     <section className="partner-info flex col">
                         <h1>Itai Zonshine</h1>
