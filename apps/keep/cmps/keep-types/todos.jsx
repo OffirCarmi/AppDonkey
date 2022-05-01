@@ -30,7 +30,7 @@ export class Todos extends React.Component {
         this.setState((prevState) => ({ ...prevState, input }))
     }
 
-    onAddTodo = (keepId) => {
+    onAddTodo = (event, keepId) => {
         event.preventDefault()
         eventBusService.emit('user-msg', { txt: 'New todo was added', type: 'success' })
         const input = event.target[0].value
@@ -43,14 +43,14 @@ export class Todos extends React.Component {
         const { keep, onUpdateKeep } = this.props
         // console.log(todos);
         return <section className="todos flex col space-between">
-            {todos.map(todo => {
-                return <div className="todo flex space-between align-center" key={todo.id}>
-                    <input className="add-todo" type="checkbox" onChange={() => { this.onToggleTodo(keep.id, todo.id) }} checked={todo.isDone} />
-                    <p contentEditable onBlur={() => { onUpdateKeep(event, keep.id, todo.id) }} className={todo.isDone ? 'done' : ''}>{todo.txt}</p>
-                    <button onClick={() => { this.onRemove(keep.id, todo.id) }}>x</button>
+            {todos.map((todo, idx) => {
+                return <div className="todo flex space-between align-center" key={idx}>
+                    <input className="toggle-todo" type="checkbox" onChange={() => { this.onToggleTodo(keep.id, idx) }} checked={todo.isDone} />
+                    <p contentEditable onBlur={(event) => { onUpdateKeep(event, keep.id, todo.id) }} className={todo.isDone ? 'done' : ''}>{todo.txt}</p>
+                    <button onClick={() => { this.onRemove(keep.id, idx) }}>x</button>
                 </div>
             })}
-            <form className="new-todo" onSubmit={() => this.onAddTodo(keep.id)}>
+            <form className="new-todo" onSubmit={(event) => this.onAddTodo(event, keep.id)}>
                 <input type="text" value={input} placeholder="Add new todo" onChange={this.handleChange} />
             </form>
         </section>

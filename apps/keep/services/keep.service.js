@@ -82,13 +82,11 @@ function removeTodo(keepId, todoId) {
 
 }
 
-function toggleTodo(keepId, todoId) {
+function toggleTodo(keepId, todoIdx) {
     let keeps = _loadFromStorage()
-    const keep = keeps.find(keep => keepId === keep.id)
+    const keep = keeps.find((keep) => keepId === keep.id)
     const keepIdx = keeps.findIndex(keep => keepId === keep.id)
-    const todoIdx = keep.info.todos.findIndex(todo => todoId === todo.id)
-    keep.info.todos[todoIdx].isDone = !keep.info.todos[todoIdx].isDone
-    keeps.splice(keepIdx, 1, keep)
+    keeps[keepIdx].info.todos[todoIdx].isDone = !keeps[keepIdx].info.todos[todoIdx].isDone
     _saveToStorage(keeps)
     return Promise.resolve(keep.info.todos)
 
@@ -179,84 +177,7 @@ function _createData() {
                 txt: "Hello World! Let's try this awesome app!"
             },
             isPinned: true,
-            color: "#59adf6"
-        },
-        {
-            id: utilService.makeId(),
-            type: "keep-todos",
-            info: {
-                label: "Get my stuff together",
-                todos: [
-                    { txt: "Finish coding", isDone: false },
-                    { txt: "Get satisfied with the process", isDone: true },
-                    { txt: "Get exahusted", isDone: true },
-                ]
-            },
-            isPinned: true,
-            color: "#ffb480"
-
-        },
-        {
-            id: utilService.makeId(),
-            type: "keep-video",
-            url: _getYouTubeLink('https://www.youtube.com/watch?v=4IyYugLeDjg'),
-            isPinned: false,
-            color: "#c780e8"
-        },
-        {
-            id: utilService.makeId(),
-            type: "keep-video",
-            url: _getYouTubeLink('https://www.youtube.com/watch?v=429vxpfe2Ag'),
-            isPinned: false,
-            color: "#ff6961"
-        },
-        {
-            id: utilService.makeId(),
-            type: "keep-img",
-            info: {
-                url: "https://lirp.cdn-website.com/7ece8951/dms3rep/multi/opt/GettyImages-544673512-960w.jpg",
-                title: ""
-            },
-            isPinned: false,
-            color: "#08cad1"
-        },
-        {
-            id: utilService.makeId(),
-            type: "keep-txt",
-            info: {
-                txt: "React is awesome!"
-            },
-            isPinned: false,
-            color: "#f8f38d"
-        },
-        {
-            id: utilService.makeId(),
-            type: "keep-img",
-            info: {
-                url: "https://images.ctfassets.net/hrltx12pl8hq/qGOnNvgfJIe2MytFdIcTQ/429dd7e2cb176f93bf9b21a8f89edc77/Images.jpg",
-                title: ""
-            },
-            isPinned: false,
-            color: "#ff6961"
-        },
-        {
-            id: utilService.makeId(),
-            type: "keep-txt",
-            info: {
-                txt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            },
-            isPinned: true,
-            color: "#9d94ff"
-        },
-        {
-            id: utilService.makeId(),
-            type: "keep-img",
-            info: {
-                url: "https://images.theconversation.com/files/304963/original/file-20191203-66982-1rzdvz4.jpg?ixlib=rb-1.1.0&rect=31%2C71%2C5330%2C2665&q=45&auto=format&w=1356&h=668&fit=crop",
-                title: ""
-            },
-            isPinned: true,
-            color: "#42d6a4"
+            color: "#59adf680"
         },
         {
             id: utilService.makeId(),
@@ -276,7 +197,83 @@ function _createData() {
                 ]
             },
             isPinned: true,
-            color: "#ff6961"
+            color: "#ff696180"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-video",
+            url: _getYouTubeLink('https://www.youtube.com/watch?v=4IyYugLeDjg'),
+            isPinned: false,
+            color: "#c780e880"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-video",
+            url: _getYouTubeLink('https://www.youtube.com/watch?v=429vxpfe2Ag'),
+            isPinned: false,
+            color: "#ff696180"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-img",
+            info: {
+                url: "https://lirp.cdn-website.com/7ece8951/dms3rep/multi/opt/GettyImages-544673512-960w.jpg",
+                title: ""
+            },
+            isPinned: false,
+            color: "#08cad180"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-txt",
+            info: {
+                txt: "React is awesome!"
+            },
+            isPinned: false,
+            color: "#f8f38d80"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-img",
+            info: {
+                url: "https://images.ctfassets.net/hrltx12pl8hq/qGOnNvgfJIe2MytFdIcTQ/429dd7e2cb176f93bf9b21a8f89edc77/Images.jpg",
+                title: ""
+            },
+            isPinned: false,
+            color: "#ff696180"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-txt",
+            info: {
+                txt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            isPinned: true,
+            color: "#9d94ff80"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-img",
+            info: {
+                url: "https://images.theconversation.com/files/304963/original/file-20191203-66982-1rzdvz4.jpg?ixlib=rb-1.1.0&rect=31%2C71%2C5330%2C2665&q=45&auto=format&w=1356&h=668&fit=crop",
+                title: ""
+            },
+            isPinned: true,
+            color: "#42d6a580"
+        },
+        {
+            id: utilService.makeId(),
+            type: "keep-todos",
+            info: {
+                label: "Get my stuff together",
+                todos: [
+                    { txt: "Finish coding", isDone: false },
+                    { txt: "Get satisfied with the process", isDone: false },
+                    { txt: "Get exahusted", isDone: true },
+                ]
+            },
+            isPinned: true,
+            color: "#ffb58080"
 
         },
         {
@@ -287,24 +284,24 @@ function _createData() {
                 title: ""
             },
             isPinned: false,
-            color: "#08cad1"
+            color: "#42d6a580"
         },
         {
             id: utilService.makeId(),
             type: "keep-video",
             url: _getYouTubeLink('https://www.youtube.com/watch?v=_hQxy7KKq3U'),
             isPinned: true,
-            color: "#f8f38d"
+            color: "#f8f38d80"
         },
         {
             id: utilService.makeId(),
             type: "keep-img",
             info: {
-                url: "https://i.pinimg.com/736x/11/af/44/11af44d69ce6d325d042f8a83adc50af--bestfriends-bffs.jpg",
+                url: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3cf7f6e5-abb8-46e5-a1e8-363b4feb58e1/d27g1cm-a4a26632-b733-4d53-b931-138dc53953f2.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzNjZjdmNmU1LWFiYjgtNDZlNS1hMWU4LTM2M2I0ZmViNThlMVwvZDI3ZzFjbS1hNGEyNjYzMi1iNzMzLTRkNTMtYjkzMS0xMzhkYzUzOTUzZjIuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.UDa9CZx-IKGsff_7wFQs2b-JGetGaCh2w6sZHC_Egzg",
                 title: ""
             },
             isPinned: false,
-            color: "#9d94ff"
+            color: "#9d94ff80"
         },
         {
             id: utilService.makeId(),
@@ -312,7 +309,7 @@ function _createData() {
             info: {
                 txt: "This is some random text"
             },
-            isPinned: false, color: "#c780e8"
+            isPinned: false, color: "#c780e880"
         },
     ]
 }

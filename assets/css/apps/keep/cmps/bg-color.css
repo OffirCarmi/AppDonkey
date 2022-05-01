@@ -1,7 +1,7 @@
 .colors-container {
     position: absolute;
     bottom: 0;
-    height: 40px;
+    height: 44px;
     width: 100%;
     background-color: var(--g4);
     padding: 0 5px;

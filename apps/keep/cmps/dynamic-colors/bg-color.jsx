@@ -8,10 +8,15 @@ export class BgColor extends React.Component {
         this.props.toggleColors()
     }
 
+    tester = (event) => { console.log('tester', event); }
+
     render() {
-        const colors = ['#ff6961', '#ffb480', '#f8f38d', '#42d6a4', '#08cad1', '#59adf6', '#9d94ff', '#c780e8', '#fff']
-        const { onChangeColor, toggleColors, keepId } = this.props
-        return <div className="colors-container flex align-center space-between">
+        const colors = ['#ff696180', '#ffb58080',
+            '#f8f38d80', '#42d6a580',
+            '#08cad180', '#59adf680',
+            '#9d94ff80', '#c780e880', '#fff']
+        const { toggleColors, keepId } = this.props
+        return <div onBlur={(event) => console.log(event)} className="colors-container flex align-center space-between">
             {colors.map(color => {
                 return <div onClick={() => this.onClick(keepId, color)}
                     style={{ backgroundColor: color }} key={color} className="color"> </div>
