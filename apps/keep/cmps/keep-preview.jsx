@@ -11,7 +11,7 @@ const { Link } = ReactRouterDOM
 export class KeepPreview extends React.Component {
     state = {
         showColors: false,
-        isModal: true
+        isModal: false
     }
 
     toggleColors = () => {

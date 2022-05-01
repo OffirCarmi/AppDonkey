@@ -28,8 +28,9 @@ export class Keep extends React.Component {
     onAddKeep = () => {
         event.preventDefault()
         const input = this.state.input
-        const type = this.state.type
+        if (!input) return
 
+        const type = this.state.type
         keepService.addKeep(input, type)
             .then(() => {
                 this.loadKeeps()
@@ -51,10 +52,7 @@ export class Keep extends React.Component {
         console.log('test');
         event.stopPropagation()
         keepService.changeColor(keepId, color)
-            .then(() => {
-                this.loadKeeps()
-                eventBusService.emit('user-msg', { txt: 'Background color was changed', type: 'success' })
-            })
+            .then(this.loadKeeps())
     }
 
     onUpdateKeep(ev, keepId, todoId) {
@@ -65,10 +63,7 @@ export class Keep extends React.Component {
 
     onDuplicateKeep = (keepId) => {
         keepService.duplicateKeep(keepId)
-            .then(() => {
-                this.loadKeeps()
-                eventBusService.emit('user-msg', { txt: 'New duplicated Keep was added', type: 'success' })
-            })
+            .then(() => this.loadKeeps())
     }
 
     onPinKeep = (keepId) => {

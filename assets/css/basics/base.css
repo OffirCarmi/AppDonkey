@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family: roboto , sans-serif;
+    font-family: roboto, sans-serif;
     background-color: var(--bg);
     margin: 0;
     font-size: 0.875rem;
@@ -43,7 +43,11 @@ input {
 }
 
 .wraper {
-    height: 100vh;
+    height: 98vh;
+}
+
+.editable:focus-visible {
+    outline: none
 }
 
 /* ::placeholder {

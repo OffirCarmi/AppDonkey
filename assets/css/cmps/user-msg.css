@@ -1,22 +1,24 @@
 .user-msg {
     position: fixed;
-    top: 7px;
-    left: 15%;
+    bottom: 20px;
+    left: 20px;
     height: 45px;
     padding: 10px;
     border-radius: 0.5em;
     z-index: 1000;
     display: flex;
     align-items: center;
-    width: 250px ;
 }
 
 .user-msg.success {
-    background-color: lightgreen;
+    background-color: rgb(55, 55, 55);
+    color: var(--g4);
+
 }
 
 .user-msg.danger {
-    background-color: rgb(242, 121, 121);
+    background-color: rgb(250, 85, 85);
+    color: var(--g4);
 }
 
 .user-msg .msg {
@@ -29,27 +31,11 @@
     background: transparent;
     font-weight: 700;
     margin-inline-end: 10px;
+    color: var(--g4);
 
 }
 
 .user-msg button:hover {
-    color: whitesmoke;
-}
-
-
-
-@media screen and (min-width:641px) {
-    .user-msg {
-        top: 90px;
-        right: 25px;
-        width: 350px ;
-
-
-    }
-
-    .user-msg button {
-        margin-inline-end: 20px;
-    
-    }
-
+    transition: 0.5s;
+    transform: scale(120%);
 }
