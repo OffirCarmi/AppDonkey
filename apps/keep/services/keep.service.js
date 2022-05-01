@@ -174,44 +174,33 @@ function _createData() {
             id: utilService.makeId(),
             type: "keep-txt",
             info: {
-                txt: "Hello World! Let's try this awesome app!"
+                txt: "The dreams you dare to dream DO come true ⭐⭐⭐"
             },
             isPinned: true,
             color: "#59adf680"
         },
         {
             id: utilService.makeId(),
-            type: "keep-todos",
+            type: "keep-txt",
             info: {
-                label: "Get my stuff together",
-                todos: [
-                    // { txt: "Tomatoes", isDone: false },
-                    // { txt: "Cucumbers", isDone: false },
-                    // { txt: "Carrots", isDone: false },
-                    // { txt: "Onions", isDone: false },
-                    // { txt: "Apples", isDone: false },
-                    // { txt: "Grapes", isDone: false },
-                    // { txt: "Bananas", isDone: false },
-                    // { txt: "Peaches", isDone: false },
-                    // { txt: "Strawberries", isDone: false },
-                ]
+                txt: "David 054-7654321"
             },
-            isPinned: true,
-            color: "#ff696180"
+            isPinned: false,
+            color: "#fff"
         },
         {
             id: utilService.makeId(),
             type: "keep-video",
             url: _getYouTubeLink('https://www.youtube.com/watch?v=4IyYugLeDjg'),
             isPinned: false,
-            color: "#c780e880"
+            color: "#fff"
         },
         {
             id: utilService.makeId(),
             type: "keep-video",
             url: _getYouTubeLink('https://www.youtube.com/watch?v=429vxpfe2Ag'),
             isPinned: false,
-            color: "#ff696180"
+            color: "#c780e880"
         },
         {
             id: utilService.makeId(),
@@ -221,7 +210,7 @@ function _createData() {
                 title: ""
             },
             isPinned: false,
-            color: "#08cad180"
+            color: "#fff"
         },
         {
             id: utilService.makeId(),
@@ -236,11 +225,11 @@ function _createData() {
             id: utilService.makeId(),
             type: "keep-img",
             info: {
-                url: "https://images.ctfassets.net/hrltx12pl8hq/qGOnNvgfJIe2MytFdIcTQ/429dd7e2cb176f93bf9b21a8f89edc77/Images.jpg",
+                url: "https://i0.wp.com/www.northcanyon.org/wp-content/uploads/2021/06/family-medicine-healthcare.jpg",
                 title: ""
             },
             isPinned: false,
-            color: "#ff696180"
+            color: "#fff"
         },
         {
             id: utilService.makeId(),
@@ -249,7 +238,7 @@ function _createData() {
                 txt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             },
             isPinned: true,
-            color: "#9d94ff80"
+            color: "#fff"
         },
         {
             id: utilService.makeId(),
@@ -258,8 +247,8 @@ function _createData() {
                 url: "https://images.theconversation.com/files/304963/original/file-20191203-66982-1rzdvz4.jpg?ixlib=rb-1.1.0&rect=31%2C71%2C5330%2C2665&q=45&auto=format&w=1356&h=668&fit=crop",
                 title: ""
             },
-            isPinned: true,
-            color: "#42d6a580"
+            isPinned: false,
+            color: "#fff"
         },
         {
             id: utilService.makeId(),
@@ -273,7 +262,7 @@ function _createData() {
                 ]
             },
             isPinned: true,
-            color: "#ffb58080"
+            color: "#f8f38d80"
 
         },
         {
@@ -283,7 +272,7 @@ function _createData() {
                 url: "https://bradaronson.com/wp-content/uploads/2013/10/happy.jpg",
                 title: ""
             },
-            isPinned: false,
+            isPinned: true,
             color: "#42d6a580"
         },
         {
@@ -291,7 +280,7 @@ function _createData() {
             type: "keep-video",
             url: _getYouTubeLink('https://www.youtube.com/watch?v=_hQxy7KKq3U'),
             isPinned: true,
-            color: "#f8f38d80"
+            color: "#fff"
         },
         {
             id: utilService.makeId(),
@@ -301,15 +290,7 @@ function _createData() {
                 title: ""
             },
             isPinned: false,
-            color: "#9d94ff80"
-        },
-        {
-            id: utilService.makeId(),
-            type: "keep-txt",
-            info: {
-                txt: "This is some random text"
-            },
-            isPinned: false, color: "#c780e880"
+            color: "#fff"
         },
     ]
 }
