@@ -193,7 +193,7 @@ function _createData() {
                 ]
             },
             isPinned: true,
-            color: "#42d6a4"
+            color: "#ffb480"
 
         },
         {
@@ -236,7 +236,7 @@ function _createData() {
                 url: "https://images.ctfassets.net/hrltx12pl8hq/qGOnNvgfJIe2MytFdIcTQ/429dd7e2cb176f93bf9b21a8f89edc77/Images.jpg",
                 title: ""
             },
-            isPinned: true,
+            isPinned: false,
             color: "#ff6961"
         },
         {
@@ -255,7 +255,7 @@ function _createData() {
                 url: "https://images.theconversation.com/files/304963/original/file-20191203-66982-1rzdvz4.jpg?ixlib=rb-1.1.0&rect=31%2C71%2C5330%2C2665&q=45&auto=format&w=1356&h=668&fit=crop",
                 title: ""
             },
-            isPinned: false,
+            isPinned: true,
             color: "#42d6a4"
         },
         {
@@ -264,19 +264,19 @@ function _createData() {
             info: {
                 label: "Get my stuff together",
                 todos: [
-                    { txt: "Tomatoes", isDone: false },
-                    { txt: "Cucumbers", isDone: false },
-                    { txt: "Carrots", isDone: false },
-                    { txt: "Onions", isDone: false },
-                    { txt: "Apples", isDone: false },
-                    { txt: "Grapes", isDone: false },
-                    { txt: "Bananas", isDone: false },
-                    { txt: "Peaches", isDone: false },
-                    { txt: "Strawberries", isDone: false },
+                    // { txt: "Tomatoes", isDone: false },
+                    // { txt: "Cucumbers", isDone: false },
+                    // { txt: "Carrots", isDone: false },
+                    // { txt: "Onions", isDone: false },
+                    // { txt: "Apples", isDone: false },
+                    // { txt: "Grapes", isDone: false },
+                    // { txt: "Bananas", isDone: false },
+                    // { txt: "Peaches", isDone: false },
+                    // { txt: "Strawberries", isDone: false },
                 ]
             },
-            isPinned: false,
-            color: "#ffb480"
+            isPinned: true,
+            color: "#ff6961"
 
         },
         {
@@ -316,38 +316,3 @@ function _createData() {
         },
     ]
 }
-
-// function _createData() {
-//     return [
-//         {
-//             id: utilService.makeId(),
-//             type: "keep-txt",
-//             isPinned: true,
-//             info: {
-//                 txt: "Fullstack Me Baby!"
-//             }
-//         },
-//         {
-//             id: utilService.makeId(),
-//             type: "keep-img",
-//             info: {
-//                 url: "https://lirp.cdn-website.com/7ece8951/dms3rep/multi/opt/GettyImages-544673512-960w.jpg",
-//                 title: "Bobi and Me"
-//             },
-//             style: {
-//                 backgroundColor: "#00d"
-//             }
-//         },
-//         {
-//             id: utilService.makeId(),
-//             type: "keep-todos",
-//             info: {
-//                 label: "Get my stuff together",
-//                 todos: [
-//                     { txt: "Driving liscence", doneAt: null },
-//                     { txt: "Coding power", doneAt: 187111111 }
-//                 ]
-//             }
-//         }
-//     ]
-// }
