@@ -5,7 +5,6 @@
     flex-grow: 1;
     background-color: var(--g5);
     width: 100%;
-<<<<<<< HEAD
     height: 150px;
     gap: 25px;
     justify-content: space-evenly;
@@ -15,27 +14,13 @@
 .team-member {
     max-width: 120px;
     height: auto;
-=======
-    justify-content: space-evenly;
-    height: 150px;
-    margin-top: 0;
-}
-
-.team-member {
-    max-width: 100px;
->>>>>>> a65f92fc8f662b60fcf354bc5adf53bd55c177a7
     flex-direction: column;
     margin-top: 40%;
 }
 
 .app-preview {
     border-radius: 0.5em;
-<<<<<<< HEAD
     height: 100px;
-=======
-    width: 100px;
-    margin-bottom: 75px;
->>>>>>> a65f92fc8f662b60fcf354bc5adf53bd55c177a7
     align-items: center;
 }
 
@@ -52,7 +37,7 @@
     flex-direction: column;
 }
 
-.partner .offir {}
+
 
 .partner img {
     border-radius: 100em;
@@ -60,10 +45,7 @@
     height: 100px;
     margin-bottom: 20px;
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
-<<<<<<< HEAD
     margin-top: 50px;
-=======
->>>>>>> a65f92fc8f662b60fcf354bc5adf53bd55c177a7
 }
 
 .partner-info {
@@ -82,7 +64,7 @@
     min-width: 140px;
 }
 
-.keep-link {
+/* .keep-link {
     padding: 0 10px;
     transform: translateX(15px);
 }
@@ -97,12 +79,12 @@
 
 .mail-link:hover {
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
-}
+} */
 
-.app-preview a {
+/* .app-preview a {
     display: flex;
     justify-content: space-around;
-}
+} */
 
 .app-preview a img {
     height: 75%;
@@ -115,24 +97,16 @@
         align-items: center;
         gap: 100px;
         height: auto;
-<<<<<<< HEAD
         align-items: center;
         padding-top: 0;
 
 
-=======
->>>>>>> a65f92fc8f662b60fcf354bc5adf53bd55c177a7
     }
     .team-member {
         flex-direction: row;
         height: 200px;
-<<<<<<< HEAD
         justify-content: space-between;
 
-=======
-        margin-top: 0;
-        justify-content: center;
->>>>>>> a65f92fc8f662b60fcf354bc5adf53bd55c177a7
     }
     .app-preview {
         width: 200px;
@@ -152,7 +126,6 @@
     .partner {
         flex-direction: row;
     }
-<<<<<<< HEAD
 
     .partner img {
         margin: 0;
@@ -162,8 +135,6 @@
         margin-bottom: 0;
     } */
 
-=======
->>>>>>> a65f92fc8f662b60fcf354bc5adf53bd55c177a7
     .partner-info {
         text-align: left;
         width: 100%;
