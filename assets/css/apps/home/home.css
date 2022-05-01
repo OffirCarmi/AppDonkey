@@ -105,15 +105,15 @@
     .team-member {
         flex-direction: row;
         height: 200px;
-        justify-content: space-between;
-
+        justify-content: center;
+        width: 95%;
     }
 
     .app-preview {
         width: 200px;
         margin-bottom: 0;
         margin-inline-end: 150px;
-        height: 200px;
+        margin: auto;
         width: 200px;
     }
 
