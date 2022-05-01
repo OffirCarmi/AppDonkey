@@ -26,14 +26,14 @@ export class Compose extends React.Component {
         }
         mailService.addMail(this.state)
         eventBusService.emit('user-msg', { txt: 'Sent', type: 'success' })
-        this.props.history.push('/mail')
+        this.props.toggleCompose()
     }
 
     render() {
         const { body, subject, to } = this.state
         return <section className="compose-container flex col">
             <div className="compose-head">
-                <button className="compose-exit" onClick={() => this.props.history.push('/mail')}>X</button>
+                <button className="compose-exit" onClick={() => this.props.toggleCompose()}>X</button>
             </div>
             <input type="email" multiple={true} placeholder="To" value={to} name="to" onChange={this.handleWrite} required autoComplete="off" />
             <input type="text" placeholder="Subject" value={subject} name="subject" onChange={this.handleWrite} required autoComplete="off" />

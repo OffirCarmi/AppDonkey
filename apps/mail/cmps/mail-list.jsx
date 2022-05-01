@@ -3,7 +3,20 @@ import { MailPreview } from "../cmps/mail-preview.jsx";
 import { MailFilter } from '../cmps/mail-filter.jsx';
 const { Link } = ReactRouterDOM
 
-export function MailList({ mails, onDelete, onMail, handleSearch, onToggleRead, inputTxt, onSort, pageNum, onPageChange, onStar }) {
+export function MailList({
+    mails,
+    onDelete,
+    onMail,
+    handleSearch,
+    onToggleRead,
+    inputTxt, onSort,
+    pageNum,
+    onPageChange,
+    onStar,
+    unreadCount,
+    totalMails
+}) {
+    const unreadPresent = Math.floor(unreadCount / totalMails * 100) + '%'
     const mailsToDisplay = mails.slice(pageNum * 10, pageNum * 10 + 10)
 
     return <section className="mail-container flex col">
@@ -21,5 +34,10 @@ export function MailList({ mails, onDelete, onMail, handleSearch, onToggleRead, 
             <span>Page: {pageNum + 1}</span>
             <button onClick={onPageChange} value={1}>Next</button>
         </section>}
+        <section className="unread-bar">
+            <div className="unread-fill" style={{ width: unreadPresent }}>
+            </div>
+            <h5>{unreadPresent}</h5>
+        </section>
     </section>
 }

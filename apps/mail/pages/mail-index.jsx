@@ -21,8 +21,10 @@ export class Mail extends React.Component {
             isReversed: false
         },
         unreadCount: 0,
+        totalMails: 0,
         isMenuOpen: false,
-        page: 0
+        page: 0,
+        composing: false
     }
 
     componentDidMount() {
@@ -31,9 +33,9 @@ export class Mail extends React.Component {
 
     loadMails = () => {
         return mailService.query(this.state.criteria)
-            .then(({ mails, count }) => {
+            .then(({ mails, count, total }) => {
 
-                this.setState({ mails, unreadCount: count })
+                this.setState({ mails, unreadCount: count, totalMails: total })
             })
     }
 
@@ -90,7 +92,8 @@ export class Mail extends React.Component {
     }
 
     onMenu = () => {
-        const { isMenuOpen } = this.state
+        const { isMenuOpen, composing } = this.state
+        composing && this.toggleCompose()
         isMenuOpen ? this.closeMenu() : this.openMenu()
 
     }
@@ -103,6 +106,9 @@ export class Mail extends React.Component {
         this.setState((prevState) => ({ isMenuOpen: true }))
     }
 
+    toggleCompose = () => {
+        this.setState((prevState) => ({ composing: !prevState.composing }))
+    }
 
     onPageChange = (ev) => {
         const { mails, page } = this.state
@@ -114,15 +120,16 @@ export class Mail extends React.Component {
     }
 
     render() {
-        const { mails, unreadCount, isMenuOpen, page } = this.state
+        const { mails, unreadCount, isMenuOpen, page, totalMails, composing } = this.state
         const { txt, mailbox } = this.state.criteria
         if (!mails) return <Loader />
         return <section className="mail-app">
             <aside className={`side ${isMenuOpen ? 'menu-open' : ''}`}>
                 {isMenuOpen && <button onClick={this.closeMenu} className="exit-menu">X</button>}
-                <NavLink to="/mail/compose" className="compose-link" onClick={
-                    () => this.state.isMenuOpen ? this.closeMenu() : ''
-                }>Compose</NavLink>
+                <NavLink className="compose-link" onClick={() => {
+                    this.state.isMenuOpen && this.closeMenu()
+                    this.toggleCompose()
+                }}>Compose</NavLink>
                 <button onClick={this.handleFilterChange} className={`inbox-btn ${mailbox === 'inbox' ? 'in-box' : ''}`} value="inbox">
                     <div className="flex space-between">
                         <span>Inbox</span>
@@ -144,19 +151,22 @@ export class Mail extends React.Component {
                 src="./assets/img/icons/category.webp"
                 onClick={this.onMenu}
             ></img>}
+            {composing && <Compose toggleCompose={this.toggleCompose}/>}
             <Switch>
-                <Route path="/mail/compose" component={Compose} />
+                {/* <Route path="/mail/compose" component={Compose} /> */}
                 <Route path="/mail/:mailId" render={(props) => <MailDetails onDelete={this.onDelete} {...props} />} />
                 <Route path="/mail">
                     <MailList
                         mails={mails}
+                        inputTxt={txt}
+                        pageNum={page}
+                        totalMails={totalMails}
+                        unreadCount={unreadCount}
                         onDelete={this.onDelete}
                         onMail={this.onMail}
                         handleSearch={this.handleSearch}
                         onToggleRead={this.onToggleRead}
-                        inputTxt={txt}
                         onSort={this.onSort}
-                        pageNum={page}
                         onPageChange={this.onPageChange}
                         onStar={this.onStar}
                     />

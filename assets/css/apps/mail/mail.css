@@ -1,9 +1,9 @@
 .mail-app {
     display: flex;
     position: relative;
-    padding: 0 15px 0 0;
+    margin: auto;
     margin-top: 90px;
-    max-width: 100%;
+    width: 90%;
     height: 700px;
     gap: 20px;
 }
@@ -18,7 +18,7 @@
     position: absolute;
     height: 25px;
     top: -26px;
-    left: 48vw;
+    left: 42vw;
     border-radius: 3px;
     /* background-color: var(--c2); */
     box-shadow: 0 0 3px -1px black;
@@ -29,7 +29,9 @@
     justify-content: space-between;
     align-items: flex-end;
     width: 260px;
-    padding: 10px 4px 30px 10px;
+    max-height: 100px;
+    min-height: 50px;
+    padding: 10px 4px 30px 45px;
     flex-grow: 1;
 }
 
@@ -49,8 +51,38 @@
     margin-bottom: 5px;
 }
 
+.unread-bar {
+    position: absolute;
+    width: 260px;
+    top: 580px;
+    left: 20px;
+    text-align: center;
+    background-color: var(--c2);
+}
+
+.unread-fill {
+    background-color: var(--c1);
+    position: absolute;
+    height: 100%;
+}
+
 @media screen and (min-width:765px) {
+    .mail-app {
+        padding: 0 15px 0 0;
+        width: 100%;
+    }
     .menu-img {
         display: none;
+    }
+    .unread-bar {
+        left: initial;
+    }
+    .paging-btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 260px;
+        padding: 10px 4px 30px 10px;
+        flex-grow: 1;
     }
 }

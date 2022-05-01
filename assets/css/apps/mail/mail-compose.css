@@ -1,11 +1,13 @@
 .compose-container {
-    /* position: absolute; */
+    position: absolute;
     border-radius: 7px;
-    right: 20px;
-    bottom: 20px;
-    height: 95%;
-    width: 75%;
+    right: 30px;
+    bottom: 30px;
+    height: 500px;
+    width: 600px;
     box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%);
+    background-color: var(--bg);
+    z-index: 10000;
 }
 
 .compose-container>*:not(:last-child) {
@@ -53,7 +55,11 @@
 
 @media screen and (max-width:765px) {
     .compose-container {
-        margin: 20px 0 0 10px;
-        width: 100%;
+        position: absolute;
+        left: 15px;
+        bottom: 10px;
+        height: 98%;
+        width: 95%;
+        margin: 0 auto;
     }
 }

@@ -19,7 +19,7 @@
 .star-btn {
     height: 100%;
     border-radius: 50%;
-    color: var(--c2);
+    color: var(--c1);
 }
 
 .star-btn::before {
@@ -76,7 +76,10 @@
 }
 
 @media screen and (max-width:765px) {
+    .preview-container>* {
+    }
     .preview-container .prev-name {
         width: 100px;
     }
+
 }
