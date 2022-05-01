@@ -20,8 +20,9 @@ export class Header extends React.Component {
 
     render() {
         const { header } = this.state
+        const styleOpt = header === 'home' && { backgroundColor: "transparent" }
         if (!header) return <React.Fragment />
-        return <header className="flex space-between align-center">
+        return <header style={styleOpt} className="flex space-between align-center">
             <img onClick={() => this.props.history.push('/')} src="assets/img/logo.png" />
             <h1>{header}</h1>
             <div className="apps" onClick={() => this.props.history.push('/home')}></div>

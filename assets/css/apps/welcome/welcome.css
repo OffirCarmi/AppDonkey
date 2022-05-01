@@ -14,9 +14,8 @@
     background-image: linear-gradient(180deg, rgba(222, 222, 222, 0.146) 0%);
     background-image: url("../../../img/background/background6.jpg");
     background-position: top;
-    color: rgb(99, 99, 99);
-    /* background-size: contain; */
     background-repeat: no-repeat;
+    color: rgb(99, 99, 99);
     text-align: center;
     align-items: center;
     height: 100vh;
