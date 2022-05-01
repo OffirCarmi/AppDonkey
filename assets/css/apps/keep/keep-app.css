@@ -82,6 +82,7 @@
 
     .keep-app .new-keep input.input {
         width: 65%;
+        font-size: 0.875em;
     }
 
     .keep-app .new-keep .keep-type button {
