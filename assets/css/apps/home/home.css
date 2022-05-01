@@ -5,28 +5,29 @@
     flex-grow: 1;
     background-color: var(--g5);
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: 150px;
-    margin-top: 0;
 }
 
 .team-member {
     max-width: 100px;
+    height: auto;
     flex-direction: column;
-    margin-top: 40%;
+
 }
 
 .app-preview {
     border-radius: 0.5em;
     width: 100px;
-    margin-bottom: 75px;
+    /* margin-bottom: 75px; */
+    height: 100px;
+    width: 100px;
     align-items: center;
 }
 
 .app-preview img {
-    width: 100%;
+    transform: scale(0.5);
 }
-
 
 /* .team-member img.trans {
     transform: translateX(15%);
@@ -36,13 +37,12 @@
     flex-direction: column;
 }
 
-.partner .offir {}
-
 .partner img {
     border-radius: 100em;
     width: 100%;
     margin-bottom: 20px;
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+
 }
 
 .partner-info {
@@ -60,20 +60,7 @@
     font-family: roboto-light, sans-serif;
 }
 
-.keep-link {
-    padding: 0 10px;
-    transform: translateX(15px);
-}
-
-.mail-link {
-    padding: 0 20px;
-}
-
-.keep-link:hover {
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
-}
-
-.mail-link:hover {
+.app-preview:hover {
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -82,6 +69,7 @@
     justify-content: space-around;
 }
 
+
 .app-preview a img {
     height: 75%;
 }
@@ -89,17 +77,19 @@
 @media screen and (min-width:641px) {
     .home {
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         gap: 100px;
+        justify-content: center;
         height: auto;
+
+
     }
+
     .team-member {
         flex-direction: row;
         height: 200px;
-        margin-top: 0;
-        justify-content: center;
+
     }
+
     .app-preview {
         width: 200px;
         margin-bottom: 0;
@@ -107,36 +97,47 @@
         height: 200px;
         width: 200px;
     }
+
     .app-preview a {
         justify-content: center;
         align-items: center;
     }
+
     .app-preview a img {
         width: 100%;
         transform: scale(1);
     }
+
     .partner {
         flex-direction: row;
+
     }
+
     .partner-info {
         text-align: left;
         width: 100%;
     }
+
     .team-member {
         max-width: 800px;
+
     }
+
     .team-member .partner-info h1 {
         font-size: 1.25em;
         margin-bottom: 10px;
         font-size: 20px;
     }
+
     .team-member .partner-info h3 {
         font-size: 16px;
     }
+
     .partner img {
         border-radius: 100em;
         width: 35%;
         height: 75%;
         margin-inline-end: 50px;
     }
+
 }
