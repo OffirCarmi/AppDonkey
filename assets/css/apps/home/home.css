@@ -5,12 +5,14 @@
     flex-grow: 1;
     background-color: var(--g5);
     width: 100%;
-    justify-content: space-between;
     height: 150px;
+    gap: 25px;
+    justify-content: space-evenly;
+    padding-top: 15vh;
 }
 
 .team-member {
-    max-width: 100px;
+    max-width: 120px;
     height: auto;
     flex-direction: column;
 
@@ -18,10 +20,7 @@
 
 .app-preview {
     border-radius: 0.5em;
-    width: 100px;
-    /* margin-bottom: 75px; */
     height: 100px;
-    width: 100px;
     align-items: center;
 }
 
@@ -37,12 +36,15 @@
     flex-direction: column;
 }
 
+
+
 .partner img {
     border-radius: 100em;
-    width: 100%;
+    width: 100px;
+    height: 100px;
     margin-bottom: 20px;
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
-
+    margin-top: 50px;
 }
 
 .partner-info {
@@ -58,16 +60,30 @@
 .team-member .partner-info h3 {
     font-size: 1em;
     font-family: roboto-light, sans-serif;
+    min-width: 140px;
 }
 
-.app-preview:hover {
+/* .keep-link {
+    padding: 0 10px;
+    transform: translateX(15px);
+}
+
+.mail-link {
+    padding: 0 20px;
+}
+
+.keep-link:hover {
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
 }
 
-.app-preview a {
+.mail-link:hover {
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+} */
+
+/* .app-preview a {
     display: flex;
     justify-content: space-around;
-}
+} */
 
 
 .app-preview a img {
@@ -80,6 +96,8 @@
         gap: 100px;
         justify-content: center;
         height: auto;
+        align-items: center;
+        padding-top: 0;
 
 
     }
@@ -87,13 +105,14 @@
     .team-member {
         flex-direction: row;
         height: 200px;
+        justify-content: space-between;
 
     }
 
     .app-preview {
         width: 200px;
         margin-bottom: 0;
-        margin-inline-end: 50px;
+        margin-inline-end: 150px;
         height: 200px;
         width: 200px;
     }
@@ -112,6 +131,14 @@
         flex-direction: row;
 
     }
+
+    .partner img {
+        margin: 0;
+    }
+
+    /* img.trans {
+        margin-bottom: 0;
+    } */
 
     .partner-info {
         text-align: left;
@@ -135,7 +162,7 @@
 
     .partner img {
         border-radius: 100em;
-        width: 35%;
+        width: auto;
         height: 75%;
         margin-inline-end: 50px;
     }

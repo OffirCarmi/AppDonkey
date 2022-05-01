@@ -10,8 +10,8 @@ function _Welcome({ history }) {
                 <h3>Doing the donkey work for you!</h3>
                 <h4>Home for your mails, home for your notes</h4>
             </span>
-            {/* <h3>Have some free time, beacuse we don't</h3> */}
             <button onClick={() => history.push('/home')} className="start-btn">Make your donkey work</button>
+            {/* <h3>Have some free time, beacuse we don't</h3> */}
         </section>
     </section >
 }
