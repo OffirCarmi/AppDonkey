@@ -1,9 +1,9 @@
 const { Route, Switch, Link } = ReactRouterDOM
 export class Home extends React.Component {
     render() {
-        return <div className="home flex col align-center justify-center">
-            <section className="team-member flex space-between justify-center">
-                <section className="app-preview flex">
+        return <div className="home flex align-center justify-center space-evenly">
+            <section className="team-member flex ">
+                <section className="app-preview flex justify-center">
                     <Link to="/keep" className="keep-link">
                         <img className="trans" src="assets/img/keep-logo.png" alt="" />
                     </Link>
@@ -12,13 +12,12 @@ export class Home extends React.Component {
                     <img src="assets/img/team/offir.jpg" alt="profile-photo" />
                     <section className="partner-info flex col">
                         <h1>Offir Carmi</h1>
-                        <h3>Full stack develeoper to become</h3>
+                        <h3>Full stack develeoper to be</h3>
                     </section>
                 </section>
             </section>
-
-            <section className="team-member flex space-between justify-center">
-                <section className="app-preview flex">
+            <section className="team-member flex ">
+                <section className="app-preview flex justify-center">
                     <Link to="/mail" className="mail-link">
                         <img src="assets/img/mail-logo.png" alt="" />
                     </Link>
@@ -26,11 +25,12 @@ export class Home extends React.Component {
                 <section className="partner flex align-center">
                     <img src="assets/img/team/itay.jpg" alt="profile-photo" />
                     <section className="partner-info flex col">
-                        <h1>Itay Zonshine</h1>
-                        <h3>Full stack develeoper to become</h3>
+                        <h1>Itai Zonshine</h1>
+                        <h3>Full stack develeoper to be</h3>
                     </section>
                 </section>
             </section>
+
 
         </div>
 

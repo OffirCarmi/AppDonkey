@@ -37,13 +37,12 @@ input {
     background: transparent;
 }
 
-
 .app {
     min-height: 100vh;
 }
 
 .wraper {
-    height: 98vh;
+    height: 100vh;
 }
 
 .editable:focus-visible {
