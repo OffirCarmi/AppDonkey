@@ -115,7 +115,7 @@ function _filterMailbox(mails, criteria) {
             mails = mails.filter((mail) => !mail.isRead && mail.to === loggedinUser.email)
             break;
         case 'sentMail':
-            mails = mails.filter((mail) => mail.to !== loggedinUser.email && mail.isStared)
+            mails = mails.filter((mail) => mail.to !== loggedinUser.email)
             break;
         case 'stared':
             mails = mails.filter((mail) => mail.isStared)
@@ -130,9 +130,7 @@ function createMailFromKeep(txt) {
     return _createMail({ subject: 'Hello from Keep', body: txt, from: loggedinUser.email, senderFullname: loggedinUser.fullName })
 }
 
-function _createMail({ subject, body, to, from, senderFullname, date }) {
-    if (!senderFullname) senderFullname = loggedinUser.fullName
-    if (!from) from = loggedinUser.email
+function _createMail({ subject, body, to, from, date }) {
     if (!to) to = ''
     if (!date) date = Date.now()
     return {
@@ -142,8 +140,8 @@ function _createMail({ subject, body, to, from, senderFullname, date }) {
         isRead: true,
         sentAt: Date.now(),
         to,
-        from,
-        senderFullname
+        from: loggedinUser.email,
+        senderFullname: loggedinUser.fullName
     }
 }
 
